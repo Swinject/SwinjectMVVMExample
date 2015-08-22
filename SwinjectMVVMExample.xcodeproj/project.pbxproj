@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9844A4BC1B8838C30069D5D5 /* ResponseEntitySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */; };
 		985C39A11B873F4100874AE5 /* ExampleModel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 98E825571B86091A00E7BA79 /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		988C5C9C1B881E3800BA741E /* ImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5C9A1B881E3800BA741E /* ImageEntity.swift */; };
+		988C5C9D1B881E3800BA741E /* ResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5C9B1B881E3800BA741E /* ResponseEntity.swift */; };
+		988C5C9F1B881E4800BA741E /* ImageEntitySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5C9E1B881E4800BA741E /* ImageEntitySpec.swift */; };
 		98B48DC51B872A0A00843AD7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A5311B8724D8001CA6A4 /* Nimble.framework */; };
 		98B48DC61B872A0A00843AD7 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A5321B8724D8001CA6A4 /* Quick.framework */; };
 		98B48DC81B872A2600843AD7 /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A5311B8724D8001CA6A4 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -66,7 +70,6 @@
 		98E825481B86044A00E7BA79 /* SwinjectMVVMExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E825471B86044A00E7BA79 /* SwinjectMVVMExampleTests.swift */; };
 		98E8255A1B86091A00E7BA79 /* ExampleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 98E825591B86091A00E7BA79 /* ExampleModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98E825611B86091A00E7BA79 /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E825571B86091A00E7BA79 /* ExampleModel.framework */; };
-		98E825681B86091A00E7BA79 /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E825671B86091A00E7BA79 /* ExampleModelTests.swift */; };
 		98E8256C1B86091A00E7BA79 /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E825571B86091A00E7BA79 /* ExampleModel.framework */; };
 		98E8256D1B86091A00E7BA79 /* ExampleModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 98E825571B86091A00E7BA79 /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		98E825841B86093700E7BA79 /* ExampleViewModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E8257A1B86093700E7BA79 /* ExampleViewModel.framework */; };
@@ -244,6 +247,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseEntitySpec.swift; sourceTree = "<group>"; };
 		9853A52A1B8724B1001CA6A4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9853A52B1B8724B1001CA6A4 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
 		9853A52E1B8724B1001CA6A4 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
@@ -251,6 +255,9 @@
 		9853A5301B8724B1001CA6A4 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		9853A5311B8724D8001CA6A4 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		9853A5321B8724D8001CA6A4 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		988C5C9A1B881E3800BA741E /* ImageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEntity.swift; sourceTree = "<group>"; };
+		988C5C9B1B881E3800BA741E /* ResponseEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseEntity.swift; sourceTree = "<group>"; };
+		988C5C9E1B881E4800BA741E /* ImageEntitySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEntitySpec.swift; sourceTree = "<group>"; };
 		98E8252F1B86044A00E7BA79 /* SwinjectMVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwinjectMVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E825321B86044A00E7BA79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98E825341B86044A00E7BA79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -265,7 +272,6 @@
 		98E825591B86091A00E7BA79 /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		98E8255B1B86091A00E7BA79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98E825601B86091A00E7BA79 /* ExampleModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		98E825671B86091A00E7BA79 /* ExampleModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleModelTests.swift; sourceTree = "<group>"; };
 		98E825691B86091A00E7BA79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98E8257A1B86093700E7BA79 /* ExampleViewModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExampleViewModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E8257C1B86093700E7BA79 /* ExampleViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleViewModel.h; sourceTree = "<group>"; };
@@ -450,6 +456,8 @@
 		98E825581B86091A00E7BA79 /* ExampleModel */ = {
 			isa = PBXGroup;
 			children = (
+				988C5C9A1B881E3800BA741E /* ImageEntity.swift */,
+				988C5C9B1B881E3800BA741E /* ResponseEntity.swift */,
 				98E825591B86091A00E7BA79 /* ExampleModel.h */,
 				98E8255B1B86091A00E7BA79 /* Info.plist */,
 			);
@@ -459,7 +467,8 @@
 		98E825661B86091A00E7BA79 /* ExampleModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				98E825671B86091A00E7BA79 /* ExampleModelTests.swift */,
+				988C5C9E1B881E4800BA741E /* ImageEntitySpec.swift */,
+				9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */,
 				98E825691B86091A00E7BA79 /* Info.plist */,
 			);
 			path = ExampleModelTests;
@@ -703,6 +712,7 @@
 		98E825271B86044A00E7BA79 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Swinject Contributors";
 				TargetAttributes = {
@@ -864,6 +874,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				988C5C9C1B881E3800BA741E /* ImageEntity.swift in Sources */,
+				988C5C9D1B881E3800BA741E /* ResponseEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,7 +883,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98E825681B86091A00E7BA79 /* ExampleModelTests.swift in Sources */,
+				988C5C9F1B881E4800BA741E /* ImageEntitySpec.swift in Sources */,
+				9844A4BC1B8838C30069D5D5 /* ResponseEntitySpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1065,6 +1078,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1080,6 +1094,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1126,6 +1141,7 @@
 		98E8256E1B86091A00E7BA79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1141,6 +1157,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleModel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1150,6 +1167,7 @@
 		98E8256F1B86091A00E7BA79 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1174,6 +1192,7 @@
 		98E825701B86091A00E7BA79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1188,6 +1207,7 @@
 		98E825711B86091A00E7BA79 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
