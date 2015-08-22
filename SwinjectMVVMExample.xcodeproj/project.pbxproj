@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		982FA4801B88595C00BF5E63 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FA47F1B88595C00BF5E63 /* NetworkError.swift */; };
+		982FA4831B8867CB00BF5E63 /* NetworkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FA4811B88645D00BF5E63 /* NetworkSpec.swift */; };
 		9844A4BC1B8838C30069D5D5 /* ResponseEntitySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */; };
+		9844A4BE1B884A0D0069D5D5 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BD1B884A0D0069D5D5 /* Networking.swift */; };
+		9844A4C01B884A630069D5D5 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BF1B884A630069D5D5 /* Network.swift */; };
 		985C39A11B873F4100874AE5 /* ExampleModel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 98E825571B86091A00E7BA79 /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		988C5C9C1B881E3800BA741E /* ImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5C9A1B881E3800BA741E /* ImageEntity.swift */; };
 		988C5C9D1B881E3800BA741E /* ResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5C9B1B881E3800BA741E /* ResponseEntity.swift */; };
@@ -247,7 +251,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		982FA47F1B88595C00BF5E63 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		982FA4811B88645D00BF5E63 /* NetworkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSpec.swift; sourceTree = "<group>"; };
 		9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseEntitySpec.swift; sourceTree = "<group>"; };
+		9844A4BD1B884A0D0069D5D5 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		9844A4BF1B884A630069D5D5 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		9853A52A1B8724B1001CA6A4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9853A52B1B8724B1001CA6A4 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
 		9853A52E1B8724B1001CA6A4 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
@@ -458,6 +466,9 @@
 			children = (
 				988C5C9A1B881E3800BA741E /* ImageEntity.swift */,
 				988C5C9B1B881E3800BA741E /* ResponseEntity.swift */,
+				9844A4BD1B884A0D0069D5D5 /* Networking.swift */,
+				9844A4BF1B884A630069D5D5 /* Network.swift */,
+				982FA47F1B88595C00BF5E63 /* NetworkError.swift */,
 				98E825591B86091A00E7BA79 /* ExampleModel.h */,
 				98E8255B1B86091A00E7BA79 /* Info.plist */,
 			);
@@ -469,6 +480,7 @@
 			children = (
 				988C5C9E1B881E4800BA741E /* ImageEntitySpec.swift */,
 				9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */,
+				982FA4811B88645D00BF5E63 /* NetworkSpec.swift */,
 				98E825691B86091A00E7BA79 /* Info.plist */,
 			);
 			path = ExampleModelTests;
@@ -875,7 +887,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				988C5C9C1B881E3800BA741E /* ImageEntity.swift in Sources */,
+				9844A4BE1B884A0D0069D5D5 /* Networking.swift in Sources */,
+				9844A4C01B884A630069D5D5 /* Network.swift in Sources */,
 				988C5C9D1B881E3800BA741E /* ResponseEntity.swift in Sources */,
+				982FA4801B88595C00BF5E63 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +898,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				982FA4831B8867CB00BF5E63 /* NetworkSpec.swift in Sources */,
 				988C5C9F1B881E4800BA741E /* ImageEntitySpec.swift in Sources */,
 				9844A4BC1B8838C30069D5D5 /* ResponseEntitySpec.swift in Sources */,
 			);
