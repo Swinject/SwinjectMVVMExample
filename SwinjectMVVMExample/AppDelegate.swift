@@ -8,6 +8,8 @@
 
 import UIKit
 import Swinject
+import ExampleModel
+import ExampleViewModel
 import ExampleView
 
 @UIApplicationMain
@@ -23,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         
         let bundle = NSBundle(forClass: ImageSearchTableViewController.self)
-        let storyboard = SwinjectStoryboard.create(name: "Main", bundle: bundle)
+        let container = createContainer()
+        let storyboard = SwinjectStoryboard.create(name: "Main", bundle: bundle, container: container)
         window.rootViewController = storyboard.instantiateInitialViewController()
         
         return true
@@ -50,7 +53,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    private func createContainer() -> Container {
+        let container = Container()
+        container.register(Networking.self) { _ in Network() }
+        container.register(ImageSearching.self) { r in ImageSearch(network: r.resolve(Networking.self)!) }
+        container.register(ImageSearchTableViewModeling.self) { r in ImageSearchTableViewModel(imageSearch: r.resolve(ImageSearching.self)!) }
+        container.registerForStoryboard(ImageSearchTableViewController.self) { r, c in
+            c.viewModel = r.resolve(ImageSearchTableViewModeling.self)!
+        }
+        return container
+    }
 }
 

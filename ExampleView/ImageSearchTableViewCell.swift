@@ -9,5 +9,5 @@
 import ExampleViewModel
 
 internal final class ImageSearchTableViewCell: UITableViewCell {
-    
+    internal var viewModel: ImageSearchTableViewCellModeling?
 }

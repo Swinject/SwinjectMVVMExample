@@ -74,6 +74,10 @@
 		98B76D321B88C0DE00718260 /* ImageSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D2F1B88C0DE00718260 /* ImageSearchTableViewCell.swift */; };
 		98B76D331B88C0DE00718260 /* ImageSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D301B88C0DE00718260 /* ImageSearchTableViewController.swift */; };
 		98B76D341B88C0DE00718260 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B76D311B88C0DE00718260 /* Main.storyboard */; };
+		98B76D391B88C1A600718260 /* ImageSearchTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D351B88C1A600718260 /* ImageSearchTableViewCellModel.swift */; };
+		98B76D3A1B88C1A700718260 /* ImageSearchTableViewCellModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D361B88C1A600718260 /* ImageSearchTableViewCellModeling.swift */; };
+		98B76D3B1B88C1A700718260 /* ImageSearchTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D371B88C1A600718260 /* ImageSearchTableViewModel.swift */; };
+		98B76D3C1B88C1A700718260 /* ImageSearchTableViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D381B88C1A600718260 /* ImageSearchTableViewModeling.swift */; };
 		98E825331B86044A00E7BA79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E825321B86044A00E7BA79 /* AppDelegate.swift */; };
 		98E8253A1B86044A00E7BA79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E825391B86044A00E7BA79 /* Assets.xcassets */; };
 		98E8253D1B86044A00E7BA79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E8253B1B86044A00E7BA79 /* LaunchScreen.storyboard */; };
@@ -280,6 +284,10 @@
 		98B76D2F1B88C0DE00718260 /* ImageSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCell.swift; sourceTree = "<group>"; };
 		98B76D301B88C0DE00718260 /* ImageSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewController.swift; sourceTree = "<group>"; };
 		98B76D311B88C0DE00718260 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		98B76D351B88C1A600718260 /* ImageSearchTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCellModel.swift; sourceTree = "<group>"; };
+		98B76D361B88C1A600718260 /* ImageSearchTableViewCellModeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCellModeling.swift; sourceTree = "<group>"; };
+		98B76D371B88C1A600718260 /* ImageSearchTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewModel.swift; sourceTree = "<group>"; };
+		98B76D381B88C1A600718260 /* ImageSearchTableViewModeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewModeling.swift; sourceTree = "<group>"; };
 		98E8252F1B86044A00E7BA79 /* SwinjectMVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwinjectMVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E825321B86044A00E7BA79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98E825391B86044A00E7BA79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -504,6 +512,10 @@
 		98E8257B1B86093700E7BA79 /* ExampleViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				98B76D381B88C1A600718260 /* ImageSearchTableViewModeling.swift */,
+				98B76D371B88C1A600718260 /* ImageSearchTableViewModel.swift */,
+				98B76D361B88C1A600718260 /* ImageSearchTableViewCellModeling.swift */,
+				98B76D351B88C1A600718260 /* ImageSearchTableViewCellModel.swift */,
 				98E8257C1B86093700E7BA79 /* ExampleViewModel.h */,
 				98E8257E1B86093700E7BA79 /* Info.plist */,
 			);
@@ -930,6 +942,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B76D3C1B88C1A700718260 /* ImageSearchTableViewModeling.swift in Sources */,
+				98B76D3A1B88C1A700718260 /* ImageSearchTableViewCellModeling.swift in Sources */,
+				98B76D391B88C1A600718260 /* ImageSearchTableViewCellModel.swift in Sources */,
+				98B76D3B1B88C1A700718260 /* ImageSearchTableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1254,6 +1270,7 @@
 		98E825921B86093800E7BA79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1269,6 +1286,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewModel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1278,6 +1296,7 @@
 		98E825931B86093800E7BA79 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
