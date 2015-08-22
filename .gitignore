@@ -32,3 +32,8 @@ Pods/
 #Carthage/Checkouts
 
 Carthage/Build
+
+# SwinjectMVVMExample
+#
+# The file containing API username and key must not be stored in the repo.
+ExampleModel/Pixabay.Config.swift
