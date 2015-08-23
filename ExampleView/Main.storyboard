@@ -2,24 +2,69 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aMo-9E-uto">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Pixabay Images-->
         <scene sceneID="JZX-58-YUK">
             <objects>
                 <tableViewController storyboardIdentifier="ImageSearchTableViewController" id="q1U-AH-Izh" customClass="ImageSearchTableViewController" customModule="ExampleView" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QW7-uH-was">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="QW7-uH-was">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageSearchTableViewCell" id="EEu-7E-GC9" customClass="ImageSearchTableViewCell" customModule="ExampleView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EEu-7E-GC9" id="cce-jD-OkO">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="na3-Ra-9lg">
+                                            <rect key="frame" x="4" y="4" width="62" height="62"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="62" id="Rkf-jm-XTJ"/>
+                                                <constraint firstAttribute="height" constant="62" id="hgN-jO-2G2"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="62" id="rHQ-xO-NLe"/>
+                                                <constraint firstAttribute="width" constant="62" id="wRp-Hj-Ztm"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8S-G7-znC" userLabel="Label (Image size)">
+                                            <rect key="frame" x="74" y="39" width="518" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="ACn-l5-EaP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="U8C-OF-zRR" userLabel="Label (Tags)">
+                                            <rect key="frame" x="74" y="10" width="518" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="NlB-9S-bMi"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="g8S-G7-znC" firstAttribute="leading" secondItem="na3-Ra-9lg" secondAttribute="trailing" constant="8" id="4qE-gx-jCK"/>
+                                        <constraint firstItem="na3-Ra-9lg" firstAttribute="leading" secondItem="cce-jD-OkO" secondAttribute="leading" constant="4" id="Ljp-SR-TYJ"/>
+                                        <constraint firstItem="U8C-OF-zRR" firstAttribute="top" secondItem="cce-jD-OkO" secondAttribute="top" constant="10" id="bMw-Zx-Ao6"/>
+                                        <constraint firstItem="g8S-G7-znC" firstAttribute="trailing" secondItem="cce-jD-OkO" secondAttribute="trailingMargin" id="cOM-nX-yUK"/>
+                                        <constraint firstItem="na3-Ra-9lg" firstAttribute="centerY" secondItem="cce-jD-OkO" secondAttribute="centerY" id="e3w-3d-vRe"/>
+                                        <constraint firstItem="U8C-OF-zRR" firstAttribute="leading" secondItem="na3-Ra-9lg" secondAttribute="trailing" constant="8" id="mUn-dA-Mhc"/>
+                                        <constraint firstItem="g8S-G7-znC" firstAttribute="top" secondItem="U8C-OF-zRR" secondAttribute="bottom" constant="8" id="vGI-dX-3tc"/>
+                                        <constraint firstAttribute="trailing" secondItem="U8C-OF-zRR" secondAttribute="trailing" constant="8" id="y9n-9l-4oL"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imageSizeLabel" destination="g8S-G7-znC" id="ffA-ca-vro"/>
+                                    <outlet property="tagLabel" destination="U8C-OF-zRR" id="ZeW-67-dSs"/>
+                                    <outlet property="thumbnailImageView" destination="na3-Ra-9lg" id="ZLd-kh-7Al"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
