@@ -13,13 +13,13 @@ import Himotoki
 
 internal let imageJSON: [String: AnyObject] = [
     "id": 12345,
-    "pageURL": "https:\\/\\/somewhere.com\\/page\\/",
+    "pageURL": "https://somewhere.com/page/",
     "imageWidth": 2000,
     "imageHeight": 1000,
-    "previewURL": "https:\\/\\/somewhere.com\\/preview.jpg",
+    "previewURL": "https://somewhere.com/preview.jpg",
     "previewWidth": 200,
     "previewHeight": 100,
-    "webformatURL": "https:\\/\\/somewhere.com\\/image.jpg",
+    "webformatURL": "https://somewhere.com/image.jpg",
     "webformatWidth": 600,
     "webformatHeight": 300,
     "views": 54321,
@@ -36,13 +36,13 @@ class ImageEntitySpec: QuickSpec {
             
             expect(image).notTo(beNil())
             expect(image?.id) == 12345
-            expect(image?.pageURL) == "https:\\/\\/somewhere.com\\/page\\/"
+            expect(image?.pageURL) == "https://somewhere.com/page/"
             expect(image?.pageImageWidth) == 2000
             expect(image?.pageImageHeight) == 1000
-            expect(image?.previewURL) == "https:\\/\\/somewhere.com\\/preview.jpg"
+            expect(image?.previewURL) == "https://somewhere.com/preview.jpg"
             expect(image?.previewWidth) == 200
             expect(image?.previewHeight) == 100
-            expect(image?.imageURL) == "https:\\/\\/somewhere.com\\/image.jpg"
+            expect(image?.imageURL) == "https://somewhere.com/image.jpg"
             expect(image?.imageWidth) == 600
             expect(image?.imageHeight) == 300
             expect(image?.viewCount) == 54321
