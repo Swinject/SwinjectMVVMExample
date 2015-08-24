@@ -15,22 +15,24 @@ import ExampleViewModel
 class ImageSearchTableViewControllerSpec: QuickSpec {
     class MockViewModel: ImageSearchTableViewModeling {
         let cellModels = PropertyOf(MutableProperty<[ImageSearchTableViewCellModeling]>([]))
-        var startSearchCalled = false
+        var startSearchCallCount = 0
         
         func startSearch() {
-            startSearchCalled = true
+            startSearchCallCount++
         }
     }
     
     override func spec() {
-        it("starts searching images when the view is about to appear.") {
+        it("starts searching images when the view is about to appear at the first time.") {
             let viewModel = MockViewModel()
             let viewController = ImageSearchTableViewController()
             viewController.viewModel = viewModel
             
-            expect(viewModel.startSearchCalled) == false
+            expect(viewModel.startSearchCallCount) == 0
             viewController.viewWillAppear(true)
-            expect(viewModel.startSearchCalled) == true
+            expect(viewModel.startSearchCallCount) == 1
+            viewController.viewWillAppear(true)
+            expect(viewModel.startSearchCallCount) == 1
         }
     }
 }

@@ -9,6 +9,8 @@
 import ExampleViewModel
 
 public final class ImageSearchTableViewController: UITableViewController {
+    private var autoSearchStarted = false
+    
     public var viewModel: ImageSearchTableViewModeling? {
         didSet {
             if let viewModel = viewModel {
@@ -21,7 +23,11 @@ public final class ImageSearchTableViewController: UITableViewController {
     
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel?.startSearch()
+        
+        if !autoSearchStarted {
+            autoSearchStarted = true
+            viewModel?.startSearch()
+        }
     }
 }
 
