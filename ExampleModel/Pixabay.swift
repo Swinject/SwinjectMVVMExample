@@ -14,7 +14,8 @@ internal struct Pixabay {
             "username": Config.apiUsername,
             "key": Config.apiKey,
             "image_type": "photo",
-            "safesearch": true
+            "safesearch": true,
+            "per_page": 100
         ]
     }
 }
