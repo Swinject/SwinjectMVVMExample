@@ -58,7 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let container = Container()
         container.register(Networking.self) { _ in Network() }
         container.register(ImageSearching.self) { r in ImageSearch(network: r.resolve(Networking.self)!) }
-        container.register(ImageSearchTableViewModeling.self) { r in ImageSearchTableViewModel(imageSearch: r.resolve(ImageSearching.self)!) }
+        container.register(ImageSearchTableViewModeling.self) { r in
+            ImageSearchTableViewModel(imageSearch: r.resolve(ImageSearching.self)!, network: r.resolve(Networking.self)!)
+        }
         container.registerForStoryboard(ImageSearchTableViewController.self) { r, c in
             c.viewModel = r.resolve(ImageSearchTableViewModeling.self)!
         }
