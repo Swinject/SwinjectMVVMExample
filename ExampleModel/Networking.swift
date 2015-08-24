@@ -11,4 +11,7 @@ import ReactiveCocoa
 public protocol Networking {
     /// Gets a `SignalProducer` emitting a JSON root element ( an array or dictionary).
     func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError>
+    
+    /// Gets a `SignalProducer` emitting an `UIImage`.
+    func requestImage(url: String) -> SignalProducer<UIImage, NetworkError>
 }

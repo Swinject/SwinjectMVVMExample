@@ -31,6 +31,10 @@ class ImageSearchSpec: QuickSpec {
                 })
             }
         }
+        
+        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+            return SignalProducer(value: UIImage(named: "")!)
+        }
     }
     
     class BadStubNetwork: Networking {
@@ -44,6 +48,10 @@ class ImageSearchSpec: QuickSpec {
                 })
             }
         }
+        
+        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+            return SignalProducer(value: UIImage(named: "")!)
+        }
     }
 
     class ErrorStubNetwork: Networking {
@@ -53,6 +61,10 @@ class ImageSearchSpec: QuickSpec {
                     sendError(observer, .NotConnectedToInternet)
                 })
             }
+        }
+        
+        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+            return SignalProducer(value: UIImage(named: "")!)
         }
     }
 
