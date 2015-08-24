@@ -32,7 +32,7 @@ class ImageSearchSpec: QuickSpec {
         }
         
         func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
-            return SignalProducer(value: UIImage(named: "")!)
+            return SignalProducer.empty
         }
     }
     
@@ -48,7 +48,7 @@ class ImageSearchSpec: QuickSpec {
         }
         
         func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
-            return SignalProducer(value: UIImage(named: "")!)
+            return SignalProducer.empty
         }
     }
 
@@ -61,7 +61,7 @@ class ImageSearchSpec: QuickSpec {
         }
         
         func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
-            return SignalProducer(value: UIImage(named: "")!)
+            return SignalProducer.empty
         }
     }
 
