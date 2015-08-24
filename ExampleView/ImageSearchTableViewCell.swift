@@ -18,16 +18,16 @@ internal final class ImageSearchTableViewCell: UITableViewCell {
             if let viewModel = viewModel {
                 viewModel.getPreviewImage()
                     .takeUntil(self.racutil_prepareForReuseProducer)
-                    .on(next: { self.thumbnailImageView.image = $0 })
+                    .on(next: { self.previewImageView.image = $0 })
                     .start()
             }
             else {
-                thumbnailImageView.image = nil
+                previewImageView.image = nil
             }
         }
     }
     
-    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var tagLabel: UILabel!
     @IBOutlet weak var imageSizeLabel: UILabel!
 }
