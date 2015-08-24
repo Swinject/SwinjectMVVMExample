@@ -83,6 +83,8 @@
 		98B76D431B899ED100718260 /* DummyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D421B899ED100718260 /* DummyResponse.swift */; };
 		98B76D451B89A4B000718260 /* ImageSearchTableViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D441B89A4B000718260 /* ImageSearchTableViewControllerSpec.swift */; };
 		98B76D471B8A190500718260 /* RACUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D461B8A190500718260 /* RACUtil.swift */; };
+		98B76D4B1B8AD29000718260 /* RACUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D4A1B8AD29000718260 /* RACUtil.swift */; };
+		98B76D4D1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D4C1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift */; };
 		98E825331B86044A00E7BA79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E825321B86044A00E7BA79 /* AppDelegate.swift */; };
 		98E8253A1B86044A00E7BA79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E825391B86044A00E7BA79 /* Assets.xcassets */; };
 		98E8253D1B86044A00E7BA79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E8253B1B86044A00E7BA79 /* LaunchScreen.storyboard */; };
@@ -296,6 +298,8 @@
 		98B76D421B899ED100718260 /* DummyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyResponse.swift; sourceTree = "<group>"; };
 		98B76D441B89A4B000718260 /* ImageSearchTableViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewControllerSpec.swift; sourceTree = "<group>"; };
 		98B76D461B8A190500718260 /* RACUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACUtil.swift; sourceTree = "<group>"; };
+		98B76D4A1B8AD29000718260 /* RACUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACUtil.swift; sourceTree = "<group>"; };
+		98B76D4C1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCellSpec.swift; sourceTree = "<group>"; };
 		98E8252F1B86044A00E7BA79 /* SwinjectMVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwinjectMVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E825321B86044A00E7BA79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98E825391B86044A00E7BA79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -546,6 +550,7 @@
 				98B76D301B88C0DE00718260 /* ImageSearchTableViewController.swift */,
 				98B76D2F1B88C0DE00718260 /* ImageSearchTableViewCell.swift */,
 				98B76D311B88C0DE00718260 /* Main.storyboard */,
+				98B76D4A1B8AD29000718260 /* RACUtil.swift */,
 				98E8259E1B86094A00E7BA79 /* ExampleView.h */,
 				98E825A01B86094A00E7BA79 /* Info.plist */,
 			);
@@ -556,6 +561,7 @@
 			isa = PBXGroup;
 			children = (
 				98B76D441B89A4B000718260 /* ImageSearchTableViewControllerSpec.swift */,
+				98B76D4C1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift */,
 				98E825AE1B86094A00E7BA79 /* Info.plist */,
 			);
 			path = ExampleViewTests;
@@ -975,6 +981,7 @@
 			files = (
 				98B76D321B88C0DE00718260 /* ImageSearchTableViewCell.swift in Sources */,
 				98B76D331B88C0DE00718260 /* ImageSearchTableViewController.swift in Sources */,
+				98B76D4B1B8AD29000718260 /* RACUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +989,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B76D4D1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift in Sources */,
 				98B76D451B89A4B000718260 /* ImageSearchTableViewControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

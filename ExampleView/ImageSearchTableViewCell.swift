@@ -7,12 +7,23 @@
 //
 
 import ExampleViewModel
+import ReactiveCocoa
 
 internal final class ImageSearchTableViewCell: UITableViewCell {
     internal var viewModel: ImageSearchTableViewCellModeling? {
         didSet {
             tagLabel.text = viewModel?.tagText
             imageSizeLabel.text = viewModel?.pageImageSizeText
+            
+            if let viewModel = viewModel {
+                viewModel.getPreviewImage()
+                    .takeUntil(self.racutil_prepareForReuseProducer)
+                    .on(next: { self.thumbnailImageView.image = $0 })
+                    .start()
+            }
+            else {
+                thumbnailImageView.image = nil
+            }
         }
     }
     
