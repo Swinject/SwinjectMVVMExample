@@ -1,5 +1,5 @@
 //
-//  ImageSearchTableViewCellSpec.swift
+//  ImageSearchTableViewCellModelSpec.swift
 //  SwinjectMVVMExample
 //
 //  Created by Yoichi Tagaya on 8/23/15.
@@ -13,7 +13,7 @@ import ReactiveCocoa
 @testable import ExampleModel
 @testable import ExampleViewModel
 
-class ImageSearchTableViewCellSpec: QuickSpec {
+class ImageSearchTableViewCellModelSpec: QuickSpec {
     class StubNetwork: Networking {
         func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
             return SignalProducer.empty
