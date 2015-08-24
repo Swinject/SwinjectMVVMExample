@@ -73,10 +73,31 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Pixabay Images" id="XAy-cc-NPl"/>
+                    <connections>
+                        <segue destination="aAM-lS-k3f" kind="show" identifier="ImageDetailViewControllerSegue" id="jN1-mc-dG9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzn-4m-Lyg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1027" y="-86"/>
+        </scene>
+        <!--Image Detail View Controller-->
+        <scene sceneID="TZv-Ee-zMA">
+            <objects>
+                <viewController id="aAM-lS-k3f" customClass="ImageDetailViewController" customModule="ExampleView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hX7-VN-r4u"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y2x-nC-7MP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xeu-bM-EZF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6rr-zC-Uem" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1740" y="-86"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="spL-vt-pN5">
@@ -86,6 +107,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="5Ap-OC-nmf">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="q1U-AH-Izh" kind="relationship" relationship="rootViewController" id="Pcs-7Q-tXH"/>
                     </connections>

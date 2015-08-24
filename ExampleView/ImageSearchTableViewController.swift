@@ -49,3 +49,10 @@ extension ImageSearchTableViewController {
         return cell
     }
 }
+
+// MARK: - UITableViewDelegate
+extension ImageSearchTableViewController {
+    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("ImageDetailViewControllerSegue", sender: self)
+    }
+}
