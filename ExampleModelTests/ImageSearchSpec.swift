@@ -25,11 +25,10 @@ class ImageSearchSpec: QuickSpec {
             ]
             
             return SignalProducer { observer, disposable in
-                dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
-                    sendNext(observer, json)
-                    sendCompleted(observer)
-                })
+                sendNext(observer, json)
+                sendCompleted(observer)
             }
+            .observeOn(QueueScheduler())
         }
         
         func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
@@ -42,11 +41,10 @@ class ImageSearchSpec: QuickSpec {
             let json = [String: AnyObject]()
             
             return SignalProducer { observer, disposable in
-                dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
-                    sendNext(observer, json)
-                    sendCompleted(observer)
-                })
+                sendNext(observer, json)
+                sendCompleted(observer)
             }
+            .observeOn(QueueScheduler())
         }
         
         func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
@@ -57,10 +55,9 @@ class ImageSearchSpec: QuickSpec {
     class ErrorStubNetwork: Networking {
         func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
             return SignalProducer { observer, disposable in
-                dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
-                    sendError(observer, .NotConnectedToInternet)
-                })
+                sendError(observer, .NotConnectedToInternet)
             }
+            .observeOn(QueueScheduler())
         }
         
         func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
