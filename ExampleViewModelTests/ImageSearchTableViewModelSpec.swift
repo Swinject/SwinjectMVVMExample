@@ -16,11 +16,10 @@ class ImageSearchTableViewModelSpec: QuickSpec {
     class StubImageSearch: ImageSearching {
         func searchImages() -> SignalProducer<ResponseEntity, NetworkError> {
             return SignalProducer { observer, disposable in
-                dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
-                    sendNext(observer, dummyResponse)
-                    sendCompleted(observer)
-                })
+                sendNext(observer, dummyResponse)
+                sendCompleted(observer)
             }
+            .observeOn(QueueScheduler())
         }
     }
     

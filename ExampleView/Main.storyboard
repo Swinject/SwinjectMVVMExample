@@ -62,8 +62,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="imageSizeLabel" destination="g8S-G7-znC" id="ffA-ca-vro"/>
+                                    <outlet property="previewImageView" destination="na3-Ra-9lg" id="ZLd-kh-7Al"/>
                                     <outlet property="tagLabel" destination="U8C-OF-zRR" id="ZeW-67-dSs"/>
-                                    <outlet property="thumbnailImageView" destination="na3-Ra-9lg" id="ZLd-kh-7Al"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

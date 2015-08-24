@@ -26,7 +26,7 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
             .map { response in
                 response.images.map { ImageSearchTableViewCellModel(image: $0, network: self.network) as ImageSearchTableViewCellModeling }
             }
-            .observeOn(QueueScheduler.mainQueueScheduler)
+            .observeOn(UIScheduler())
             .on(next: { cellModels in
                 self._cellModels.value = cellModels
             })
