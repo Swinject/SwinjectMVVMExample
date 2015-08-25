@@ -78,6 +78,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         container.registerForStoryboard(ImageSearchTableViewController.self) { r, c in
             c.viewModel = r.resolve(ImageSearchTableViewModeling.self)!
         }
+        container.registerForStoryboard(ImageDetailViewController.self) { r, c in
+            c.viewModel = r.resolve(ImageDetailViewModeling.self)!
+        }
+        
         return container
     }
 }
