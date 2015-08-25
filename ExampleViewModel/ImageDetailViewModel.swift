@@ -10,11 +10,11 @@ import ReactiveCocoa
 import ExampleModel
 
 public final class ImageDetailViewModel: ImageDetailViewModeling {
-    public let id: PropertyOf<UInt64?>
-    public let pageImageSizeText: PropertyOf<String?>
-    public let tagText: PropertyOf<String?>
-    public let usernameText: PropertyOf<String?>
-    public let image: PropertyOf<UIImage?>
+    public var id: PropertyOf<UInt64?> { return PropertyOf(_id) }
+    public var pageImageSizeText: PropertyOf<String?> { return PropertyOf(_pageImageSizeText) }
+    public var tagText: PropertyOf<String?> { return PropertyOf(_tagText) }
+    public var usernameText: PropertyOf<String?> { return PropertyOf(_usernameText) }
+    public var image: PropertyOf<UIImage?> { return PropertyOf(_image) }
     
     private let _id = MutableProperty<UInt64?>(nil)
     private let _pageImageSizeText = MutableProperty<String?>(nil)
@@ -29,12 +29,6 @@ public final class ImageDetailViewModel: ImageDetailViewModeling {
 
     public init(network: Networking) {
         self.network = network
-        
-        id = PropertyOf(_id)
-        pageImageSizeText = PropertyOf(_pageImageSizeText)
-        tagText = PropertyOf(_tagText)
-        usernameText = PropertyOf(_usernameText)
-        image = PropertyOf(_image)
     }
 }
 

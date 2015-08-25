@@ -10,7 +10,7 @@ import ReactiveCocoa
 import ExampleModel
 
 public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
-    public let cellModels: PropertyOf<[ImageSearchTableViewCellModeling]>
+    public var cellModels: PropertyOf<[ImageSearchTableViewCellModeling]> { return PropertyOf(_cellModels) }
     private let _cellModels = MutableProperty<[ImageSearchTableViewCellModeling]>([])
     
     /// Accepts property injection.
@@ -24,7 +24,6 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
     public init(imageSearch: ImageSearching, network: Networking) {
         self.imageSearch = imageSearch
         self.network = network
-        cellModels = PropertyOf(_cellModels)
     }
     
     public func startSearch() {
