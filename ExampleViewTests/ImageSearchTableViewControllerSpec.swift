@@ -15,6 +15,9 @@ import ExampleViewModel
 class ImageSearchTableViewControllerSpec: QuickSpec {
     class MockViewModel: ImageSearchTableViewModeling {
         let cellModels = PropertyOf(MutableProperty<[ImageSearchTableViewCellModeling]>([]))
+        let searching = PropertyOf(ConstantProperty<Bool>(false))
+        var loadNextPage: Action<(), (), NoError> = Action { SignalProducer.empty }
+        
         var startSearchCallCount = 0
         
         func startSearch() {

@@ -45,11 +45,11 @@ extension ImageSearchTableViewController {
     
     public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ImageSearchTableViewCell", forIndexPath: indexPath) as! ImageSearchTableViewCell
-        if let viewModel = viewModel {
-            cell.viewModel = viewModel.cellModels.value[indexPath.row]
-        }
-        else {
-            cell.viewModel = nil
+        cell.viewModel = viewModel.map { $0.cellModels.value[indexPath.row] }
+        
+        if let viewModel = viewModel
+            where indexPath.row >= viewModel.cellModels.value.count - 1 && viewModel.loadNextPage.enabled.value {
+                viewModel.loadNextPage.apply(()).start()
         }
 
         return cell

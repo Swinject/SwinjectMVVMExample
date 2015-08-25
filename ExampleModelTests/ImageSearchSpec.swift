@@ -70,7 +70,7 @@ class ImageSearchSpec: QuickSpec {
         it("returns images if the network works correctly.") {
             var response: ResponseEntity? = nil
             let search = ImageSearch(network: GoodStubNetwork())
-            search.searchImages()
+            search.searchImages(nextPageTrigger: SignalProducer.empty)
                 .on(next: { response = $0 })
                 .start()
             
@@ -83,7 +83,7 @@ class ImageSearchSpec: QuickSpec {
         it("sends an error if the network returns incorrect data.") {
             var error: NetworkError? = nil
             let search = ImageSearch(network: BadStubNetwork())
-            search.searchImages()
+            search.searchImages(nextPageTrigger: SignalProducer.empty)
                 .on(error: { error = $0 })
                 .start()
             
@@ -92,7 +92,7 @@ class ImageSearchSpec: QuickSpec {
         it("passes the error sent by the network.") {
             var error: NetworkError? = nil
             let search = ImageSearch(network: ErrorStubNetwork())
-            search.searchImages()
+            search.searchImages(nextPageTrigger: SignalProducer.empty)
                 .on(error: { error = $0 })
                 .start()
             

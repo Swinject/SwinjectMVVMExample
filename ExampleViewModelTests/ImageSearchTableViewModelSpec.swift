@@ -14,7 +14,7 @@ import ReactiveCocoa
 
 class ImageSearchTableViewModelSpec: QuickSpec {
     class StubImageSearch: ImageSearching {
-        func searchImages() -> SignalProducer<ResponseEntity, NetworkError> {
+        func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
             return SignalProducer { observer, disposable in
                 sendNext(observer, dummyResponse)
                 sendCompleted(observer)

@@ -9,5 +9,5 @@
 import ReactiveCocoa
 
 public protocol ImageSearching {
-    func searchImages() -> SignalProducer<ResponseEntity, NetworkError>
+    func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError>
 }
