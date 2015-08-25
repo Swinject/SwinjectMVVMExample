@@ -105,10 +105,3 @@ class ImageSearchTableViewCellModelSpec: QuickSpec {
     }
 }
 
-private let image1x1: UIImage = {
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, 1), true, 0)
-    let image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    return image
-}()
-

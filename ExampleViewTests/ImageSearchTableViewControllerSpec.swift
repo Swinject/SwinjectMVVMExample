@@ -20,6 +20,9 @@ class ImageSearchTableViewControllerSpec: QuickSpec {
         func startSearch() {
             startSearchCallCount++
         }
+        
+        func selectCellAtIndex(index: Int) {
+        }
     }
     
     override func spec() {

@@ -12,8 +12,14 @@ import ExampleModel
 public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
     public let cellModels: PropertyOf<[ImageSearchTableViewCellModeling]>
     private let _cellModels = MutableProperty<[ImageSearchTableViewCellModeling]>([])
+    
+    /// Accepts property injection.
+    public var imageDetailViewModel: ImageDetailViewModelModifiable?
+    
     private let imageSearch: ImageSearching
     private let network: Networking
+    
+    private var foundImages = [ImageEntity]()
     
     public init(imageSearch: ImageSearching, network: Networking) {
         self.imageSearch = imageSearch
@@ -22,14 +28,23 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
     }
     
     public func startSearch() {
+        func toCellModel(image: ImageEntity) -> ImageSearchTableViewCellModeling {
+            return ImageSearchTableViewCellModel(image: image, network: self.network) as ImageSearchTableViewCellModeling
+        }
+        
         imageSearch.searchImages()
             .map { response in
-                response.images.map { ImageSearchTableViewCellModel(image: $0, network: self.network) as ImageSearchTableViewCellModeling }
+                (response.images, response.images.map { toCellModel($0) })
             }
             .observeOn(UIScheduler())
-            .on(next: { cellModels in
+            .on(next: { images, cellModels in
+                self.foundImages = images
                 self._cellModels.value = cellModels
             })
             .start()
+    }
+
+    public func selectCellAtIndex(index: Int) {
+        imageDetailViewModel?.update(foundImages, atIndex: index)
     }
 }
