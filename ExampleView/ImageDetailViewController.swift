@@ -10,7 +10,7 @@ import UIKit
 import ReactiveCocoa
 import ExampleViewModel
 
-public class ImageDetailViewController: UIViewController {
+public final class ImageDetailViewController: UIViewController {
     public var viewModel: ImageDetailViewModeling?
     
     public override func viewDidLoad() {
