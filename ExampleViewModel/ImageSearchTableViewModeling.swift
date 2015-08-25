@@ -12,4 +12,5 @@ public protocol ImageSearchTableViewModeling {
     var cellModels: PropertyOf<[ImageSearchTableViewCellModeling]> { get }
     
     func startSearch()
+    func selectCellAtIndex(index: Int)
 }

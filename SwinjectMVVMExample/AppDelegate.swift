@@ -56,14 +56,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func createContainer() -> Container {
         let container = Container()
+        
+        // Models
         container.register(Networking.self) { _ in Network() }
         container.register(ImageSearching.self) { r in ImageSearch(network: r.resolve(Networking.self)!) }
+        
+        // View models
         container.register(ImageSearchTableViewModeling.self) { r in
-            ImageSearchTableViewModel(imageSearch: r.resolve(ImageSearching.self)!, network: r.resolve(Networking.self)!)
+            let viewModel = ImageSearchTableViewModel(imageSearch: r.resolve(ImageSearching.self)!, network: r.resolve(Networking.self)!)
+            viewModel.imageDetailViewModel = r.resolve(ImageDetailViewModelModifiable.self)!
+            return viewModel
+        }.inObjectScope(.Container)
+        container.register(ImageDetailViewModelModifiable.self) { _ in
+            ImageDetailViewModel(network: container.resolve(Networking.self)!)
+        }.inObjectScope(.Container)
+        container.register(ImageDetailViewModeling.self) { r in
+            r.resolve(ImageDetailViewModelModifiable.self)!
         }
+        
+        // Views
         container.registerForStoryboard(ImageSearchTableViewController.self) { r, c in
             c.viewModel = r.resolve(ImageSearchTableViewModeling.self)!
         }
+        container.registerForStoryboard(ImageDetailViewController.self) { r, c in
+            c.viewModel = r.resolve(ImageDetailViewModeling.self)!
+        }
+        
         return container
     }
 }

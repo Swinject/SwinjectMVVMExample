@@ -9,6 +9,8 @@
 import ExampleViewModel
 
 public final class ImageSearchTableViewController: UITableViewController {
+    private var autoSearchStarted = false
+    
     public var viewModel: ImageSearchTableViewModeling? {
         didSet {
             if let viewModel = viewModel {
@@ -21,7 +23,11 @@ public final class ImageSearchTableViewController: UITableViewController {
     
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel?.startSearch()
+        
+        if !autoSearchStarted {
+            autoSearchStarted = true
+            viewModel?.startSearch()
+        }
     }
 }
 
@@ -47,5 +53,13 @@ extension ImageSearchTableViewController {
         }
 
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension ImageSearchTableViewController {
+    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        viewModel?.selectCellAtIndex(indexPath.row)
+        performSegueWithIdentifier("ImageDetailViewControllerSegue", sender: self)
     }
 }

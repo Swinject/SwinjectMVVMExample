@@ -85,6 +85,10 @@
 		98B76D471B8A190500718260 /* RACUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D461B8A190500718260 /* RACUtil.swift */; };
 		98B76D4B1B8AD29000718260 /* RACUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D4A1B8AD29000718260 /* RACUtil.swift */; };
 		98B76D4D1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D4C1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift */; };
+		98B76D4F1B8AF1B500718260 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D4E1B8AF1B500718260 /* ImageDetailViewController.swift */; };
+		98B76D511B8B018600718260 /* ImageDetailViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D501B8B018600718260 /* ImageDetailViewModeling.swift */; };
+		98B76D531B8B01D600718260 /* ImageDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D521B8B01D600718260 /* ImageDetailViewModel.swift */; };
+		98B76D551B8B8C8200718260 /* ImageDetailViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D541B8B8C8200718260 /* ImageDetailViewModelSpec.swift */; };
 		98E825331B86044A00E7BA79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E825321B86044A00E7BA79 /* AppDelegate.swift */; };
 		98E8253A1B86044A00E7BA79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E825391B86044A00E7BA79 /* Assets.xcassets */; };
 		98E8253D1B86044A00E7BA79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E8253B1B86044A00E7BA79 /* LaunchScreen.storyboard */; };
@@ -300,6 +304,10 @@
 		98B76D461B8A190500718260 /* RACUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACUtil.swift; sourceTree = "<group>"; };
 		98B76D4A1B8AD29000718260 /* RACUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACUtil.swift; sourceTree = "<group>"; };
 		98B76D4C1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCellSpec.swift; sourceTree = "<group>"; };
+		98B76D4E1B8AF1B500718260 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		98B76D501B8B018600718260 /* ImageDetailViewModeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewModeling.swift; sourceTree = "<group>"; };
+		98B76D521B8B01D600718260 /* ImageDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewModel.swift; sourceTree = "<group>"; };
+		98B76D541B8B8C8200718260 /* ImageDetailViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewModelSpec.swift; sourceTree = "<group>"; };
 		98E8252F1B86044A00E7BA79 /* SwinjectMVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwinjectMVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E825321B86044A00E7BA79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98E825391B86044A00E7BA79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -526,6 +534,8 @@
 				98B76D371B88C1A600718260 /* ImageSearchTableViewModel.swift */,
 				98B76D361B88C1A600718260 /* ImageSearchTableViewCellModeling.swift */,
 				98B76D351B88C1A600718260 /* ImageSearchTableViewCellModel.swift */,
+				98B76D501B8B018600718260 /* ImageDetailViewModeling.swift */,
+				98B76D521B8B01D600718260 /* ImageDetailViewModel.swift */,
 				98B76D461B8A190500718260 /* RACUtil.swift */,
 				98E8257C1B86093700E7BA79 /* ExampleViewModel.h */,
 				98E8257E1B86093700E7BA79 /* Info.plist */,
@@ -539,6 +549,7 @@
 				98B76D421B899ED100718260 /* DummyResponse.swift */,
 				98B76D3D1B895E4700718260 /* ImageSearchTableViewModelSpec.swift */,
 				98B76D401B899E3800718260 /* ImageSearchTableViewCellModelSpec.swift */,
+				98B76D541B8B8C8200718260 /* ImageDetailViewModelSpec.swift */,
 				98E8258C1B86093700E7BA79 /* Info.plist */,
 			);
 			path = ExampleViewModelTests;
@@ -549,6 +560,7 @@
 			children = (
 				98B76D301B88C0DE00718260 /* ImageSearchTableViewController.swift */,
 				98B76D2F1B88C0DE00718260 /* ImageSearchTableViewCell.swift */,
+				98B76D4E1B8AF1B500718260 /* ImageDetailViewController.swift */,
 				98B76D311B88C0DE00718260 /* Main.storyboard */,
 				98B76D4A1B8AD29000718260 /* RACUtil.swift */,
 				98E8259E1B86094A00E7BA79 /* ExampleView.h */,
@@ -957,6 +969,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B76D511B8B018600718260 /* ImageDetailViewModeling.swift in Sources */,
+				98B76D531B8B01D600718260 /* ImageDetailViewModel.swift in Sources */,
 				98B76D3C1B88C1A700718260 /* ImageSearchTableViewModeling.swift in Sources */,
 				98B76D471B8A190500718260 /* RACUtil.swift in Sources */,
 				98B76D3A1B88C1A700718260 /* ImageSearchTableViewCellModeling.swift in Sources */,
@@ -971,6 +985,7 @@
 			files = (
 				98B76D411B899E3800718260 /* ImageSearchTableViewCellModelSpec.swift in Sources */,
 				98B76D3F1B895EFE00718260 /* ImageSearchTableViewModelSpec.swift in Sources */,
+				98B76D551B8B8C8200718260 /* ImageDetailViewModelSpec.swift in Sources */,
 				98B76D431B899ED100718260 /* DummyResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -982,6 +997,7 @@
 				98B76D321B88C0DE00718260 /* ImageSearchTableViewCell.swift in Sources */,
 				98B76D331B88C0DE00718260 /* ImageSearchTableViewController.swift in Sources */,
 				98B76D4B1B8AD29000718260 /* RACUtil.swift in Sources */,
+				98B76D4F1B8AF1B500718260 /* ImageDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
