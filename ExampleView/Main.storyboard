@@ -15,6 +15,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <view key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" id="5QP-dw-out">
+                            <rect key="frame" x="0.0" y="162" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Q0l-3N-Qt3">
+                                    <rect key="frame" x="150" y="12" width="20" height="20"/>
+                                </activityIndicatorView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ala-YL-q6e">
+                                    <rect key="frame" x="178" y="12" width="134" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="RBb-fc-pRf"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Ala-YL-q6e" secondAttribute="trailing" constant="8" id="3nV-Gw-XHz"/>
+                                <constraint firstItem="Q0l-3N-Qt3" firstAttribute="centerY" secondItem="5QP-dw-out" secondAttribute="centerY" id="QIO-fe-ka3"/>
+                                <constraint firstItem="Ala-YL-q6e" firstAttribute="centerY" secondItem="Q0l-3N-Qt3" secondAttribute="centerY" id="Zoa-RA-LLS"/>
+                                <constraint firstItem="Q0l-3N-Qt3" firstAttribute="centerX" secondItem="5QP-dw-out" secondAttribute="centerX" id="a2F-oW-WUl"/>
+                                <constraint firstItem="Ala-YL-q6e" firstAttribute="leading" secondItem="Q0l-3N-Qt3" secondAttribute="trailing" constant="8" id="mFr-kB-lf5"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageSearchTableViewCell" id="EEu-7E-GC9" customClass="ImageSearchTableViewCell" customModule="ExampleView" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="70"/>
@@ -77,6 +103,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Pixabay Images" id="XAy-cc-NPl"/>
                     <connections>
+                        <outlet property="footerView" destination="5QP-dw-out" id="EaN-OJ-JkG"/>
+                        <outlet property="searchingIndicator" destination="Q0l-3N-Qt3" id="IUV-fe-Wpg"/>
                         <segue destination="aAM-lS-k3f" kind="show" identifier="ImageDetailViewControllerSegue" id="jN1-mc-dG9"/>
                     </connections>
                 </tableViewController>

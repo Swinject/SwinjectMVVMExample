@@ -10,12 +10,30 @@ import ExampleViewModel
 
 public final class ImageSearchTableViewController: UITableViewController {
     private var autoSearchStarted = false
+    @IBOutlet var footerView: UIView!
+    @IBOutlet weak var searchingIndicator: UIActivityIndicatorView!
     
     public var viewModel: ImageSearchTableViewModeling? {
         didSet {
             if let viewModel = viewModel {
                 viewModel.cellModels.producer
                     .on(next: { _ in self.tableView.reloadData() })
+                    .start()
+                viewModel.searching.producer
+                    .on(next: { searching in
+                        if searching {
+                            // Display the activity indicator at the center of the screen if the table is empty.
+                            self.footerView.frame.size.height = viewModel.cellModels.value.isEmpty
+                                ? self.tableView.frame.size.height + self.tableView.contentOffset.y : 44.0
+                            
+                            self.tableView.tableFooterView = self.footerView
+                            self.searchingIndicator.startAnimating()
+                        }
+                        else {
+                            self.tableView.tableFooterView = nil
+                            self.searchingIndicator.stopAnimating()
+                        }
+                    })
                     .start()
             }
         }

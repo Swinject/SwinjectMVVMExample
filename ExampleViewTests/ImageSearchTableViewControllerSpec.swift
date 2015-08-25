@@ -31,7 +31,8 @@ class ImageSearchTableViewControllerSpec: QuickSpec {
     override func spec() {
         it("starts searching images when the view is about to appear at the first time.") {
             let viewModel = MockViewModel()
-            let viewController = ImageSearchTableViewController()
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle(forClass: ImageSearchTableViewController.self))
+            let viewController = storyboard.instantiateViewControllerWithIdentifier("ImageSearchTableViewController") as! ImageSearchTableViewController
             viewController.viewModel = viewModel
             
             expect(viewModel.startSearchCallCount) == 0
