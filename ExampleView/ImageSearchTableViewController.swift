@@ -10,12 +10,30 @@ import ExampleViewModel
 
 public final class ImageSearchTableViewController: UITableViewController {
     private var autoSearchStarted = false
+    @IBOutlet var footerView: UIView!
+    @IBOutlet weak var searchingIndicator: UIActivityIndicatorView!
     
     public var viewModel: ImageSearchTableViewModeling? {
         didSet {
             if let viewModel = viewModel {
                 viewModel.cellModels.producer
                     .on(next: { _ in self.tableView.reloadData() })
+                    .start()
+                viewModel.searching.producer
+                    .on(next: { searching in
+                        if searching {
+                            // Display the activity indicator at the center of the screen if the table is empty.
+                            self.footerView.frame.size.height = viewModel.cellModels.value.isEmpty
+                                ? self.tableView.frame.size.height + self.tableView.contentOffset.y : 44.0
+                            
+                            self.tableView.tableFooterView = self.footerView
+                            self.searchingIndicator.startAnimating()
+                        }
+                        else {
+                            self.tableView.tableFooterView = nil
+                            self.searchingIndicator.stopAnimating()
+                        }
+                    })
                     .start()
             }
         }
@@ -45,11 +63,11 @@ extension ImageSearchTableViewController {
     
     public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ImageSearchTableViewCell", forIndexPath: indexPath) as! ImageSearchTableViewCell
-        if let viewModel = viewModel {
-            cell.viewModel = viewModel.cellModels.value[indexPath.row]
-        }
-        else {
-            cell.viewModel = nil
+        cell.viewModel = viewModel.map { $0.cellModels.value[indexPath.row] }
+        
+        if let viewModel = viewModel
+            where indexPath.row >= viewModel.cellModels.value.count - 1 && viewModel.loadNextPage.enabled.value {
+                viewModel.loadNextPage.apply(()).start()
         }
 
         return cell

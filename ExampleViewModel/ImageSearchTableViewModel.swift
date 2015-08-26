@@ -12,10 +12,31 @@ import ExampleModel
 public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
     public var cellModels: PropertyOf<[ImageSearchTableViewCellModeling]> { return PropertyOf(_cellModels) }
     private let _cellModels = MutableProperty<[ImageSearchTableViewCellModeling]>([])
+    public var searching: PropertyOf<Bool> { return PropertyOf(_searching) }
+    private let _searching = MutableProperty<Bool>(false)
     
     /// Accepts property injection.
     public var imageDetailViewModel: ImageDetailViewModelModifiable?
     
+    public var loadNextPage: Action<(), (), NoError> {
+        return Action(enabledIf: nextPageLoadable) { _ in
+            return SignalProducer { observer, disposable in
+                if let (_, observer) = self.nextPageTrigger.value {
+                    self._searching.value = true
+                    sendNext(observer, ())
+                }
+            }
+        }
+    }
+    private var nextPageLoadable: PropertyOf<Bool> {
+        return PropertyOf(
+            initialValue: false,
+            producer: searching.producer.combineLatestWith(nextPageTrigger.producer).map { searching, trigger in
+                !searching && trigger != nil
+            })
+    }
+    private let nextPageTrigger = MutableProperty<(SignalProducer<(), NoError>, Event<(), NoError> -> ())?>(nil) // SignalProducer buffer
+
     private let imageSearch: ImageSearching
     private let network: Networking
     
@@ -31,14 +52,28 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
             return ImageSearchTableViewCellModel(image: image, network: self.network) as ImageSearchTableViewCellModeling
         }
         
-        imageSearch.searchImages()
+        _searching.value = true
+        nextPageTrigger.value = SignalProducer<(), NoError>.buffer()
+        let (trigger, _) = nextPageTrigger.value!
+
+        imageSearch.searchImages(nextPageTrigger: trigger)
             .map { response in
                 (response.images, response.images.map { toCellModel($0) })
             }
             .observeOn(UIScheduler())
             .on(next: { images, cellModels in
-                self.foundImages = images
-                self._cellModels.value = cellModels
+                self.foundImages += images
+                self._cellModels.value += cellModels
+                self._searching.value = false
+            })
+            .on(event: { event in
+                switch event {
+                case .Completed, .Error, .Interrupted:
+                    self.nextPageTrigger.value = nil
+                    self._searching.value = false
+                default:
+                    break
+                }
             })
             .start()
     }

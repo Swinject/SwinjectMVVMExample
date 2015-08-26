@@ -16,26 +16,36 @@ public final class ImageSearch: ImageSearching {
         self.network = network
     }
     
-    public func searchImages() -> SignalProducer<ResponseEntity, NetworkError> {
+    public func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
         return SignalProducer { observer, disposable in
-            self.network.requestJSON(Pixabay.apiURL, parameters: Pixabay.requestParameters)
-                .start({ event in
-                    switch event {
-                    case .Next(let json):
-                        if let response = decode(json) as ResponseEntity? {
-                            sendNext(observer, response)
+            let firstSearch = SignalProducer<(), NoError>(value: ())
+            let load = firstSearch.concat(trigger)
+            var parameters = Pixabay.requestParameters
+            
+            load.on(next: {
+                self.network.requestJSON(Pixabay.apiURL, parameters: parameters)
+                    .start({ event in
+                        switch event {
+                        case .Next(let json):
+                            if let response = decode(json) as ResponseEntity? {
+                                sendNext(observer, response)
+                                if response.images.count < Pixabay.maxImagesPerPage {
+                                    sendCompleted(observer)
+                                }
+                            }
+                            else {
+                                sendError(observer, .IncorrectDataReturned)
+                            }
+                        case .Error(let error):
+                            sendError(observer, error)
+                        case .Completed:
+                            break
+                        case .Interrupted:
+                            sendInterrupted(observer)
                         }
-                        else {
-                            sendError(observer, .IncorrectDataReturned)
-                        }
-                    case .Error(let error):
-                        sendError(observer, error)
-                    case .Completed:
-                        sendCompleted(observer)
-                    case .Interrupted:
-                        sendInterrupted(observer)
-                    }
-                })
+                    })
+                parameters = Pixabay.incrementPage(parameters)
+            }).start()
         }
     }
 }

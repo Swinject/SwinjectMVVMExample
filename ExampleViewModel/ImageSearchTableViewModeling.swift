@@ -10,7 +10,10 @@ import ReactiveCocoa
 
 public protocol ImageSearchTableViewModeling {
     var cellModels: PropertyOf<[ImageSearchTableViewCellModeling]> { get }
+    var searching: PropertyOf<Bool> { get }
     
     func startSearch()
+    var loadNextPage: Action<(), (), NoError> { get }
+    
     func selectCellAtIndex(index: Int)
 }
