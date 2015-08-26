@@ -19,7 +19,7 @@ let dummyResponse: ResponseEntity = {
         id: 10001, pageURL: "https://somewhere.com/page1/", pageImageWidth: 1500, pageImageHeight: 3000,
         previewURL: "https://somewhere.com/preview1.jpg", previewWidth: 350, previewHeight: 700,
         imageURL: "https://somewhere.com/image1.jpg", imageWidth: 150, imageHeight: 300,
-        viewCount: 59, downloadCount: 58, likeCount: 57, tags: ["x", "y"], username: "User1")
+        viewCount: 123456789, downloadCount: 12345678, likeCount: 1234567, tags: ["x", "y"], username: "User1")
     return ResponseEntity(totalCount: 123, images: [image0, image1])
 }()
 

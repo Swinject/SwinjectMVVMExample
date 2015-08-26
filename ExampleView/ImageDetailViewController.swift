@@ -29,6 +29,15 @@ public final class ImageDetailViewController: UIViewController {
             viewModel.pageImageSizeText.producer
                 .on(next: { self.imageSizeLabel.text = $0 })
                 .start()
+            viewModel.viewCountText.producer
+                .on(next: { self.viewCountLabel.text = $0 })
+                .start()
+            viewModel.downloadCountText.producer
+                .on(next: { self.downloadCountLabel.text = $0 })
+                .start()
+            viewModel.likeCountText.producer
+                .on(next: { self.likeCountLabel.text = $0 })
+                .start()
         }
     }
     
@@ -36,6 +45,9 @@ public final class ImageDetailViewController: UIViewController {
     @IBOutlet weak var tagLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var imageSizeLabel: UILabel!
+    @IBOutlet weak var viewCountLabel: UILabel!
+    @IBOutlet weak var downloadCountLabel: UILabel!
+    @IBOutlet weak var likeCountLabel: UILabel!
     
     @IBAction func openImagePage(sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)

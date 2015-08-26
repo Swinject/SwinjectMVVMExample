@@ -14,14 +14,21 @@ public final class ImageDetailViewModel: ImageDetailViewModeling {
     public var pageImageSizeText: PropertyOf<String?> { return PropertyOf(_pageImageSizeText) }
     public var tagText: PropertyOf<String?> { return PropertyOf(_tagText) }
     public var usernameText: PropertyOf<String?> { return PropertyOf(_usernameText) }
+    public var viewCountText: PropertyOf<String?> { return PropertyOf(_viewCountText) }
+    public var downloadCountText: PropertyOf<String?> { return PropertyOf(_downloadCountText) }
+    public var likeCountText: PropertyOf<String?> { return PropertyOf(_likeCountText) }
     public var image: PropertyOf<UIImage?> { return PropertyOf(_image) }
     
     private let _id = MutableProperty<UInt64?>(nil)
     private let _pageImageSizeText = MutableProperty<String?>(nil)
     private let _tagText = MutableProperty<String?>(nil)
     private let _usernameText = MutableProperty<String?>(nil)
+    private let _viewCountText = MutableProperty<String?>(nil)
+    private let _downloadCountText = MutableProperty<String?>(nil)
+    private let _likeCountText = MutableProperty<String?>(nil)
     private let _image = MutableProperty<UIImage?>(nil)
     
+    internal var locale = NSLocale.currentLocale() // For testing.
     private var imageEntities = [ImageEntity]()
     private var currentImageIndex = 0
     private var (stopSignalProducer, stopSignalObserver) = SignalProducer<(), NoError>.buffer()
@@ -58,6 +65,9 @@ extension ImageDetailViewModel: ImageDetailViewModelModifiable {
         self._usernameText.value = imageEntity?.username
         self._pageImageSizeText.value = imageEntity.map { "\($0.pageImageWidth) x \($0.pageImageHeight)" }
         self._tagText.value = imageEntity.map { ", ".join($0.tags) }
+        self._viewCountText.value = imageEntity.map { formatInt64($0.viewCount) }
+        self._downloadCountText.value = imageEntity.map { formatInt64($0.downloadCount) }
+        self._likeCountText.value = imageEntity.map { formatInt64($0.likeCount) }
         
         _image.value = nil
         if let imageEntity = imageEntity {
@@ -67,6 +77,10 @@ extension ImageDetailViewModel: ImageDetailViewModelModifiable {
                 .flatMapError { _ in SignalProducer<UIImage?, NoError>(value: nil) }
                 .observeOn(UIScheduler())
         }
+    }
+    
+    private func formatInt64(value: Int64) -> String {
+        return NSNumber(longLong: value).descriptionWithLocale(locale)
     }
     
     // This method can be used if you add next and previsou buttons on image detail view
