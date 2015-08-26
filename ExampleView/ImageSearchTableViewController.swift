@@ -35,6 +35,13 @@ public final class ImageSearchTableViewController: UITableViewController {
                         }
                     })
                     .start()
+                viewModel.errorMessage.producer
+                    .on(next: { errorMessage in
+                        if let errorMessage = errorMessage {
+                            self.displayErrorMessage(errorMessage)
+                        }
+                    })
+                    .start()
             }
         }
     }
@@ -46,6 +53,17 @@ public final class ImageSearchTableViewController: UITableViewController {
             autoSearchStarted = true
             viewModel?.startSearch()
         }
+    }
+    
+    private func displayErrorMessage(errorMessage: String) {
+        let title = "Error"
+        let dismissButtonText = "Dismiss"
+        let message = errorMessage
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: dismissButtonText, style: .Default) { _ in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+            })
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 

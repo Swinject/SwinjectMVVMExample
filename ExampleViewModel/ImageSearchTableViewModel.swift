@@ -11,9 +11,12 @@ import ExampleModel
 
 public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
     public var cellModels: PropertyOf<[ImageSearchTableViewCellModeling]> { return PropertyOf(_cellModels) }
-    private let _cellModels = MutableProperty<[ImageSearchTableViewCellModeling]>([])
     public var searching: PropertyOf<Bool> { return PropertyOf(_searching) }
+    public var errorMessage: PropertyOf<String?> { return PropertyOf(_errorMessage) }
+    
+    private let _cellModels = MutableProperty<[ImageSearchTableViewCellModeling]>([])
     private let _searching = MutableProperty<Bool>(false)
+    private let _errorMessage = MutableProperty<String?>(nil)
     
     /// Accepts property injection.
     public var imageDetailViewModel: ImageDetailViewModelModifiable?
@@ -65,6 +68,9 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
                 self.foundImages += images
                 self._cellModels.value += cellModels
                 self._searching.value = false
+            })
+            .on(error: { error in
+                self._errorMessage.value = error.description
             })
             .on(event: { event in
                 switch event {
