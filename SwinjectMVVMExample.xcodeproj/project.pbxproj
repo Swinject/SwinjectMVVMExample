@@ -1185,7 +1185,7 @@
 				);
 				INFOPLIST_FILE = SwinjectMVVMExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.SwinjectMVVMExample";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.SwinjectMVVMExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1201,7 +1201,7 @@
 				);
 				INFOPLIST_FILE = SwinjectMVVMExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.SwinjectMVVMExample";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.SwinjectMVVMExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1216,7 +1216,7 @@
 				);
 				INFOPLIST_FILE = SwinjectMVVMExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.SwinjectMVVMExampleTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.SwinjectMVVMExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwinjectMVVMExample.app/SwinjectMVVMExample";
 			};
@@ -1232,7 +1232,7 @@
 				);
 				INFOPLIST_FILE = SwinjectMVVMExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.SwinjectMVVMExampleTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.SwinjectMVVMExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwinjectMVVMExample.app/SwinjectMVVMExample";
 			};
@@ -1254,7 +1254,7 @@
 				INFOPLIST_FILE = ExampleModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleModel";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1280,7 +1280,7 @@
 				INFOPLIST_FILE = ExampleModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleModel";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1299,7 +1299,7 @@
 				);
 				INFOPLIST_FILE = ExampleModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleModelTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1314,7 +1314,7 @@
 				);
 				INFOPLIST_FILE = ExampleModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleModelTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1335,7 +1335,7 @@
 				INFOPLIST_FILE = ExampleViewModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewModel";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1361,7 +1361,7 @@
 				INFOPLIST_FILE = ExampleViewModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewModel";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1379,7 +1379,7 @@
 				);
 				INFOPLIST_FILE = ExampleViewModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewModelTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1393,7 +1393,7 @@
 				);
 				INFOPLIST_FILE = ExampleViewModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewModelTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1414,7 +1414,7 @@
 				INFOPLIST_FILE = ExampleView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleView";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1440,7 +1440,7 @@
 				INFOPLIST_FILE = ExampleView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleView";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1458,7 +1458,7 @@
 				);
 				INFOPLIST_FILE = ExampleViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1472,7 +1472,7 @@
 				);
 				INFOPLIST_FILE = ExampleViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
