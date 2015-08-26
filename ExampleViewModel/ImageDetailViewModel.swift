@@ -64,7 +64,7 @@ extension ImageDetailViewModel: ImageDetailViewModelModifiable {
         self._id.value = imageEntity?.id
         self._usernameText.value = imageEntity?.username
         self._pageImageSizeText.value = imageEntity.map { "\($0.pageImageWidth) x \($0.pageImageHeight)" }
-        self._tagText.value = imageEntity.map { ", ".join($0.tags) }
+        self._tagText.value = imageEntity.map { $0.tags.joinWithSeparator(", ") }
         self._viewCountText.value = imageEntity.map { formatInt64($0.viewCount) }
         self._downloadCountText.value = imageEntity.map { formatInt64($0.downloadCount) }
         self._likeCountText.value = imageEntity.map { formatInt64($0.likeCount) }

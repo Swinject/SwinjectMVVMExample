@@ -22,7 +22,7 @@ public final class ImageSearchTableViewCellModel: NSObject, ImageSearchTableView
     internal init(image: ImageEntity, network: Networking) {
         id = image.id
         pageImageSizeText = "\(image.pageImageWidth) x \(image.pageImageHeight)"
-        tagText = ", ".join(image.tags)
+        tagText = image.tags.joinWithSeparator(", ")
         
         self.network = network
         previewURL = image.previewURL
