@@ -36,4 +36,13 @@ public final class ImageDetailViewController: UIViewController {
     @IBOutlet weak var tagLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var imageSizeLabel: UILabel!
+    
+    @IBAction func openImagePage(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        alertController.addAction(UIAlertAction(title: "View in Safari", style: .Default) { _ in
+            viewModel?.openImagePage()
+        })
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
 }

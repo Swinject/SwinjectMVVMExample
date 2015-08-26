@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aMo-9E-uto">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aMo-9E-uto">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -177,6 +177,13 @@
                             <constraint firstItem="hru-8g-ROg" firstAttribute="leading" secondItem="bSs-qd-bxm" secondAttribute="trailing" constant="8" id="wfe-jI-PdD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="WCO-nJ-zFW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Leg-CR-fcT">
+                            <connections>
+                                <action selector="openImagePage:" destination="aAM-lS-k3f" id="c6g-Co-mUl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageSizeLabel" destination="hru-8g-ROg" id="gP2-HF-zCN"/>
                         <outlet property="imageView" destination="1HU-uQ-OfD" id="KFx-2V-x7x"/>
