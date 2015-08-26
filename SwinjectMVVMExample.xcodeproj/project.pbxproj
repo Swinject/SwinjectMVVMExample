@@ -13,6 +13,13 @@
 		9844A4BE1B884A0D0069D5D5 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BD1B884A0D0069D5D5 /* Networking.swift */; };
 		9844A4C01B884A630069D5D5 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BF1B884A630069D5D5 /* Network.swift */; };
 		985C39A11B873F4100874AE5 /* ExampleModel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 98E825571B86091A00E7BA79 /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		987CBD671B8DAF1B000C1B5E /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CBD651B8DAF1B000C1B5E /* LocalizedString.swift */; };
+		987CBD6B1B8DAF35000C1B5E /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CBD691B8DAF35000C1B5E /* LocalizedString.swift */; };
+		987CBD6F1B8DAF4C000C1B5E /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CBD6D1B8DAF4C000C1B5E /* LocalizedString.swift */; };
+		987CBD701B8DAFA2000C1B5E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 987CBD721B8DAFA2000C1B5E /* Localizable.strings */; };
+		987CBD741B8DAFE5000C1B5E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 987CBD761B8DAFE5000C1B5E /* Localizable.strings */; };
+		987CBD781B8DAFEF000C1B5E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 987CBD7A1B8DAFEF000C1B5E /* Localizable.strings */; };
+		987CBD7B1B8DB01E000C1B5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 987CBD7D1B8DB01E000C1B5E /* Main.storyboard */; };
 		988C5C9C1B881E3800BA741E /* ImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5C9A1B881E3800BA741E /* ImageEntity.swift */; };
 		988C5C9D1B881E3800BA741E /* ResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5C9B1B881E3800BA741E /* ResponseEntity.swift */; };
 		988C5C9F1B881E4800BA741E /* ImageEntitySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988C5C9E1B881E4800BA741E /* ImageEntitySpec.swift */; };
@@ -74,7 +81,6 @@
 		98B76D2E1B88BEAC00718260 /* Pixabay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D2A1B88BEAC00718260 /* Pixabay.swift */; };
 		98B76D321B88C0DE00718260 /* ImageSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D2F1B88C0DE00718260 /* ImageSearchTableViewCell.swift */; };
 		98B76D331B88C0DE00718260 /* ImageSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D301B88C0DE00718260 /* ImageSearchTableViewController.swift */; };
-		98B76D341B88C0DE00718260 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B76D311B88C0DE00718260 /* Main.storyboard */; };
 		98B76D391B88C1A600718260 /* ImageSearchTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D351B88C1A600718260 /* ImageSearchTableViewCellModel.swift */; };
 		98B76D3A1B88C1A700718260 /* ImageSearchTableViewCellModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D361B88C1A600718260 /* ImageSearchTableViewCellModeling.swift */; };
 		98B76D3B1B88C1A700718260 /* ImageSearchTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D371B88C1A600718260 /* ImageSearchTableViewModel.swift */; };
@@ -276,6 +282,8 @@
 /* Begin PBXFileReference section */
 		982FA47F1B88595C00BF5E63 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		982FA4811B88645D00BF5E63 /* NetworkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSpec.swift; sourceTree = "<group>"; };
+		9835D5271B8DEBA200BBA8A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9835D5291B8DEBAB00BBA8A5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseEntitySpec.swift; sourceTree = "<group>"; };
 		9844A4BD1B884A0D0069D5D5 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		9844A4BF1B884A630069D5D5 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -286,6 +294,21 @@
 		9853A5301B8724B1001CA6A4 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		9853A5311B8724D8001CA6A4 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		9853A5321B8724D8001CA6A4 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		987CBD651B8DAF1B000C1B5E /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		987CBD691B8DAF35000C1B5E /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		987CBD6D1B8DAF4C000C1B5E /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		987CBD711B8DAFA2000C1B5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		987CBD731B8DAFA9000C1B5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		987CBD751B8DAFE5000C1B5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		987CBD771B8DAFE7000C1B5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		987CBD791B8DAFEF000C1B5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		987CBD7C1B8DB01E000C1B5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		987CBD7F1B8DB022000C1B5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		987CBD801B8DB041000C1B5E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		987CBD811B8DB041000C1B5E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		987CBD821B8DB041000C1B5E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		987CBD841B8DB05A000C1B5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		987CBD851B8DB06B000C1B5E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		988C5C9A1B881E3800BA741E /* ImageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEntity.swift; sourceTree = "<group>"; };
 		988C5C9B1B881E3800BA741E /* ResponseEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseEntity.swift; sourceTree = "<group>"; };
 		988C5C9E1B881E4800BA741E /* ImageEntitySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEntitySpec.swift; sourceTree = "<group>"; };
@@ -297,7 +320,6 @@
 		98B76D2A1B88BEAC00718260 /* Pixabay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pixabay.swift; sourceTree = "<group>"; };
 		98B76D2F1B88C0DE00718260 /* ImageSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCell.swift; sourceTree = "<group>"; };
 		98B76D301B88C0DE00718260 /* ImageSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewController.swift; sourceTree = "<group>"; };
-		98B76D311B88C0DE00718260 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		98B76D351B88C1A600718260 /* ImageSearchTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCellModel.swift; sourceTree = "<group>"; };
 		98B76D361B88C1A600718260 /* ImageSearchTableViewCellModeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCellModeling.swift; sourceTree = "<group>"; };
 		98B76D371B88C1A600718260 /* ImageSearchTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewModel.swift; sourceTree = "<group>"; };
@@ -520,6 +542,8 @@
 				98C9C5571B8D820600B170A7 /* ExternalAppChanneling.swift */,
 				98C9C5591B8D821C00B170A7 /* ExternalAppChannel.swift */,
 				98E825591B86091A00E7BA79 /* ExampleModel.h */,
+				987CBD651B8DAF1B000C1B5E /* LocalizedString.swift */,
+				987CBD721B8DAFA2000C1B5E /* Localizable.strings */,
 				98E8255B1B86091A00E7BA79 /* Info.plist */,
 			);
 			path = ExampleModel;
@@ -549,6 +573,8 @@
 				98B76D521B8B01D600718260 /* ImageDetailViewModel.swift */,
 				98B76D461B8A190500718260 /* RACUtil.swift */,
 				98E8257C1B86093700E7BA79 /* ExampleViewModel.h */,
+				987CBD691B8DAF35000C1B5E /* LocalizedString.swift */,
+				987CBD761B8DAFE5000C1B5E /* Localizable.strings */,
 				98E8257E1B86093700E7BA79 /* Info.plist */,
 			);
 			path = ExampleViewModel;
@@ -572,9 +598,11 @@
 				98B76D301B88C0DE00718260 /* ImageSearchTableViewController.swift */,
 				98B76D2F1B88C0DE00718260 /* ImageSearchTableViewCell.swift */,
 				98B76D4E1B8AF1B500718260 /* ImageDetailViewController.swift */,
-				98B76D311B88C0DE00718260 /* Main.storyboard */,
+				987CBD7D1B8DB01E000C1B5E /* Main.storyboard */,
 				98B76D4A1B8AD29000718260 /* RACUtil.swift */,
 				98E8259E1B86094A00E7BA79 /* ExampleView.h */,
+				987CBD6D1B8DAF4C000C1B5E /* LocalizedString.swift */,
+				987CBD7A1B8DAFEF000C1B5E /* Localizable.strings */,
 				98C9C55B1B8D8D5B00B170A7 /* Images.xcassets */,
 				98E825A01B86094A00E7BA79 /* Info.plist */,
 			);
@@ -679,6 +707,7 @@
 			buildPhases = (
 				98E825521B86091A00E7BA79 /* Sources */,
 				98E825531B86091A00E7BA79 /* Frameworks */,
+				987CBD861B8DB147000C1B5E /* Run Script for Localization */,
 				98E825541B86091A00E7BA79 /* Headers */,
 				98E825551B86091A00E7BA79 /* Resources */,
 			);
@@ -716,6 +745,7 @@
 			buildPhases = (
 				98E825751B86093700E7BA79 /* Sources */,
 				98E825761B86093700E7BA79 /* Frameworks */,
+				9866B9561B8DB240007A5C43 /* Run Script for Localization */,
 				98E825771B86093700E7BA79 /* Headers */,
 				98E825781B86093700E7BA79 /* Resources */,
 			);
@@ -754,6 +784,7 @@
 			buildPhases = (
 				98E825971B86094A00E7BA79 /* Sources */,
 				98E825981B86094A00E7BA79 /* Frameworks */,
+				9866B9571B8DB25D007A5C43 /* Run Script for Localization */,
 				98E825991B86094A00E7BA79 /* Headers */,
 				98E8259A1B86094A00E7BA79 /* Resources */,
 			);
@@ -831,6 +862,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 98E825261B86044A00E7BA79;
 			productRefGroup = 98E825301B86044A00E7BA79 /* Products */;
@@ -870,6 +902,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				987CBD701B8DAFA2000C1B5E /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,6 +917,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				987CBD741B8DAFE5000C1B5E /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,7 +932,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98B76D341B88C0DE00718260 /* Main.storyboard in Resources */,
+				987CBD7B1B8DB01E000C1B5E /* Main.storyboard in Resources */,
+				987CBD781B8DAFEF000C1B5E /* Localizable.strings in Resources */,
 				98C9C55C1B8D8D5B00B170A7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -913,6 +948,48 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		9866B9561B8DB240007A5C43 /* Run Script for Localization */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script for Localization";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "script/mergegenstrings.py ExampleViewModel LocalizedString";
+		};
+		9866B9571B8DB25D007A5C43 /* Run Script for Localization */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script for Localization";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "script/mergegenstrings.py ExampleView LocalizedString";
+		};
+		987CBD861B8DB147000C1B5E /* Run Script for Localization */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script for Localization";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "script/mergegenstrings.py ExampleModel LocalizedString";
+		};
 		98B48E181B872F4300843AD7 /* Run Script for Frameworks by Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -957,6 +1034,7 @@
 			files = (
 				98C9C55A1B8D821C00B170A7 /* ExternalAppChannel.swift in Sources */,
 				98B76D2C1B88BEAC00718260 /* ImageSearching.swift in Sources */,
+				987CBD671B8DAF1B000C1B5E /* LocalizedString.swift in Sources */,
 				98B76D2D1B88BEAC00718260 /* Pixabay.Config.swift in Sources */,
 				988C5C9C1B881E3800BA741E /* ImageEntity.swift in Sources */,
 				98C9C5581B8D820600B170A7 /* ExternalAppChanneling.swift in Sources */,
@@ -991,6 +1069,7 @@
 				98B76D471B8A190500718260 /* RACUtil.swift in Sources */,
 				98B76D3A1B88C1A700718260 /* ImageSearchTableViewCellModeling.swift in Sources */,
 				98B76D391B88C1A600718260 /* ImageSearchTableViewCellModel.swift in Sources */,
+				987CBD6B1B8DAF35000C1B5E /* LocalizedString.swift in Sources */,
 				98B76D3B1B88C1A700718260 /* ImageSearchTableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1010,6 +1089,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				987CBD6F1B8DAF4C000C1B5E /* LocalizedString.swift in Sources */,
 				98B76D321B88C0DE00718260 /* ImageSearchTableViewCell.swift in Sources */,
 				98B76D331B88C0DE00718260 /* ImageSearchTableViewController.swift in Sources */,
 				98B76D4B1B8AD29000718260 /* RACUtil.swift in Sources */,
@@ -1082,10 +1162,52 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		987CBD721B8DAFA2000C1B5E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				987CBD711B8DAFA2000C1B5E /* Base */,
+				987CBD731B8DAFA9000C1B5E /* en */,
+				987CBD811B8DB041000C1B5E /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		987CBD761B8DAFE5000C1B5E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				987CBD751B8DAFE5000C1B5E /* Base */,
+				987CBD771B8DAFE7000C1B5E /* en */,
+				987CBD821B8DB041000C1B5E /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		987CBD7A1B8DAFEF000C1B5E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				987CBD791B8DAFEF000C1B5E /* Base */,
+				987CBD841B8DB05A000C1B5E /* en */,
+				987CBD851B8DB06B000C1B5E /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		987CBD7D1B8DB01E000C1B5E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				987CBD7C1B8DB01E000C1B5E /* Base */,
+				987CBD7F1B8DB022000C1B5E /* en */,
+				987CBD801B8DB041000C1B5E /* ja */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		98E8253B1B86044A00E7BA79 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				98E8253C1B86044A00E7BA79 /* Base */,
+				9835D5271B8DEBA200BBA8A5 /* en */,
+				9835D5291B8DEBAB00BBA8A5 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1185,7 +1307,7 @@
 				);
 				INFOPLIST_FILE = SwinjectMVVMExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.SwinjectMVVMExample";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.SwinjectMVVMExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1201,7 +1323,7 @@
 				);
 				INFOPLIST_FILE = SwinjectMVVMExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.SwinjectMVVMExample";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.SwinjectMVVMExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1216,7 +1338,7 @@
 				);
 				INFOPLIST_FILE = SwinjectMVVMExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.SwinjectMVVMExampleTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.SwinjectMVVMExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwinjectMVVMExample.app/SwinjectMVVMExample";
 			};
@@ -1232,7 +1354,7 @@
 				);
 				INFOPLIST_FILE = SwinjectMVVMExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.SwinjectMVVMExampleTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.SwinjectMVVMExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwinjectMVVMExample.app/SwinjectMVVMExample";
 			};
@@ -1254,7 +1376,7 @@
 				INFOPLIST_FILE = ExampleModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleModel";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1280,7 +1402,7 @@
 				INFOPLIST_FILE = ExampleModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleModel";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1299,7 +1421,7 @@
 				);
 				INFOPLIST_FILE = ExampleModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleModelTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1314,7 +1436,7 @@
 				);
 				INFOPLIST_FILE = ExampleModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleModelTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1335,7 +1457,7 @@
 				INFOPLIST_FILE = ExampleViewModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewModel";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1361,7 +1483,7 @@
 				INFOPLIST_FILE = ExampleViewModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewModel";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1379,7 +1501,7 @@
 				);
 				INFOPLIST_FILE = ExampleViewModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewModelTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1393,7 +1515,7 @@
 				);
 				INFOPLIST_FILE = ExampleViewModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewModelTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1414,7 +1536,7 @@
 				INFOPLIST_FILE = ExampleView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleView";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1440,7 +1562,7 @@
 				INFOPLIST_FILE = ExampleView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleView";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1458,7 +1580,7 @@
 				);
 				INFOPLIST_FILE = ExampleViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1472,7 +1594,7 @@
 				);
 				INFOPLIST_FILE = ExampleViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.el-eleven.ExampleViewTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

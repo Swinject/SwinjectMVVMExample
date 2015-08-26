@@ -100,17 +100,17 @@ public enum NetworkError: ErrorType, CustomStringConvertible {
         let text: String
         switch self {
         case Unknown:
-            text = "Unknown error occurred. Check internet connection and try again."
+            text = LocalizedString("NetworkError_Unknown", comment: "Error description")
         case NotConnectedToInternet:
-            text = "Not connected to the internet. Turn on Wi-Fi, or allow cellular data connection."
+            text = LocalizedString("NetworkError_NotConnectedToInternet", comment: "Error description")
         case InternationalRoamingOff:
-            text = "International roaming is not allowed. Change the international roaming setting, or turn on Wi-Fi."
+            text = LocalizedString("NetworkError_InternationalRoamingOff", comment: "Error description")
         case NotReachedServer:
-            text = "Could not reach the Pixabay server. Check the internet connection, or wait until the server becomes accessible."
+            text = LocalizedString("NetworkError_NotReachedServer", comment: "Error description")
         case ConnectionLost:
-            text = "Internet connection is lost. Move to a location where more stable connection is available, or wait until the connection returns to be stable."
+            text = LocalizedString("NetworkError_ConnectionLost", comment: "Error description")
         case IncorrectDataReturned:
-            text = "Incorrect data returned from Pixabay server. Try again, or wait until Pixabay fixes the problem."
+            text = LocalizedString("NetworkError_IncorrectDataReturned", comment: "Error description")
         }
         return text
     }

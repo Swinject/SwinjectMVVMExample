@@ -56,8 +56,8 @@ public final class ImageSearchTableViewController: UITableViewController {
     }
     
     private func displayErrorMessage(errorMessage: String) {
-        let title = "Error"
-        let dismissButtonText = "Dismiss"
+        let title = LocalizedString("ImageSearchTableViewController_ErrorAlertTitle", comment: "Error alert title.")
+        let dismissButtonText = LocalizedString("ImageSearchTableViewController_DismissButtonTitle", comment: "Dismiss button title on an alert.")
         let message = errorMessage
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: dismissButtonText, style: .Default) { _ in

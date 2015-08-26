@@ -50,11 +50,13 @@ public final class ImageDetailViewController: UIViewController {
     @IBOutlet weak var likeCountLabel: UILabel!
     
     @IBAction func openImagePage(sender: UIBarButtonItem) {
+        let actionText = LocalizedString("ImageDetailViewController_ActionSheetViewInSafari", comment: "Action sheet button text.")
+        let cancelText = LocalizedString("ImageDetailViewController_ActionSheetCancel", comment: "Action sheet button text.")
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        alertController.addAction(UIAlertAction(title: "View in Safari", style: .Default) { _ in
+        alertController.addAction(UIAlertAction(title: actionText, style: .Default) { _ in
             viewModel?.openImagePage()
         })
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: cancelText, style: .Cancel, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }
 }

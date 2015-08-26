@@ -1,0 +1,12 @@
+/* Action sheet button text. */
+"ImageDetailViewController_ActionSheetCancel" = "キャンセル";
+
+/* Action sheet button text. */
+"ImageDetailViewController_ActionSheetViewInSafari" = "Safariで開く";
+
+/* Dismiss button title on an alert. */
+"ImageSearchTableViewController_DismissButtonTitle" = "閉じる";
+
+/* Error alert title. */
+"ImageSearchTableViewController_ErrorAlertTitle" = "エラー";
+
