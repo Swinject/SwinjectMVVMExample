@@ -11,6 +11,7 @@ import ReactiveCocoa
 public protocol ImageSearchTableViewModeling {
     var cellModels: PropertyOf<[ImageSearchTableViewCellModeling]> { get }
     var searching: PropertyOf<Bool> { get }
+    var errorMessage: PropertyOf<String?> { get }
     
     func startSearch()
     var loadNextPage: Action<(), (), NoError> { get }

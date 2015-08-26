@@ -32,6 +32,15 @@ class ImageSearchTableViewModelSpec: QuickSpec {
             .observeOn(QueueScheduler())
         }
     }
+    
+    class ErrorStubImageSearch: ImageSearching {
+        func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
+            return SignalProducer { observer, disposable in
+                sendError(observer, NetworkError.Unknown)
+            }
+            .observeOn(QueueScheduler())
+        }
+    }
 
     class StubNetwork: Networking {
         func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
@@ -127,6 +136,13 @@ class ImageSearchTableViewModelSpec: QuickSpec {
                 let viewModel = ImageSearchTableViewModel(imageSearch: NotCompletingStubImageSearch(), network: StubNetwork())
                 viewModel.startSearch()
                 expect(viewModel.loadNextPage.enabled.value).toEventually(beTrue())
+            }
+            context("on error") {
+                it("sets errorMessage property.") {
+                    let viewModel = ImageSearchTableViewModel(imageSearch: ErrorStubImageSearch(), network: StubNetwork())
+                    viewModel.startSearch()
+                    expect(viewModel.errorMessage.value).toEventuallyNot(beNil())
+                }
             }
         }
         describe("Load next page") {
