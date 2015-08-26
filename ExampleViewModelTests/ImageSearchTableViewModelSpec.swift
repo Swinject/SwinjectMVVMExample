@@ -70,6 +70,9 @@ class ImageSearchTableViewModelSpec: QuickSpec {
             self.imageEntities = imageEntities
             self.index = index
         }
+        
+        func openImagePage() {
+        }
     }
     
     // MARK: - Spec

@@ -23,12 +23,25 @@ public final class ImageDetailViewModel: ImageDetailViewModeling {
     private let _image = MutableProperty<UIImage?>(nil)
     
     private var imageEntities = [ImageEntity]()
+    private var currentImageIndex = 0
     private var (stopSignalProducer, stopSignalObserver) = SignalProducer<(), NoError>.buffer()
     
     private let network: Networking
+    private let externalAppChannel: ExternalAppChanneling
 
-    public init(network: Networking) {
+    public init(network: Networking, externalAppChannel: ExternalAppChanneling) {
         self.network = network
+        self.externalAppChannel = externalAppChannel
+    }
+    
+    public func openImagePage() {
+        if let currentImageEntity = currentImageEntity {
+            externalAppChannel.openURL(currentImageEntity.pageURL)
+        }
+    }
+    
+    private var currentImageEntity: ImageEntity? {
+        return imageEntities.indices.contains(currentImageIndex) ? imageEntities[currentImageIndex] : nil
     }
 }
 
@@ -37,7 +50,10 @@ extension ImageDetailViewModel: ImageDetailViewModelModifiable {
         sendNext(stopSignalObserver, ())
         (stopSignalProducer, stopSignalObserver) = SignalProducer<(), NoError>.buffer()
         
-        let imageEntity: ImageEntity? = imageEntities.indices.contains(index) ? imageEntities[index] : nil
+        self.imageEntities = imageEntities
+        currentImageIndex = index
+        let imageEntity = currentImageEntity
+        
         self._id.value = imageEntity?.id
         self._usernameText.value = imageEntity?.username
         self._pageImageSizeText.value = imageEntity.map { "\($0.pageImageWidth) x \($0.pageImageHeight)" }
