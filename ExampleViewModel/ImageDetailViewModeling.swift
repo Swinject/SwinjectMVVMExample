@@ -14,6 +14,9 @@ public protocol ImageDetailViewModeling {
     var pageImageSizeText: PropertyOf<String?> { get }
     var tagText: PropertyOf<String?> { get }
     var usernameText: PropertyOf<String?> { get }
+    var viewCountText: PropertyOf<String?> { get }
+    var downloadCountText: PropertyOf<String?> { get }
+    var likeCountText: PropertyOf<String?> { get }
     var image: PropertyOf<UIImage?> { get }
     
     func openImagePage()

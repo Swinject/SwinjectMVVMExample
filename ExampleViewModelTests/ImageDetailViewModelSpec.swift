@@ -63,6 +63,13 @@ class ImageDetailViewModelSpec: QuickSpec {
                 expect(viewModel.pageImageSizeText.value) == "1500 x 3000"
                 expect(viewModel.tagText.value) == "x, y"
             }
+            it("formats count values with a specified locale.") {
+                viewModel.locale = NSLocale(localeIdentifier: "de_DE")
+                viewModel.update(dummyResponse.images, atIndex: 1)
+                expect(viewModel.viewCountText.value) == "123.456.789"
+                expect(viewModel.downloadCountText.value) == "12.345.678"
+                expect(viewModel.likeCountText.value) == "1.234.567"
+            }
         }
         describe("Image") {
             it("eventually gets an image.") {

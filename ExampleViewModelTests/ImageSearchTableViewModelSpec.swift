@@ -61,6 +61,9 @@ class ImageSearchTableViewModelSpec: QuickSpec {
         let pageImageSizeText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
         let tagText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
         let usernameText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
+        let viewCountText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
+        let downloadCountText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
+        let likeCountText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
         let image = PropertyOf<UIImage?>(initialValue: nil, producer: SignalProducer.empty)
         
         var imageEntities: [ImageEntity]?
