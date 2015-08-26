@@ -1,0 +1,12 @@
+/* Action sheet button text. */
+"ImageDetailViewController_ActionSheetCancel" = "ImageDetailViewController_ActionSheetCancel";
+
+/* Action sheet button text. */
+"ImageDetailViewController_ActionSheetViewInSafari" = "ImageDetailViewController_ActionSheetViewInSafari";
+
+/* Dismiss button title on an alert. */
+"ImageSearchTableViewController_DismissButtonTitle" = "ImageSearchTableViewController_DismissButtonTitle";
+
+/* Error alert title. */
+"ImageSearchTableViewController_ErrorAlertTitle" = "ImageSearchTableViewController_ErrorAlertTitle";
+

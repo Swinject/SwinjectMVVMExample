@@ -1,0 +1,18 @@
+/* Error description */
+"NetworkError_ConnectionLost" = "インターネットへの接続が切れました。接続が安定する場所に移動するか、接続が安定するまでお待ちください。";
+
+/* Error description */
+"NetworkError_IncorrectDataReturned" = "Pixabayのサーバから正常なデータを取得できません。もう一度試すか、Pixabayがサーバの問題を修正するまでお待ちください。";
+
+/* Error description */
+"NetworkError_InternationalRoamingOff" = "国際ローミングが許可されていません。国際ローミングの設定を変更するか、Wi-Fiを有効にしてください。";
+
+/* Error description */
+"NetworkError_NotConnectedToInternet" = "インターネットに接続されていません。Wi-Fiを有効にするか、モバイルデータ通信を許可してください。";
+
+/* Error description */
+"NetworkError_NotReachedServer" = "Pixabayのサーバにアクセスできません。インターネットの接続を確認するか、サーバが正常に戻るまでお待ちください。";
+
+/* Error description */
+"NetworkError_Unknown" = "不明なエラーが発生しました。インターネットの接続を確認し、もう一度試してください。";
+
