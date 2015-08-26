@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum NetworkError: ErrorType {
+public enum NetworkError: ErrorType, CustomStringConvertible {
     /// Unknown or not supported error.
     case Unknown
 
@@ -94,5 +94,24 @@ public enum NetworkError: ErrorType {
         else {
             self = .Unknown
         }
+    }
+    
+    public var description: String {
+        let text: String
+        switch self {
+        case Unknown:
+            text = "Unknown error occurred. Check internet connection and try again."
+        case NotConnectedToInternet:
+            text = "Not connected to the internet. Turn on Wi-Fi, or allow cellular data connection."
+        case InternationalRoamingOff:
+            text = "International roaming is not allowed. Change the international roaming setting, or turn on Wi-Fi."
+        case NotReachedServer:
+            text = "Could not reach the Pixabay server. Check the internet connection, or wait until the server becomes accessible."
+        case ConnectionLost:
+            text = "Internet connection is lost. Move to a location where more stable connection is available, or wait until the connection returns to be stable."
+        case IncorrectDataReturned:
+            text = "Incorrect data returned from Pixabay server. Try again, or wait until Pixabay fixes the problem."
+        }
+        return text
     }
 }
