@@ -33,12 +33,23 @@ class ImageDetailViewModelSpec: QuickSpec {
             return SignalProducer(error: .InternationalRoamingOff).observeOn(QueueScheduler())
         }
     }
+    
+    // MARK: - Mock
+    class MockExternalAppChannel: ExternalAppChanneling {
+        var passedURL: String?
+        
+        func openURL(url: String) {
+            passedURL = url
+        }
+    }
 
     // MARK: - Spec
     override func spec() {
+        var externalAppChannel: MockExternalAppChannel!
         var viewModel: ImageDetailViewModel!
         beforeEach {
-            viewModel = ImageDetailViewModel(network: StubNetwork())
+            externalAppChannel = MockExternalAppChannel()
+            viewModel = ImageDetailViewModel(network: StubNetwork(), externalAppChannel: externalAppChannel)
         }
         
         describe("Constant values") {
@@ -57,6 +68,13 @@ class ImageDetailViewModelSpec: QuickSpec {
             it("eventually gets an image.") {
                 viewModel.update(dummyResponse.images, atIndex: 0)
                 expect(viewModel.image.value).toEventuallyNot(beNil())
+            }
+        }
+        describe("Image page") {
+            it("opens the URL of the current image page.") {
+                viewModel.update(dummyResponse.images, atIndex: 1)
+                viewModel.openImagePage()
+                expect(externalAppChannel.passedURL) == "https://somewhere.com/page1/"
             }
         }
     }

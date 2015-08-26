@@ -60,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Models
         container.register(Networking.self) { _ in Network() }
         container.register(ImageSearching.self) { r in ImageSearch(network: r.resolve(Networking.self)!) }
+        container.register(ExternalAppChanneling.self) { _ in ExternalAppChannel() }
         
         // View models
         container.register(ImageSearchTableViewModeling.self) { r in
@@ -68,7 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return viewModel
         }.inObjectScope(.Container)
         container.register(ImageDetailViewModelModifiable.self) { _ in
-            ImageDetailViewModel(network: container.resolve(Networking.self)!)
+            ImageDetailViewModel(
+                network: container.resolve(Networking.self)!,
+                externalAppChannel: container.resolve(ExternalAppChanneling.self)!)
         }.inObjectScope(.Container)
         container.register(ImageDetailViewModeling.self) { r in
             r.resolve(ImageDetailViewModelModifiable.self)!

@@ -15,6 +15,8 @@ public protocol ImageDetailViewModeling {
     var tagText: PropertyOf<String?> { get }
     var usernameText: PropertyOf<String?> { get }
     var image: PropertyOf<UIImage?> { get }
+    
+    func openImagePage()
 }
 
 public protocol ImageDetailViewModelModifiable: ImageDetailViewModeling {
