@@ -13,6 +13,7 @@ import ReactiveCocoa
 @testable import ExampleViewModel
 
 class ImageSearchTableViewModelSpec: QuickSpec {
+    // MARK: Stub
     class StubImageSearch: ImageSearching {
         func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
             return SignalProducer { observer, disposable in
@@ -22,7 +23,16 @@ class ImageSearchTableViewModelSpec: QuickSpec {
             .observeOn(QueueScheduler())
         }
     }
-    
+
+    class NotCompletingStubImageSearch: ImageSearching {
+        func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
+            return SignalProducer { observer, disposable in
+                sendNext(observer, dummyResponse)
+            }
+            .observeOn(QueueScheduler())
+        }
+    }
+
     class StubNetwork: Networking {
         func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
             return SignalProducer.empty
@@ -30,6 +40,19 @@ class ImageSearchTableViewModelSpec: QuickSpec {
         
         func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
             return SignalProducer.empty
+        }
+    }
+    
+    // MARK: - Mock
+    class MockImageSearch: ImageSearching {
+        var nextPageTriggered = false
+
+        func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
+            trigger.on(next: { _ in self.nextPageTriggered = true }).start()
+            
+            return SignalProducer { observer, disposable in
+                sendNext(observer, dummyResponse)
+            }
         }
     }
     
@@ -49,6 +72,7 @@ class ImageSearchTableViewModelSpec: QuickSpec {
         }
     }
     
+    // MARK: - Spec
     override func spec() {
         var viewModel: ImageSearchTableViewModel!
         var imageDetailViewModel: MockImageDetailViewModel!
@@ -80,6 +104,42 @@ class ImageSearchTableViewModelSpec: QuickSpec {
                 
                 expect(onMainThread).toEventually(beTrue())
             }
+            it("updates searching property when the search starts and finishes") {
+                var observedValues = [Bool]()
+                viewModel.searching.producer
+                    .on(next: { observedValues.append($0) })
+                    .start()
+                
+                viewModel.startSearch()
+                expect(distinctUntilChanged(observedValues)).toEventually(equal([false, true, false]))
+            }
+            it("keeps loadNextPage action disabled if the search signal completes.") {
+                viewModel.startSearch()
+                expect(viewModel.loadNextPage.enabled.value).toEventuallyNot(beTrue())
+            }
+            it("has loadNextPage action set to enabled if the search signal does not complete.") {
+                let viewModel = ImageSearchTableViewModel(imageSearch: NotCompletingStubImageSearch(), network: StubNetwork())
+                viewModel.startSearch()
+                expect(viewModel.loadNextPage.enabled.value).toEventually(beTrue())
+            }
+        }
+        describe("Load next page") {
+            it("triggers nextPageTrigger passed to ImageSearch by calling loadNextPage method.") {
+                let imageSearch = MockImageSearch()
+                let viewModel = ImageSearchTableViewModel(imageSearch: imageSearch, network: StubNetwork())
+                
+                viewModel.startSearch()
+                expect(imageSearch.nextPageTriggered).to(beFalse())
+
+                viewModel.loadNextPage.enabled.producer
+                    .on(next: { enabled in
+                        if enabled {
+                            viewModel.loadNextPage.apply(()).start()
+                        }
+                    })
+                    .start()
+                expect(imageSearch.nextPageTriggered).toEventually(beTrue())
+            }
         }
         describe("Image detail view model") {
             it("passes the image entities and selected index to the image detail view model.") {
@@ -93,4 +153,8 @@ class ImageSearchTableViewModelSpec: QuickSpec {
             }
         }
     }
+}
+
+private func distinctUntilChanged<T: Equatable>(values: [T]) -> [T] {
+    return values.reduce([]) { array, value in value == array.last ? array : array + [value] }
 }
