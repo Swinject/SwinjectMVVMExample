@@ -21,6 +21,7 @@ public final class ImageSearch: ImageSearching {
             let firstSearch = SignalProducer<(), NoError>(value: ())
             let load = firstSearch.concat(trigger)
             var parameters = Pixabay.requestParameters
+            var loadedImageCount: Int64 = 0
             
             load.on(next: {
                 self.network.requestJSON(Pixabay.apiURL, parameters: parameters)
@@ -29,7 +30,8 @@ public final class ImageSearch: ImageSearching {
                         case .Next(let json):
                             if let response = decode(json) as ResponseEntity? {
                                 sendNext(observer, response)
-                                if response.images.count < Pixabay.maxImagesPerPage {
+                                loadedImageCount += response.images.count
+                                if response.totalCount <= loadedImageCount || response.images.count < Pixabay.maxImagesPerPage {
                                     sendCompleted(observer)
                                 }
                             }

@@ -75,7 +75,7 @@ class ImageSearchSpec: QuickSpec {
                 return json
             }
             let json: [String: AnyObject] = [
-                "totalHits": 123,
+                "totalHits": 150,
                 "hits": (0..<imageCountToEmit).map { createImageJSON(id: $0) }
             ]
             
@@ -169,7 +169,7 @@ class ImageSearchSpec: QuickSpec {
                     nextPageTrigger = SignalProducer.buffer()
                 }
                 
-                it("sends completed when no more images can be found.") {
+                it("sends completed when newly found images are less than the max number of images per page.") {
                     var completedCalled = false
                     network.imageCountToEmit = Pixabay.maxImagesPerPage
                     search.searchImages(nextPageTrigger: nextPageTrigger.0)
@@ -181,14 +181,25 @@ class ImageSearchSpec: QuickSpec {
                     sendNext(nextPageTrigger.1, ()) // Emits only 49, which mean no more images exist.
                     expect(completedCalled).toEventually(beTrue(), timeout: 2)
                 }
-                it("does not send completed if the max image number per page is filled.") {
+                it("sends completed when total loaded images are equal to the total number of images specified by the response.") {
                     var completedCalled = false
                     network.imageCountToEmit = Pixabay.maxImagesPerPage
                     search.searchImages(nextPageTrigger: nextPageTrigger.0)
                         .on(completed: { completedCalled = true })
-                        .start()
+                        .start() // Will emit `maxImagesPerPage` (50) images.
                     
-                    sendNext(nextPageTrigger.1, ()) // Emits `maxImagesPerPage` (50) images, which mean more images possibly exit.
+                    sendNext(nextPageTrigger.1, ()) // Will emit `maxImagesPerPage` (50) images.
+                    sendNext(nextPageTrigger.1, ()) // Will emit `maxImagesPerPage` (50) images, and reach the toal number (150).
+                    expect(completedCalled).toEventually(beTrue())
+                }
+                it("does not send completed otherwise.") {
+                    var completedCalled = false
+                    network.imageCountToEmit = Pixabay.maxImagesPerPage
+                    search.searchImages(nextPageTrigger: nextPageTrigger.0)
+                        .on(completed: { completedCalled = true })
+                        .start() // Will emit `maxImagesPerPage` (50) images.
+                    
+                    sendNext(nextPageTrigger.1, ()) // Will emit `maxImagesPerPage` (50) images, and still not reach the total number (150).
                     expect(completedCalled).toEventuallyNot(beTrue())
                 }
             }
