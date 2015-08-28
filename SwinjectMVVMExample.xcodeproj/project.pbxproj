@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		980C980E1B9040B500FC5F1E /* AppDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980C980D1B9040B500FC5F1E /* AppDelegateSpec.swift */; settings = {ASSET_TAGS = (); }; };
+		980C99031B909BDD00FC5F1E /* Alamofire.framework.dSYM in Copy dSYMs */ = {isa = PBXBuildFile; fileRef = 980C98FE1B909BDD00FC5F1E /* Alamofire.framework.dSYM */; };
+		980C99041B909BDD00FC5F1E /* Himotoki.framework.dSYM in Copy dSYMs */ = {isa = PBXBuildFile; fileRef = 980C98FF1B909BDD00FC5F1E /* Himotoki.framework.dSYM */; };
+		980C99051B909BDD00FC5F1E /* ReactiveCocoa.framework.dSYM in Copy dSYMs */ = {isa = PBXBuildFile; fileRef = 980C99001B909BDD00FC5F1E /* ReactiveCocoa.framework.dSYM */; };
+		980C99061B909BDD00FC5F1E /* Result.framework.dSYM in Copy dSYMs */ = {isa = PBXBuildFile; fileRef = 980C99011B909BDD00FC5F1E /* Result.framework.dSYM */; };
+		980C99071B909BDD00FC5F1E /* Swinject.framework.dSYM in Copy dSYMs */ = {isa = PBXBuildFile; fileRef = 980C99021B909BDD00FC5F1E /* Swinject.framework.dSYM */; };
 		982FA4801B88595C00BF5E63 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FA47F1B88595C00BF5E63 /* NetworkError.swift */; };
 		982FA4831B8867CB00BF5E63 /* NetworkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FA4811B88645D00BF5E63 /* NetworkSpec.swift */; };
 		9844A4BC1B8838C30069D5D5 /* ResponseEntitySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */; };
@@ -191,6 +196,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		980C98FD1B909B7B00FC5F1E /* Copy dSYMs */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				980C99031B909BDD00FC5F1E /* Alamofire.framework.dSYM in Copy dSYMs */,
+				980C99041B909BDD00FC5F1E /* Himotoki.framework.dSYM in Copy dSYMs */,
+				980C99051B909BDD00FC5F1E /* ReactiveCocoa.framework.dSYM in Copy dSYMs */,
+				980C99061B909BDD00FC5F1E /* Result.framework.dSYM in Copy dSYMs */,
+				980C99071B909BDD00FC5F1E /* Swinject.framework.dSYM in Copy dSYMs */,
+			);
+			name = "Copy dSYMs";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		98B48DC71B872A1300843AD7 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,6 +292,11 @@
 
 /* Begin PBXFileReference section */
 		980C980D1B9040B500FC5F1E /* AppDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateSpec.swift; sourceTree = "<group>"; };
+		980C98FE1B909BDD00FC5F1E /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		980C98FF1B909BDD00FC5F1E /* Himotoki.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Himotoki.framework.dSYM; path = Carthage/Build/iOS/Himotoki.framework.dSYM; sourceTree = "<group>"; };
+		980C99001B909BDD00FC5F1E /* ReactiveCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ReactiveCocoa.framework.dSYM; path = Carthage/Build/iOS/ReactiveCocoa.framework.dSYM; sourceTree = "<group>"; };
+		980C99011B909BDD00FC5F1E /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Result.framework.dSYM; path = Carthage/Build/iOS/Result.framework.dSYM; sourceTree = "<group>"; };
+		980C99021B909BDD00FC5F1E /* Swinject.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Swinject.framework.dSYM; path = Carthage/Build/iOS/Swinject.framework.dSYM; sourceTree = "<group>"; };
 		982FA47F1B88595C00BF5E63 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		982FA4811B88645D00BF5E63 /* NetworkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSpec.swift; sourceTree = "<group>"; };
 		9835D5271B8DEBA200BBA8A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -454,6 +479,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		980C99081B909C2F00FC5F1E /* dSYMs */ = {
+			isa = PBXGroup;
+			children = (
+				980C98FE1B909BDD00FC5F1E /* Alamofire.framework.dSYM */,
+				980C98FF1B909BDD00FC5F1E /* Himotoki.framework.dSYM */,
+				980C99001B909BDD00FC5F1E /* ReactiveCocoa.framework.dSYM */,
+				980C99011B909BDD00FC5F1E /* Result.framework.dSYM */,
+				980C99021B909BDD00FC5F1E /* Swinject.framework.dSYM */,
+			);
+			name = dSYMs;
+			sourceTree = "<group>";
+		};
 		9853A5291B87249E001CA6A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +514,7 @@
 				98E825311B86044A00E7BA79 /* SwinjectMVVMExample */,
 				98E825B91B86096A00E7BA79 /* Tests */,
 				9853A5291B87249E001CA6A4 /* Frameworks */,
+				980C99081B909C2F00FC5F1E /* dSYMs */,
 				98E825301B86044A00E7BA79 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -658,6 +696,7 @@
 				98E8252D1B86044A00E7BA79 /* Resources */,
 				98E825731B86091A00E7BA79 /* Embed Frameworks */,
 				98B48E181B872F4300843AD7 /* Run Script for Frameworks by Carthage */,
+				980C98FD1B909B7B00FC5F1E /* Copy dSYMs */,
 			);
 			buildRules = (
 			);
