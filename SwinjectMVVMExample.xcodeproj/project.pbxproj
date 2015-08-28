@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		980C980E1B9040B500FC5F1E /* AppDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980C980D1B9040B500FC5F1E /* AppDelegateSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		982FA4801B88595C00BF5E63 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FA47F1B88595C00BF5E63 /* NetworkError.swift */; };
 		982FA4831B8867CB00BF5E63 /* NetworkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FA4811B88645D00BF5E63 /* NetworkSpec.swift */; };
 		9844A4BC1B8838C30069D5D5 /* ResponseEntitySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */; };
@@ -102,7 +103,6 @@
 		98E825331B86044A00E7BA79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E825321B86044A00E7BA79 /* AppDelegate.swift */; };
 		98E8253A1B86044A00E7BA79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E825391B86044A00E7BA79 /* Assets.xcassets */; };
 		98E8253D1B86044A00E7BA79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98E8253B1B86044A00E7BA79 /* LaunchScreen.storyboard */; };
-		98E825481B86044A00E7BA79 /* SwinjectMVVMExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E825471B86044A00E7BA79 /* SwinjectMVVMExampleTests.swift */; };
 		98E8255A1B86091A00E7BA79 /* ExampleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 98E825591B86091A00E7BA79 /* ExampleModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98E825611B86091A00E7BA79 /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E825571B86091A00E7BA79 /* ExampleModel.framework */; };
 		98E8256C1B86091A00E7BA79 /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E825571B86091A00E7BA79 /* ExampleModel.framework */; };
@@ -271,6 +271,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		980C980D1B9040B500FC5F1E /* AppDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateSpec.swift; sourceTree = "<group>"; };
 		982FA47F1B88595C00BF5E63 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		982FA4811B88645D00BF5E63 /* NetworkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSpec.swift; sourceTree = "<group>"; };
 		9835D5271B8DEBA200BBA8A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -335,7 +336,6 @@
 		98E8253C1B86044A00E7BA79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98E8253E1B86044A00E7BA79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98E825431B86044A00E7BA79 /* SwinjectMVVMExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwinjectMVVMExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		98E825471B86044A00E7BA79 /* SwinjectMVVMExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectMVVMExampleTests.swift; sourceTree = "<group>"; };
 		98E825491B86044A00E7BA79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98E825571B86091A00E7BA79 /* ExampleModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExampleModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E825591B86091A00E7BA79 /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
@@ -510,7 +510,7 @@
 		98E825461B86044A00E7BA79 /* SwinjectMVVMExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				98E825471B86044A00E7BA79 /* SwinjectMVVMExampleTests.swift */,
+				980C980D1B9040B500FC5F1E /* AppDelegateSpec.swift */,
 				98E825491B86044A00E7BA79 /* Info.plist */,
 			);
 			path = SwinjectMVVMExampleTests;
@@ -1012,7 +1012,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98E825481B86044A00E7BA79 /* SwinjectMVVMExampleTests.swift in Sources */,
+				980C980E1B9040B500FC5F1E /* AppDelegateSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

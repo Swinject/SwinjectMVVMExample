@@ -16,6 +16,39 @@ import ExampleView
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var container: Container {
+        let container = Container()
+        
+        // Models
+        container.register(Networking.self) { _ in Network() }
+        container.register(ImageSearching.self) { r in ImageSearch(network: r.resolve(Networking.self)!) }
+        container.register(ExternalAppChanneling.self) { _ in ExternalAppChannel() }
+        
+        // View models
+        container.register(ImageSearchTableViewModeling.self) { r in
+            let viewModel = ImageSearchTableViewModel(imageSearch: r.resolve(ImageSearching.self)!, network: r.resolve(Networking.self)!)
+            viewModel.imageDetailViewModel = r.resolve(ImageDetailViewModelModifiable.self)!
+            return viewModel
+            }.inObjectScope(.Container)
+        container.register(ImageDetailViewModelModifiable.self) { _ in
+            ImageDetailViewModel(
+                network: container.resolve(Networking.self)!,
+                externalAppChannel: container.resolve(ExternalAppChanneling.self)!)
+            }.inObjectScope(.Container)
+        container.register(ImageDetailViewModeling.self) { r in
+            r.resolve(ImageDetailViewModelModifiable.self)!
+        }
+        
+        // Views
+        container.registerForStoryboard(ImageSearchTableViewController.self) { r, c in
+            c.viewModel = r.resolve(ImageSearchTableViewModeling.self)!
+        }
+        container.registerForStoryboard(ImageDetailViewController.self) { r, c in
+            c.viewModel = r.resolve(ImageDetailViewModeling.self)!
+        }
+        
+        return container
+    }
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -25,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         
         let bundle = NSBundle(forClass: ImageSearchTableViewController.self)
-        let container = createContainer()
         let storyboard = SwinjectStoryboard.create(name: "Main", bundle: bundle, container: container)
         window.rootViewController = storyboard.instantiateInitialViewController()
         
@@ -52,40 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-    private func createContainer() -> Container {
-        let container = Container()
-        
-        // Models
-        container.register(Networking.self) { _ in Network() }
-        container.register(ImageSearching.self) { r in ImageSearch(network: r.resolve(Networking.self)!) }
-        container.register(ExternalAppChanneling.self) { _ in ExternalAppChannel() }
-        
-        // View models
-        container.register(ImageSearchTableViewModeling.self) { r in
-            let viewModel = ImageSearchTableViewModel(imageSearch: r.resolve(ImageSearching.self)!, network: r.resolve(Networking.self)!)
-            viewModel.imageDetailViewModel = r.resolve(ImageDetailViewModelModifiable.self)!
-            return viewModel
-        }.inObjectScope(.Container)
-        container.register(ImageDetailViewModelModifiable.self) { _ in
-            ImageDetailViewModel(
-                network: container.resolve(Networking.self)!,
-                externalAppChannel: container.resolve(ExternalAppChanneling.self)!)
-        }.inObjectScope(.Container)
-        container.register(ImageDetailViewModeling.self) { r in
-            r.resolve(ImageDetailViewModelModifiable.self)!
-        }
-        
-        // Views
-        container.registerForStoryboard(ImageSearchTableViewController.self) { r, c in
-            c.viewModel = r.resolve(ImageSearchTableViewModeling.self)!
-        }
-        container.registerForStoryboard(ImageDetailViewController.self) { r, c in
-            c.viewModel = r.resolve(ImageDetailViewModeling.self)!
-        }
-        
-        return container
     }
 }
 
