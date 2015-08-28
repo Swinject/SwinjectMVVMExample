@@ -18,7 +18,6 @@
 		9844A4BC1B8838C30069D5D5 /* ResponseEntitySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */; };
 		9844A4BE1B884A0D0069D5D5 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BD1B884A0D0069D5D5 /* Networking.swift */; };
 		9844A4C01B884A630069D5D5 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BF1B884A630069D5D5 /* Network.swift */; };
-		985C39A11B873F4100874AE5 /* ExampleModel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 98E825571B86091A00E7BA79 /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		987CBD671B8DAF1B000C1B5E /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CBD651B8DAF1B000C1B5E /* LocalizedString.swift */; };
 		987CBD6B1B8DAF35000C1B5E /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CBD691B8DAF35000C1B5E /* LocalizedString.swift */; };
 		987CBD6F1B8DAF4C000C1B5E /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987CBD6D1B8DAF4C000C1B5E /* LocalizedString.swift */; };
@@ -263,7 +262,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				985C39A11B873F4100874AE5 /* ExampleModel.framework in Copy Frameworks */,
 				98B48DE11B872CDC00843AD7 /* Alamofire.framework in Copy Frameworks */,
 				98B48DE21B872CDC00843AD7 /* Himotoki.framework in Copy Frameworks */,
 				98B48DE31B872CDC00843AD7 /* ReactiveCocoa.framework in Copy Frameworks */,
