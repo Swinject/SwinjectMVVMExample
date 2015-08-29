@@ -29,9 +29,10 @@ This is an example project to demonstrate [dependency injection](https://en.wiki
 
 ## Blog Posts
 
-Blog posts to demonstrate step-by-step development of the project will be submitted to the following website soon.
+The following blog posts demonstrate step-by-step development of the project.
 
-[https://yoichitgy.github.io](https://yoichitgy.github.io)
+- [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 1: Introduction](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-1-introduction/)
+- [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 2: Project Setup](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-2-project-setup/)
 
 ## Icon Images
 
