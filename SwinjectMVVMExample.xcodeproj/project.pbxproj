@@ -13,6 +13,7 @@
 		980C99051B909BDD00FC5F1E /* ReactiveCocoa.framework.dSYM in Copy dSYMs */ = {isa = PBXBuildFile; fileRef = 980C99001B909BDD00FC5F1E /* ReactiveCocoa.framework.dSYM */; };
 		980C99061B909BDD00FC5F1E /* Result.framework.dSYM in Copy dSYMs */ = {isa = PBXBuildFile; fileRef = 980C99011B909BDD00FC5F1E /* Result.framework.dSYM */; };
 		980C99071B909BDD00FC5F1E /* Swinject.framework.dSYM in Copy dSYMs */ = {isa = PBXBuildFile; fileRef = 980C99021B909BDD00FC5F1E /* Swinject.framework.dSYM */; };
+		980D230B1B92F8C300AE6BF4 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980D230A1B92F8C300AE6BF4 /* Dummy.swift */; settings = {ASSET_TAGS = (); }; };
 		982FA4801B88595C00BF5E63 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FA47F1B88595C00BF5E63 /* NetworkError.swift */; };
 		982FA4831B8867CB00BF5E63 /* NetworkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FA4811B88645D00BF5E63 /* NetworkSpec.swift */; };
 		9844A4BC1B8838C30069D5D5 /* ResponseEntitySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */; };
@@ -286,6 +287,7 @@
 		980C99001B909BDD00FC5F1E /* ReactiveCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ReactiveCocoa.framework.dSYM; path = Carthage/Build/iOS/ReactiveCocoa.framework.dSYM; sourceTree = "<group>"; };
 		980C99011B909BDD00FC5F1E /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Result.framework.dSYM; path = Carthage/Build/iOS/Result.framework.dSYM; sourceTree = "<group>"; };
 		980C99021B909BDD00FC5F1E /* Swinject.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Swinject.framework.dSYM; path = Carthage/Build/iOS/Swinject.framework.dSYM; sourceTree = "<group>"; };
+		980D230A1B92F8C300AE6BF4 /* Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		982FA47F1B88595C00BF5E63 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		982FA4811B88645D00BF5E63 /* NetworkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSpec.swift; sourceTree = "<group>"; };
 		9835D5271B8DEBA200BBA8A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 		98E825661B86091A00E7BA79 /* ExampleModelTests */ = {
 			isa = PBXGroup;
 			children = (
+				980D230A1B92F8C300AE6BF4 /* Dummy.swift */,
 				988C5C9E1B881E4800BA741E /* ImageEntitySpec.swift */,
 				9844A4BB1B8838C30069D5D5 /* ResponseEntitySpec.swift */,
 				982FA4811B88645D00BF5E63 /* NetworkSpec.swift */,
@@ -1068,6 +1071,7 @@
 				982FA4831B8867CB00BF5E63 /* NetworkSpec.swift in Sources */,
 				988D08E01B8CAD4300AC9FD9 /* PixabaySpec.swift in Sources */,
 				988C5C9F1B881E4800BA741E /* ImageEntitySpec.swift in Sources */,
+				980D230B1B92F8C300AE6BF4 /* Dummy.swift in Sources */,
 				9844A4BC1B8838C30069D5D5 /* ResponseEntitySpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
