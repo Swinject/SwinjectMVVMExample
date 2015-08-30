@@ -10,7 +10,7 @@ import ReactiveCocoa
 import Alamofire
 
 public final class Network: Networking {
-    private let queue = dispatch_queue_create("SwinjectMMVMExample.ExampleModel.Network.SerialQueue", DISPATCH_QUEUE_SERIAL)
+    private let queue = dispatch_queue_create("SwinjectMMVMExample.ExampleModel.Network.Queue", DISPATCH_QUEUE_SERIAL)
 
     public init() { }
     
