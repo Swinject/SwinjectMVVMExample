@@ -1,5 +1,5 @@
 github "ReactiveCocoa/ReactiveCocoa" "be3d9f5a2ba0fd902c13373e320a4b86f214c1d3"
-github "ikesyo/Himotoki" "9f6717c4cca558377fe4d1223d443883be401530"
+github "ikesyo/Himotoki" "a40a9df31ffa2e81daf872e9637170e3708e5478"
 github "Alamofire/Alamofire" ~> 2.0.0
 github "Swinject/Swinject" ~> 0.2.1
 
