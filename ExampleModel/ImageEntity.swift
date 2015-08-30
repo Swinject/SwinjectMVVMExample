@@ -8,7 +8,7 @@
 
 import Himotoki
 
-public struct ImageEntity: Decodable {
+public struct ImageEntity {
     public let id: UInt64
     
     public let pageURL: String
@@ -28,7 +28,10 @@ public struct ImageEntity: Decodable {
     public let likeCount: Int64
     public let tags: [String]
     public let username: String
+}
 
+// MARK: Decodable
+extension ImageEntity: Decodable {
     public static func decode(e: Extractor) -> ImageEntity? {
         let splitCSV: String -> [String] = { csv in
             csv.characters
