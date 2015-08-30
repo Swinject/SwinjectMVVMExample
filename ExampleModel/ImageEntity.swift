@@ -39,7 +39,7 @@ extension ImageEntity: Decodable {
                 .map { String($0).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) }
         }
         
-        return build(
+        return build(ImageEntity.init)(
             e <| "id",
             
             e <| "pageURL",
@@ -59,6 +59,6 @@ extension ImageEntity: Decodable {
             e <| "likes",
             (e <| "tags").map(splitCSV) ?? [],
             e <| "user"
-            ).map(ImageEntity.init)
+        )
     }
 }
