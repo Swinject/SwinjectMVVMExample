@@ -32,6 +32,9 @@ The following blog posts demonstrate step-by-step development of the project.
 
 - [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 1: Introduction](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-1-introduction/)
 - [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 2: Project Setup](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-2-project-setup/)
+- [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 3: Designing the Model](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-3-designing-the-model/)
+- [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 4: Implementing the View and ViewModel
+](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-4-implementing-the-view-and-viewmodel/)
 
 ## Icon Images
 
