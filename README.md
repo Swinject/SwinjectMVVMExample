@@ -13,8 +13,7 @@ This is an example project to demonstrate [dependency injection](https://en.wiki
 ## Setup
 
 1. Download the source code or clone the repository.
-2. Run `carthage bootstrap --no-build`.
-2. Run `carthage build`.
+2. Run `carthage bootstrap --no-use-binaries`.
 3. Get a free API username and key from [Pixabay](https://pixabay.com/). They are displayed in [the API documentation page](https://pixabay.com/api/docs/) after you log in there.
 4. Create a text file named `Pixabay.Config.swift` with the following content in `ExampleModel` folder in the project. The strings `"YOUR_USERNAME"` and `"YOUR_API_KEY"` should be replaced with your own username and key.
 
@@ -33,6 +32,9 @@ The following blog posts demonstrate step-by-step development of the project.
 
 - [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 1: Introduction](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-1-introduction/)
 - [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 2: Project Setup](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-2-project-setup/)
+- [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 3: Designing the Model](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-3-designing-the-model/)
+- [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 4: Implementing the View and ViewModel
+](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-4-implementing-the-view-and-viewmodel/)
 
 ## Icon Images
 
