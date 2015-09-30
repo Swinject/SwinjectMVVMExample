@@ -35,6 +35,11 @@ The following blog posts demonstrate step-by-step development of the project.
 - [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 3: Designing the Model](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-3-designing-the-model/)
 - [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 4: Implementing the View and ViewModel
 ](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-4-implementing-the-view-and-viewmodel/)
+- [Dependency Injection in MVVM Architecture with ReactiveCocoa Part 5: Asynchronous Image Load](https://yoichitgy.github.io/post/dependency-injection-in-mvvm-architecture-with-reactivecocoa-part-5-asynchronous-image-load/)
+
+The following repository has a simplified version of SwinjectMVVMExample to exactly follow the blog posts.
+
+[yoichitgy/SwinjectMVVMExample_ForBlog](https://github.com/yoichitgy/SwinjectMVVMExample_ForBlog)
 
 ## Icon Images
 
