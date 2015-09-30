@@ -6,8 +6,8 @@ This is an example project to demonstrate [dependency injection](https://en.wiki
 
 ## Requirements
 
-- Xcode 7 beta 6
-- [Carthage](https://github.com/Carthage/Carthage) 0.8 or later
+- Xcode 7
+- [Carthage](https://github.com/Carthage/Carthage) 0.9.2 or later
 - [Pixabay](https://pixabay.com/api/docs/) API username and key
 
 ## Setup

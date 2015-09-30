@@ -15,8 +15,8 @@ public struct ResponseEntity {
 
 // MARK: Decodable
 extension ResponseEntity: Decodable {
-    public static func decode(e: Extractor) -> ResponseEntity? {
-        return build(ResponseEntity.init)(
+    public static func decode(e: Extractor) throws -> ResponseEntity {
+        return try build(ResponseEntity.init)(
             e <| "totalHits",
             e <|| "hits"
         )
