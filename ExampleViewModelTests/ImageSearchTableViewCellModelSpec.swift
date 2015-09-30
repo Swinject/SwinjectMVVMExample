@@ -79,12 +79,12 @@ class ImageSearchTableViewCellModelSpec: QuickSpec {
             context("with an image already downloaded") {
                 it("immediately returns the image omitting the first nil.") {
                     var image: UIImage? = nil
-                    viewModel.getPreviewImage().start(completed: {
+                    viewModel.getPreviewImage().startWithCompleted() {
                         viewModel.getPreviewImage()
                             .take(1)
                             .on(next: { image = $0 })
                             .start()
-                    })
+                    }
                     
                     expect(image).toEventuallyNot(beNil())
                 }

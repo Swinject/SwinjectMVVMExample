@@ -32,14 +32,14 @@ public struct ImageEntity {
 
 // MARK: Decodable
 extension ImageEntity: Decodable {
-    public static func decode(e: Extractor) -> ImageEntity? {
+    public static func decode(e: Extractor) throws -> ImageEntity {
         let splitCSV: String -> [String] = { csv in
             csv.characters
                 .split { $0 == "," }
                 .map { String($0).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) }
         }
         
-        return build(ImageEntity.init)(
+        return try build(ImageEntity.init)(
             e <| "id",
             
             e <| "pageURL",
@@ -57,7 +57,7 @@ extension ImageEntity: Decodable {
             e <| "views",
             e <| "downloads",
             e <| "likes",
-            (e <| "tags").map(splitCSV) ?? [],
+            (try? e <| "tags").map(splitCSV) ?? [],
             e <| "user"
         )
     }

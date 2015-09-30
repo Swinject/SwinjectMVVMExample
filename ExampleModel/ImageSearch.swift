@@ -28,7 +28,7 @@ public final class ImageSearch: ImageSearching {
                     .start({ event in
                         switch event {
                         case .Next(let json):
-                            if let response = decode(json) as ResponseEntity? {
+                            if let response = (try? decode(json)) as ResponseEntity? {
                                 sendNext(observer, response)
                                 loadedImageCount += response.images.count
                                 if response.totalCount <= loadedImageCount || response.images.count < Pixabay.maxImagesPerPage {

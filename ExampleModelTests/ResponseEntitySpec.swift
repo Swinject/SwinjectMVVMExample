@@ -19,7 +19,7 @@ class ResponseEntitySpec: QuickSpec {
         ]
         
         it("parses JSON data to create a new instance.") {
-            let response: ResponseEntity? = decode(json)
+            let response: ResponseEntity? = try? decode(json)
             
             expect(response).notTo(beNil())
             expect(response?.totalCount) == 123
