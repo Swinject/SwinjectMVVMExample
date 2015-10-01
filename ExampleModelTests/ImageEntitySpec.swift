@@ -40,7 +40,7 @@ class ImageEntitySpec: QuickSpec {
             
             expect(image?.tags.isEmpty).to(beTrue())
         }
-        it("gets nil if any of JSON elements except tags is missing.") {
+        it("throws an error if any of JSON elements except tags is missing.") {
             for key in imageJSON.keys where key != "tags" {
                 var missingJSON = imageJSON
                 missingJSON[key] = nil
