@@ -39,26 +39,26 @@ extension ImageEntity: Decodable {
                 .map { String($0).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) }
         }
         
-        return try build(ImageEntity.init)(
-            e <| "id",
+        return try ImageEntity(
+            id: e <| "id",
             
-            e <| "pageURL",
-            e <| "imageWidth",
-            e <| "imageHeight",
+            pageURL: e <| "pageURL",
+            pageImageWidth: e <| "imageWidth",
+            pageImageHeight: e <| "imageHeight",
             
-            e <| "previewURL",
-            e <| "previewWidth",
-            e <| "previewHeight",
+            previewURL: e <| "previewURL",
+            previewWidth: e <| "previewWidth",
+            previewHeight: e <| "previewHeight",
             
-            e <| "webformatURL",
-            e <| "webformatWidth",
-            e <| "webformatHeight",
+            imageURL: e <| "webformatURL",
+            imageWidth: e <| "webformatWidth",
+            imageHeight: e <| "webformatHeight",
             
-            e <| "views",
-            e <| "downloads",
-            e <| "likes",
-            (try? e <| "tags").map(splitCSV) ?? [],
-            e <| "user"
+            viewCount: e <| "views",
+            downloadCount: e <| "downloads",
+            likeCount: e <| "likes",
+            tags: (try? e <| "tags").map(splitCSV) ?? [],
+            username: e <| "user"
         )
     }
 }
