@@ -16,9 +16,7 @@ import ExampleView
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var container: Container {
-        let container = Container()
-        
+    let container = Container() { container in
         // Models
         container.register(Networking.self) { _ in Network() }
         container.register(ImageSearching.self) { r in ImageSearch(network: r.resolve(Networking.self)!) }
@@ -46,8 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         container.registerForStoryboard(ImageDetailViewController.self) { r, c in
             c.viewModel = r.resolve(ImageDetailViewModeling.self)!
         }
-        
-        return container
     }
 
 
