@@ -17,8 +17,8 @@ class ImageSearchTableViewModelSpec: QuickSpec {
     class StubImageSearch: ImageSearching {
         func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
             return SignalProducer { observer, disposable in
-                sendNext(observer, dummyResponse)
-                sendCompleted(observer)
+                observer.sendNext(dummyResponse)
+                observer.sendCompleted()
             }
             .observeOn(QueueScheduler())
         }
@@ -27,7 +27,7 @@ class ImageSearchTableViewModelSpec: QuickSpec {
     class NotCompletingStubImageSearch: ImageSearching {
         func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
             return SignalProducer { observer, disposable in
-                sendNext(observer, dummyResponse)
+                observer.sendNext(dummyResponse)
             }
             .observeOn(QueueScheduler())
         }
@@ -36,7 +36,7 @@ class ImageSearchTableViewModelSpec: QuickSpec {
     class ErrorStubImageSearch: ImageSearching {
         func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
             return SignalProducer { observer, disposable in
-                sendError(observer, NetworkError.Unknown)
+                observer.sendFailed(NetworkError.Unknown)
             }
             .observeOn(QueueScheduler())
         }
@@ -60,20 +60,20 @@ class ImageSearchTableViewModelSpec: QuickSpec {
             trigger.on(next: { _ in self.nextPageTriggered = true }).start()
             
             return SignalProducer { observer, disposable in
-                sendNext(observer, dummyResponse)
+                observer.sendNext(dummyResponse)
             }
         }
     }
     
     class MockImageDetailViewModel: ImageDetailViewModelModifiable {
-        let id = PropertyOf<UInt64?>(initialValue: 0, producer: SignalProducer.empty)
-        let pageImageSizeText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let tagText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let usernameText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let viewCountText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let downloadCountText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let likeCountText = PropertyOf<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let image = PropertyOf<UIImage?>(initialValue: nil, producer: SignalProducer.empty)
+        let id = AnyProperty<UInt64?>(initialValue: 0, producer: SignalProducer.empty)
+        let pageImageSizeText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
+        let tagText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
+        let usernameText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
+        let viewCountText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
+        let downloadCountText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
+        let likeCountText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
+        let image = AnyProperty<UIImage?>(initialValue: nil, producer: SignalProducer.empty)
         
         var imageEntities: [ImageEntity]?
         var index: Int?

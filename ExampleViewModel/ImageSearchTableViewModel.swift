@@ -10,9 +10,9 @@ import ReactiveCocoa
 import ExampleModel
 
 public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
-    public var cellModels: PropertyOf<[ImageSearchTableViewCellModeling]> { return PropertyOf(_cellModels) }
-    public var searching: PropertyOf<Bool> { return PropertyOf(_searching) }
-    public var errorMessage: PropertyOf<String?> { return PropertyOf(_errorMessage) }
+    public var cellModels: AnyProperty<[ImageSearchTableViewCellModeling]> { return AnyProperty(_cellModels) }
+    public var searching: AnyProperty<Bool> { return AnyProperty(_searching) }
+    public var errorMessage: AnyProperty<String?> { return AnyProperty(_errorMessage) }
     
     private let _cellModels = MutableProperty<[ImageSearchTableViewCellModeling]>([])
     private let _searching = MutableProperty<Bool>(false)
@@ -26,19 +26,19 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
             return SignalProducer { observer, disposable in
                 if let (_, observer) = self.nextPageTrigger.value {
                     self._searching.value = true
-                    sendNext(observer, ())
+                    observer.sendNext(())
                 }
             }
         }
     }
-    private var nextPageLoadable: PropertyOf<Bool> {
-        return PropertyOf(
+    private var nextPageLoadable: AnyProperty<Bool> {
+        return AnyProperty(
             initialValue: false,
             producer: searching.producer.combineLatestWith(nextPageTrigger.producer).map { searching, trigger in
                 !searching && trigger != nil
             })
     }
-    private let nextPageTrigger = MutableProperty<(SignalProducer<(), NoError>, Event<(), NoError> -> ())?>(nil) // SignalProducer buffer
+    private let nextPageTrigger = MutableProperty<(SignalProducer<(), NoError>, Observer<(), NoError>)?>(nil) // SignalProducer buffer
 
     private let imageSearch: ImageSearching
     private let network: Networking
@@ -69,12 +69,12 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
                 self._cellModels.value += cellModels
                 self._searching.value = false
             })
-            .on(error: { error in
+            .on(failed: { error in
                 self._errorMessage.value = error.description
             })
             .on(event: { event in
                 switch event {
-                case .Completed, .Error, .Interrupted:
+                case .Completed, .Failed, .Interrupted:
                     self.nextPageTrigger.value = nil
                     self._searching.value = false
                 default:

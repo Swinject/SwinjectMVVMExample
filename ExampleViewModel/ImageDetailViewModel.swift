@@ -10,14 +10,14 @@ import ReactiveCocoa
 import ExampleModel
 
 public final class ImageDetailViewModel: ImageDetailViewModeling {
-    public var id: PropertyOf<UInt64?> { return PropertyOf(_id) }
-    public var pageImageSizeText: PropertyOf<String?> { return PropertyOf(_pageImageSizeText) }
-    public var tagText: PropertyOf<String?> { return PropertyOf(_tagText) }
-    public var usernameText: PropertyOf<String?> { return PropertyOf(_usernameText) }
-    public var viewCountText: PropertyOf<String?> { return PropertyOf(_viewCountText) }
-    public var downloadCountText: PropertyOf<String?> { return PropertyOf(_downloadCountText) }
-    public var likeCountText: PropertyOf<String?> { return PropertyOf(_likeCountText) }
-    public var image: PropertyOf<UIImage?> { return PropertyOf(_image) }
+    public var id: AnyProperty<UInt64?> { return AnyProperty(_id) }
+    public var pageImageSizeText: AnyProperty<String?> { return AnyProperty(_pageImageSizeText) }
+    public var tagText: AnyProperty<String?> { return AnyProperty(_tagText) }
+    public var usernameText: AnyProperty<String?> { return AnyProperty(_usernameText) }
+    public var viewCountText: AnyProperty<String?> { return AnyProperty(_viewCountText) }
+    public var downloadCountText: AnyProperty<String?> { return AnyProperty(_downloadCountText) }
+    public var likeCountText: AnyProperty<String?> { return AnyProperty(_likeCountText) }
+    public var image: AnyProperty<UIImage?> { return AnyProperty(_image) }
     
     private let _id = MutableProperty<UInt64?>(nil)
     private let _pageImageSizeText = MutableProperty<String?>(nil)
@@ -54,7 +54,7 @@ public final class ImageDetailViewModel: ImageDetailViewModeling {
 
 extension ImageDetailViewModel: ImageDetailViewModelModifiable {
     public func update(imageEntities: [ImageEntity], atIndex index: Int) {
-        sendNext(stopSignalObserver, ())
+        stopSignalObserver.sendNext(())
         (stopSignalProducer, stopSignalObserver) = SignalProducer<(), NoError>.buffer()
         
         self.imageEntities = imageEntities

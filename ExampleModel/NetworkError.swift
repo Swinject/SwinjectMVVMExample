@@ -27,10 +27,9 @@ public enum NetworkError: ErrorType, CustomStringConvertible {
     /// Incorrect data returned from the server.
     case IncorrectDataReturned
 
-    internal init(error: ErrorType) {
-        let nsError = error as NSError
-        if nsError.domain == NSURLErrorDomain {
-            switch nsError.code {
+    internal init(error: NSError) {
+        if error.domain == NSURLErrorDomain {
+            switch error.code {
             case NSURLErrorUnknown:
                 self = .Unknown
             case NSURLErrorCancelled:

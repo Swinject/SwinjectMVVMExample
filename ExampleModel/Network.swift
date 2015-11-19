@@ -17,13 +17,13 @@ public final class Network: Networking {
     public func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
         return SignalProducer { observer, disposable in
             Alamofire.request(.GET, url, parameters: parameters)
-                .response(queue: self.queue, responseSerializer: Alamofire.Request.JSONResponseSerializer()) { _, _, result in
-                    switch result {
+                .response(queue: self.queue, responseSerializer: Alamofire.Request.JSONResponseSerializer()) { response in
+                    switch response.result {
                     case .Success(let value):
-                        sendNext(observer, value)
-                        sendCompleted(observer)
-                    case .Failure(_, let error):
-                        sendError(observer, NetworkError(error: error))
+                        observer.sendNext(value)
+                        observer.sendCompleted()
+                    case .Failure(let error):
+                        observer.sendFailed(NetworkError(error: error))
                     }
                 }
         }
@@ -32,17 +32,17 @@ public final class Network: Networking {
     public func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
         return SignalProducer { observer, disposable in
             Alamofire.request(.GET, url)
-                .response(queue: self.queue, responseSerializer: Alamofire.Request.dataResponseSerializer()) { _, _, result in
-                    switch result {
+                .response(queue: self.queue, responseSerializer: Alamofire.Request.dataResponseSerializer()) { response in
+                    switch response.result {
                     case .Success(let data):
                         guard let image = UIImage(data: data) else {
-                            sendError(observer, NetworkError.IncorrectDataReturned)
+                            observer.sendFailed(NetworkError.IncorrectDataReturned)
                             return
                         }
-                        sendNext(observer, image)
-                        sendCompleted(observer)
-                    case .Failure(_, let error):
-                        sendError(observer, NetworkError(error: error))
+                        observer.sendNext(image)
+                        observer.sendCompleted()
+                    case .Failure(let error):
+                        observer.sendFailed(NetworkError(error: error))
                     }
             }
         }

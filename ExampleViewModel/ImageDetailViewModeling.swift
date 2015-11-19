@@ -10,14 +10,14 @@ import ReactiveCocoa
 import ExampleModel
 
 public protocol ImageDetailViewModeling {
-    var id: PropertyOf<UInt64?> { get }
-    var pageImageSizeText: PropertyOf<String?> { get }
-    var tagText: PropertyOf<String?> { get }
-    var usernameText: PropertyOf<String?> { get }
-    var viewCountText: PropertyOf<String?> { get }
-    var downloadCountText: PropertyOf<String?> { get }
-    var likeCountText: PropertyOf<String?> { get }
-    var image: PropertyOf<UIImage?> { get }
+    var id: AnyProperty<UInt64?> { get }
+    var pageImageSizeText: AnyProperty<String?> { get }
+    var tagText: AnyProperty<String?> { get }
+    var usernameText: AnyProperty<String?> { get }
+    var viewCountText: AnyProperty<String?> { get }
+    var downloadCountText: AnyProperty<String?> { get }
+    var likeCountText: AnyProperty<String?> { get }
+    var image: AnyProperty<UIImage?> { get }
     
     func openImagePage()
 }
