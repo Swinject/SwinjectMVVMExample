@@ -20,10 +20,10 @@ public final class Network: Networking {
                 .response(queue: self.queue, responseSerializer: Alamofire.Request.JSONResponseSerializer()) { _, _, result in
                     switch result {
                     case .Success(let value):
-                        sendNext(observer, value)
-                        sendCompleted(observer)
+                        observer.sendNext(value)
+                        observer.sendCompleted()
                     case .Failure(_, let error):
-                        sendError(observer, NetworkError(error: error))
+                        observer.sendFailed(NetworkError(error: error))
                     }
                 }
         }
@@ -36,13 +36,13 @@ public final class Network: Networking {
                     switch result {
                     case .Success(let data):
                         guard let image = UIImage(data: data) else {
-                            sendError(observer, NetworkError.IncorrectDataReturned)
+                            observer.sendFailed(NetworkError.IncorrectDataReturned)
                             return
                         }
-                        sendNext(observer, image)
-                        sendCompleted(observer)
+                        observer.sendNext(image)
+                        observer.sendCompleted()
                     case .Failure(_, let error):
-                        sendError(observer, NetworkError(error: error))
+                        observer.sendFailed(NetworkError(error: error))
                     }
             }
         }

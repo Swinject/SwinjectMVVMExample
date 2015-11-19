@@ -25,8 +25,8 @@ class ImageSearchSpec: QuickSpec {
             ]
             
             return SignalProducer { observer, disposable in
-                sendNext(observer, json)
-                sendCompleted(observer)
+                observer.sendNext(json)
+                observer.sendCompleted()
             }
             .observeOn(QueueScheduler())
         }
@@ -41,8 +41,8 @@ class ImageSearchSpec: QuickSpec {
             let json = [String: AnyObject]()
             
             return SignalProducer { observer, disposable in
-                sendNext(observer, json)
-                sendCompleted(observer)
+                observer.sendNext(json)
+                observer.sendCompleted()
             }
             .observeOn(QueueScheduler())
         }
@@ -55,7 +55,7 @@ class ImageSearchSpec: QuickSpec {
     class ErrorStubNetwork: Networking {
         func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
             return SignalProducer { observer, disposable in
-                sendError(observer, .NotConnectedToInternet)
+                observer.sendFailed(.NotConnectedToInternet)
             }
             .observeOn(QueueScheduler())
         }
@@ -80,8 +80,8 @@ class ImageSearchSpec: QuickSpec {
             ]
             
             return SignalProducer { observer, disposable in
-                sendNext(observer, json)
-                sendCompleted(observer)
+                observer.sendNext(json)
+                observer.sendCompleted()
             }.observeOn(QueueScheduler())
         }
         
@@ -125,7 +125,7 @@ class ImageSearchSpec: QuickSpec {
                 var error: NetworkError? = nil
                 let search = ImageSearch(network: BadStubNetwork())
                 search.searchImages(nextPageTrigger: SignalProducer.empty)
-                    .on(error: { error = $0 })
+                    .on(failed: { error = $0 })
                     .start()
                 
                 expect(error).toEventually(equal(NetworkError.IncorrectDataReturned))
@@ -134,7 +134,7 @@ class ImageSearchSpec: QuickSpec {
                 var error: NetworkError? = nil
                 let search = ImageSearch(network: ErrorStubNetwork())
                 search.searchImages(nextPageTrigger: SignalProducer.empty)
-                    .on(error: { error = $0 })
+                    .on(failed: { error = $0 })
                     .start()
                 
                 expect(error).toEventually(equal(NetworkError.NotConnectedToInternet))
@@ -162,7 +162,7 @@ class ImageSearchSpec: QuickSpec {
             describe("completed event") {
                 var network: CountConfigurableStubNetwork!
                 var search: ImageSearch!
-                var nextPageTrigger: (SignalProducer<(), NoError>, Event<(), NoError> -> ())! // SignalProducer buffer
+                var nextPageTrigger: (SignalProducer<(), NoError>, Observer<(), NoError>)! // SignalProducer buffer
                 beforeEach {
                     network = CountConfigurableStubNetwork()
                     search = ImageSearch(network: network)
@@ -176,9 +176,9 @@ class ImageSearchSpec: QuickSpec {
                         .on(completed: { completedCalled = true })
                         .start()
                     
-                    sendNext(nextPageTrigger.1, ()) // Emits `maxImagesPerPage` (50) images, which mean more images possibly exit.
+                    nextPageTrigger.1.sendNext(()) // Emits `maxImagesPerPage` (50) images, which mean more images possibly exit.
                     network.imageCountToEmit = Pixabay.maxImagesPerPage - 1
-                    sendNext(nextPageTrigger.1, ()) // Emits only 49, which mean no more images exist.
+                    nextPageTrigger.1.sendNext(()) // Emits only 49, which mean no more images exist.
                     expect(completedCalled).toEventually(beTrue(), timeout: 2)
                 }
                 it("sends completed when total loaded images are equal to the total number of images specified by the response.") {
@@ -188,8 +188,8 @@ class ImageSearchSpec: QuickSpec {
                         .on(completed: { completedCalled = true })
                         .start() // Will emit `maxImagesPerPage` (50) images.
                     
-                    sendNext(nextPageTrigger.1, ()) // Will emit `maxImagesPerPage` (50) images.
-                    sendNext(nextPageTrigger.1, ()) // Will emit `maxImagesPerPage` (50) images, and reach the toal number (150).
+                    nextPageTrigger.1.sendNext(()) // Will emit `maxImagesPerPage` (50) images.
+                    nextPageTrigger.1.sendNext(()) // Will emit `maxImagesPerPage` (50) images, and reach the toal number (150).
                     expect(completedCalled).toEventually(beTrue())
                 }
                 it("does not send completed otherwise.") {
@@ -199,7 +199,7 @@ class ImageSearchSpec: QuickSpec {
                         .on(completed: { completedCalled = true })
                         .start() // Will emit `maxImagesPerPage` (50) images.
                     
-                    sendNext(nextPageTrigger.1, ()) // Will emit `maxImagesPerPage` (50) images, and still not reach the total number (150).
+                    nextPageTrigger.1.sendNext(()) // Will emit `maxImagesPerPage` (50) images, and still not reach the total number (150).
                     expect(completedCalled).toEventuallyNot(beTrue())
                 }
             }

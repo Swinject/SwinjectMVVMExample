@@ -29,21 +29,21 @@ public final class ImageSearch: ImageSearching {
                         switch event {
                         case .Next(let json):
                             if let response = (try? decode(json)) as ResponseEntity? {
-                                sendNext(observer, response)
+                                observer.sendNext(response)
                                 loadedImageCount += response.images.count
                                 if response.totalCount <= loadedImageCount || response.images.count < Pixabay.maxImagesPerPage {
-                                    sendCompleted(observer)
+                                    observer.sendCompleted()
                                 }
                             }
                             else {
-                                sendError(observer, .IncorrectDataReturned)
+                                observer.sendFailed(.IncorrectDataReturned)
                             }
-                        case .Error(let error):
-                            sendError(observer, error)
+                        case .Failed(let error):
+                            observer.sendFailed(error)
                         case .Completed:
                             break
                         case .Interrupted:
-                            sendInterrupted(observer)
+                            observer.sendInterrupted()
                         }
                     })
                 parameters = Pixabay.incrementPage(parameters)

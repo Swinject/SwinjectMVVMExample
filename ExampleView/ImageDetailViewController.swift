@@ -54,7 +54,7 @@ public final class ImageDetailViewController: UIViewController {
         let cancelText = LocalizedString("ImageDetailViewController_ActionSheetCancel", comment: "Action sheet button text.")
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         alertController.addAction(UIAlertAction(title: actionText, style: .Default) { _ in
-            viewModel?.openImagePage()
+            self.viewModel?.openImagePage()
         })
         alertController.addAction(UIAlertAction(title: cancelText, style: .Cancel, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)

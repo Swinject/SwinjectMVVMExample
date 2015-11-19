@@ -34,7 +34,7 @@ class NetworkSpec: QuickSpec {
             it("eventually gets an error if the network has a problem.") {
                 var error: NetworkError? = nil
                 network.requestJSON("https://not.existing.server.comm/get", parameters: ["a": "b", "x": "y"])
-                    .on(error: { error = $0 })
+                    .on(failed: { error = $0 })
                     .start()
                 
                 expect(error).toEventually(equal(NetworkError.NotReachedServer), timeout: 5)
@@ -52,7 +52,7 @@ class NetworkSpec: QuickSpec {
             it("eventually gets an error if incorrect data for an image is returned.") {
                 var error: NetworkError?
                 network.requestImage("https://httpbin.org/get")
-                    .on(error: { error = $0 })
+                    .on(failed: { error = $0 })
                     .start()
                 
                 expect(error).toEventually(equal(NetworkError.IncorrectDataReturned), timeout: 5)
@@ -60,7 +60,7 @@ class NetworkSpec: QuickSpec {
             it("eventually gets an error if the network has a problem.") {
                 var error: NetworkError? = nil
                 network.requestImage("https://not.existing.server.comm/image/jpeg")
-                    .on(error: { error = $0 })
+                    .on(failed: { error = $0 })
                     .start()
                 
                 expect(error).toEventually(equal(NetworkError.NotReachedServer), timeout: 5)
