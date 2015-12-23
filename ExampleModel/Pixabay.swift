@@ -12,7 +12,6 @@ internal struct Pixabay {
     
     internal static var requestParameters: [String: AnyObject] {
         return [
-            "username": Config.apiUsername,
             "key": Config.apiKey,
             "image_type": "photo",
             "safesearch": true,
