@@ -8,20 +8,19 @@ This is an example project to demonstrate [dependency injection](https://en.wiki
 
 - Xcode 7.1
 - [Carthage](https://github.com/Carthage/Carthage) 0.10.0 or later
-- [Pixabay](https://pixabay.com/api/docs/) API username and key
+- [Pixabay](https://pixabay.com/api/docs/) API key
 
 ## Setup
 
 1. Download the source code or clone the repository.
 2. Run `carthage bootstrap --no-use-binaries --platform iOS`.
-3. Get a free API username and key from [Pixabay](https://pixabay.com/). They are displayed in [the API documentation page](https://pixabay.com/api/docs/) after you log in there.
-4. Create a text file named `Pixabay.Config.swift` with the following content in `ExampleModel` folder in the project. The strings `"YOUR_USERNAME"` and `"YOUR_API_KEY"` should be replaced with your own username and key.
+3. Get a free API key from [Pixabay](https://pixabay.com/). It is displayed in [the API documentation page](https://pixabay.com/api/docs/) after you log in there.
+4. Create a text file named `Pixabay.Config.swift` with the following content in `ExampleModel` folder in the project. The string `"YOUR_API_KEY"` should be replaced with your own key.
 
 **Pixabay.Config.swift**
 
     extension Pixabay {
         internal struct Config {
-            internal static let apiUsername = "YOUR_USERNAME"
             internal static let apiKey = "YOUR_API_KEY"
         }
     }
