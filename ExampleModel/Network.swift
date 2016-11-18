@@ -14,7 +14,7 @@ public final class Network: Networking {
 
     public init() { }
     
-    public func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
+    public func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
         return SignalProducer { observer, disposable in
             Alamofire.request(url, method: .get, parameters: parameters)
                 .response(queue: self.queue, responseSerializer: Alamofire.DataRequest.jsonResponseSerializer()) { response in
@@ -29,7 +29,7 @@ public final class Network: Networking {
         }
     }
     
-    public func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+    public func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
         return SignalProducer { observer, disposable in
             Alamofire.request(url, method: .get)
                 .response(queue: self.queue, responseSerializer: Alamofire.DataRequest.dataResponseSerializer()) { response in

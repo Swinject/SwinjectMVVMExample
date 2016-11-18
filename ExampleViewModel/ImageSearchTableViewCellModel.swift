@@ -37,7 +37,7 @@ public final class ImageSearchTableViewCellModel: NSObject, ImageSearchTableView
             return SignalProducer(value: previewImage).observe(on: UIScheduler())
         }
         else {
-            let imageProducer = network.requestImage(url: previewURL)
+            let imageProducer = network.requestImage(previewURL)
                 .take(until: self.reactive.lifetime.ended)
                 .on(value: { self.previewImage = $0 })
                 .map { $0 as UIImage? }

@@ -44,7 +44,7 @@ public final class ImageDetailViewModel: ImageDetailViewModeling {
     
     public func openImagePage() {
         if let currentImageEntity = currentImageEntity {
-            externalAppChannel.openURL(url: currentImageEntity.pageURL)
+            externalAppChannel.openURL(currentImageEntity.pageURL)
         }
     }
     
@@ -72,8 +72,8 @@ extension ImageDetailViewModel: ImageDetailViewModelModifiable {
         
         _image.value = nil
         if let imageEntity = imageEntity {
-            _image <~ network.requestImage(url: imageEntity.imageURL)
-                .take(until: stop.producer)
+            _image <~ network.requestImage(imageEntity.imageURL)
+                .take(until: stop.producer.skip(first: 1))
                 .map { $0 as UIImage? }
                 .flatMapError { _ in SignalProducer<UIImage?, NoError>(value: nil) }
                 .observe(on: UIScheduler())

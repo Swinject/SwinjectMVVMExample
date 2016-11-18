@@ -58,7 +58,7 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
         
         _searching.value = true
         nextPageTrigger.value = MutableProperty()
-        let trigger = nextPageTrigger.value!.producer
+        let trigger = nextPageTrigger.value!.producer.skip(first: 1)
 
         imageSearch.searchImages(nextPageTrigger: trigger)
             .map { response in

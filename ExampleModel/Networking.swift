@@ -10,8 +10,8 @@ import ReactiveSwift
 
 public protocol Networking {
     /// Returns a `SignalProducer` emitting a JSON root element ( an array or dictionary).
-    func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError>
+    func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError>
     
     /// Returns a `SignalProducer` emitting an `UIImage`.
-    func requestImage(url: String) -> SignalProducer<UIImage, NetworkError>
+    func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError>
 }

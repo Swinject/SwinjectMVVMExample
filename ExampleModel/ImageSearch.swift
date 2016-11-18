@@ -25,7 +25,7 @@ public final class ImageSearch: ImageSearching {
             var loadedImageCount: Int64 = 0
             
             load.on(value: {
-                self.network.requestJSON(url: Pixabay.apiURL, parameters: parameters as [String : AnyObject])
+                self.network.requestJSON(Pixabay.apiURL, parameters: parameters as [String : AnyObject])
                     .start({ event in
                         switch event {
                         case .value(let json):

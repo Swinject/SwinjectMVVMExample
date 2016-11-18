@@ -24,8 +24,8 @@ let dummyResponse: ResponseEntity = {
 }()
 
 let image1x1: UIImage = {
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, 1), true, 0)
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: 1, height: 1), true, 0)
     let image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-    return image
+    return image!
 }()

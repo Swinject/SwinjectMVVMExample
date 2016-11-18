@@ -8,7 +8,8 @@
 
 import Quick
 import Nimble
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 import ExampleViewModel
 @testable import ExampleView
 
@@ -41,10 +42,10 @@ class ImageSearchTableViewCellSpec: QuickSpec {
 }
 
 private func createTableViewCell() -> ImageSearchTableViewCell {
-    let bundle = NSBundle(forClass: ImageSearchTableViewCell.self)
+    let bundle = Bundle(for: ImageSearchTableViewCell.self)
     let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-    let tableViewController = storyboard.instantiateViewControllerWithIdentifier("ImageSearchTableViewController")
+    let tableViewController = storyboard.instantiateViewController(withIdentifier: "ImageSearchTableViewController")
         as! ImageSearchTableViewController
-    return tableViewController.tableView.dequeueReusableCellWithIdentifier("ImageSearchTableViewCell")
+    return tableViewController.tableView.dequeueReusableCell(withIdentifier: "ImageSearchTableViewCell")
         as! ImageSearchTableViewCell
 }

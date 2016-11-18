@@ -9,27 +9,28 @@
 import Foundation
 import Quick
 import Nimble
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 @testable import ExampleModel
 @testable import ExampleViewModel
 
 class ImageSearchTableViewCellModelSpec: QuickSpec {
     class StubNetwork: Networking {
-        func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
+        func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
             return SignalProducer.empty
         }
         
-        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
-            return SignalProducer(value: image1x1).observeOn(QueueScheduler())
+        func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
+            return SignalProducer(value: image1x1).observe(on: QueueScheduler())
         }
     }
 
     class ErrorStubNetwork: Networking {
-        func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
+        func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
             return SignalProducer.empty
         }
         
-        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+        func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
             return SignalProducer(error: .NotConnectedToInternet)
         }
     }
@@ -53,8 +54,8 @@ class ImageSearchTableViewCellModelSpec: QuickSpec {
             it("returns nil at the first time.") {
                 var image: UIImage? = image1x1
                 viewModel.getPreviewImage()
-                    .take(1)
-                    .on(next: { image = $0 })
+                    .take(first: 1)
+                    .on(value: { image = $0 })
                     .start()
                 
                 expect(image).toEventually(beNil())
@@ -62,7 +63,7 @@ class ImageSearchTableViewCellModelSpec: QuickSpec {
             it("eventually returns an image.") {
                 var image: UIImage? = nil
                 viewModel.getPreviewImage()
-                    .on(next: { image = $0 })
+                    .on(value: { image = $0 })
                     .start()
                 
                 expect(image).toEventuallyNot(beNil())
@@ -70,8 +71,8 @@ class ImageSearchTableViewCellModelSpec: QuickSpec {
             it("returns an image on the main thread.") {
                 var onMainThread = false
                 viewModel.getPreviewImage()
-                    .skip(1) // Skips the first nil.
-                    .on(next: { _ in onMainThread = NSThread.isMainThread() })
+                    .skip(first: 1) // Skips the first nil.
+                    .on(value: { _ in onMainThread = Thread.isMainThread })
                     .start()
                 
                 expect(onMainThread).toEventually(beTrue())
@@ -81,8 +82,8 @@ class ImageSearchTableViewCellModelSpec: QuickSpec {
                     var image: UIImage? = nil
                     viewModel.getPreviewImage().startWithCompleted() {
                         viewModel.getPreviewImage()
-                            .take(1)
-                            .on(next: { image = $0 })
+                            .take(first: 1)
+                            .on(value: { image = $0 })
                             .start()
                     }
                     
@@ -94,8 +95,8 @@ class ImageSearchTableViewCellModelSpec: QuickSpec {
                     var image: UIImage? = image1x1
                     let viewModel = ImageSearchTableViewCellModel(image: dummyResponse.images[0], network: ErrorStubNetwork())
                     viewModel.getPreviewImage()
-                        .skip(1) // Skips the first nil.
-                        .on(next: { image = $0 })
+                        .skip(first: 1) // Skips the first nil.
+                        .on(value: { image = $0 })
                         .start()
                     
                     expect(image).toEventually(beNil())

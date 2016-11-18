@@ -8,59 +8,60 @@
 
 import Quick
 import Nimble
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 @testable import ExampleModel
 
 class ImageSearchSpec: QuickSpec {
     // MARK: Stub
     class GoodStubNetwork: Networking {
-        func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
+        func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
             var imageJSON0 = imageJSON
             imageJSON0["id"] = 0
             var imageJSON1 = imageJSON
             imageJSON1["id"] = 1
-            let json: [String: AnyObject] = [
+            let json: [String: Any] = [
                 "totalHits": 123,
                 "hits": [imageJSON0, imageJSON1]
             ]
             
             return SignalProducer { observer, disposable in
-                observer.sendNext(json)
+                observer.send(value: json)
                 observer.sendCompleted()
             }
-            .observeOn(QueueScheduler())
+            .observe(on: QueueScheduler())
         }
         
-        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+        func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
             return SignalProducer.empty
         }
     }
     
     class BadStubNetwork: Networking {
-        func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
+        func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
             let json = [String: AnyObject]()
             
             return SignalProducer { observer, disposable in
-                observer.sendNext(json)
+                observer.send(value: json)
                 observer.sendCompleted()
             }
-            .observeOn(QueueScheduler())
+            .observe(on: QueueScheduler())
         }
         
-        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+        func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
             return SignalProducer.empty
         }
     }
 
     class ErrorStubNetwork: Networking {
-        func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
+        func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
             return SignalProducer { observer, disposable in
-                observer.sendFailed(.NotConnectedToInternet)
+                observer.send(error: .NotConnectedToInternet)
             }
-            .observeOn(QueueScheduler())
+            .observe(on: QueueScheduler())
         }
         
-        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+        func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
             return SignalProducer.empty
         }
     }
@@ -68,24 +69,24 @@ class ImageSearchSpec: QuickSpec {
     class CountConfigurableStubNetwork: Networking {
         var imageCountToEmit = 100
         
-        func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
-            func createImageJSON(id id: Int) -> [String: AnyObject] {
+        func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
+            func createImageJSON(id: Int) -> [String: Any] {
                 var json = imageJSON
                 json["id"] = id
                 return json
             }
-            let json: [String: AnyObject] = [
+            let json: [String: Any] = [
                 "totalHits": 150,
                 "hits": (0..<imageCountToEmit).map { createImageJSON(id: $0) }
             ]
             
             return SignalProducer { observer, disposable in
-                observer.sendNext(json)
+                observer.send(value: json)
                 observer.sendCompleted()
-            }.observeOn(QueueScheduler())
+            }.observe(on: QueueScheduler())
         }
         
-        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+        func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
             return SignalProducer.empty
         }
     }
@@ -94,12 +95,12 @@ class ImageSearchSpec: QuickSpec {
     class MockNetwork: Networking {
         var passedParameters: [String : AnyObject]?
 
-        func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
+        func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
             passedParameters = parameters
             return SignalProducer.empty
         }
         
-        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+        func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
             return SignalProducer.empty
         }
     }
@@ -112,7 +113,7 @@ class ImageSearchSpec: QuickSpec {
                 var response: ResponseEntity? = nil
                 let search = ImageSearch(network: GoodStubNetwork())
                 search.searchImages(nextPageTrigger: SignalProducer.empty)
-                    .on(next: { response = $0 })
+                    .on(value: { response = $0 })
                     .start()
                 
                 expect(response).toEventuallyNot(beNil())
@@ -162,44 +163,44 @@ class ImageSearchSpec: QuickSpec {
             describe("completed event") {
                 var network: CountConfigurableStubNetwork!
                 var search: ImageSearch!
-                var nextPageTrigger: (SignalProducer<(), NoError>, Observer<(), NoError>)! // SignalProducer buffer
+                var nextPageTrigger: MutableProperty<Void>! // SignalProducer buffer
                 beforeEach {
                     network = CountConfigurableStubNetwork()
                     search = ImageSearch(network: network)
-                    nextPageTrigger = SignalProducer.buffer()
+                    nextPageTrigger = MutableProperty()
                 }
                 
                 it("sends completed when newly found images are less than the max number of images per page.") {
                     var completedCalled = false
                     network.imageCountToEmit = Pixabay.maxImagesPerPage
-                    search.searchImages(nextPageTrigger: nextPageTrigger.0)
+                    search.searchImages(nextPageTrigger: nextPageTrigger.producer.skip(first: 1))
                         .on(completed: { completedCalled = true })
                         .start()
                     
-                    nextPageTrigger.1.sendNext(()) // Emits `maxImagesPerPage` (50) images, which mean more images possibly exit.
+                    nextPageTrigger.value = () // Emits `maxImagesPerPage` (50) images, which mean more images possibly exit.
                     network.imageCountToEmit = Pixabay.maxImagesPerPage - 1
-                    nextPageTrigger.1.sendNext(()) // Emits only 49, which mean no more images exist.
+                    nextPageTrigger.value = () // Emits only 49, which mean no more images exist.
                     expect(completedCalled).toEventually(beTrue(), timeout: 2)
                 }
                 it("sends completed when total loaded images are equal to the total number of images specified by the response.") {
                     var completedCalled = false
                     network.imageCountToEmit = Pixabay.maxImagesPerPage
-                    search.searchImages(nextPageTrigger: nextPageTrigger.0)
+                    search.searchImages(nextPageTrigger: nextPageTrigger.producer.skip(first: 1))
                         .on(completed: { completedCalled = true })
                         .start() // Will emit `maxImagesPerPage` (50) images.
                     
-                    nextPageTrigger.1.sendNext(()) // Will emit `maxImagesPerPage` (50) images.
-                    nextPageTrigger.1.sendNext(()) // Will emit `maxImagesPerPage` (50) images, and reach the toal number (150).
+                    nextPageTrigger.value = () // Will emit `maxImagesPerPage` (50) images.
+                    nextPageTrigger.value = () // Will emit `maxImagesPerPage` (50) images, and reach the toal number (150).
                     expect(completedCalled).toEventually(beTrue())
                 }
                 it("does not send completed otherwise.") {
                     var completedCalled = false
                     network.imageCountToEmit = Pixabay.maxImagesPerPage
-                    search.searchImages(nextPageTrigger: nextPageTrigger.0)
+                    search.searchImages(nextPageTrigger: nextPageTrigger.producer.skip(first: 1))
                         .on(completed: { completedCalled = true })
                         .start() // Will emit `maxImagesPerPage` (50) images.
                     
-                    nextPageTrigger.1.sendNext(()) // Will emit `maxImagesPerPage` (50) images, and still not reach the total number (150).
+                    nextPageTrigger.value = () // Will emit `maxImagesPerPage` (50) images, and still not reach the total number (150).
                     expect(completedCalled).toEventuallyNot(beTrue())
                 }
             }

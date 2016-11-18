@@ -6,7 +6,7 @@
 //  Copyright © 2015 Swinject Contributors. All rights reserved.
 //
 
-let imageJSON: [String: AnyObject] = [
+let imageJSON: [String: Any] = [
     "id": 12345,
     "pageURL": "https://somewhere.com/page/",
     "imageWidth": 2000,

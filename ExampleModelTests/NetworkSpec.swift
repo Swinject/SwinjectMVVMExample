@@ -22,9 +22,9 @@ class NetworkSpec: QuickSpec {
         
         describe("JSON") {
             it("eventually gets JSON data as specified with parameters.") {
-                var json: [String: AnyObject]? = nil
-                network.requestJSON("https://httpbin.org/get", parameters: ["a": "b", "x": "y"])
-                    .on(next: { json = $0 as? [String: AnyObject] })
+                var json: [String: Any]? = nil
+                network.requestJSON("https://httpbin.org/get", parameters: ["a": "b" as AnyObject, "x": "y" as AnyObject])
+                    .on(value: { json = $0 as? [String: Any] })
                     .start()
                 
                 expect(json).toEventuallyNot(beNil(), timeout: 5)
@@ -33,7 +33,7 @@ class NetworkSpec: QuickSpec {
             }
             it("eventually gets an error if the network has a problem.") {
                 var error: NetworkError? = nil
-                network.requestJSON("https://not.existing.server.comm/get", parameters: ["a": "b", "x": "y"])
+                network.requestJSON("https://not.existing.server.comm/get", parameters: ["a": "b" as AnyObject, "x": "y" as AnyObject])
                     .on(failed: { error = $0 })
                     .start()
                 
@@ -44,7 +44,7 @@ class NetworkSpec: QuickSpec {
             it("eventually gets an image.") {
                 var image: UIImage?
                 network.requestImage("https://httpbin.org/image/jpeg")
-                    .on(next: { image = $0 })
+                    .on(value: { image = $0 })
                     .start()
                 
                 expect(image).toEventuallyNot(beNil(), timeout: 5)
