@@ -7,6 +7,7 @@
 //
 
 import ReactiveSwift
+import ReactiveCocoa
 import Result
 import ExampleModel
 

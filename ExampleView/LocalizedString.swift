@@ -6,9 +6,9 @@
 //  Copyright © 2015 Swinject Contributors. All rights reserved.
 //
 
-internal func LocalizedString(key: String, comment: String?) -> String {
+internal func LocalizedString(_ key: String, comment: String?) -> String {
     struct Static {
-        static let bundle = NSBundle(identifier: "com.github.Swinject.SwinjectMVVMExample.ExampleView")!
+        static let bundle = Bundle(identifier: "com.github.Swinject.SwinjectMVVMExample.ExampleView")!
     }
     return NSLocalizedString(key, bundle: Static.bundle, comment: comment ?? "")
 }

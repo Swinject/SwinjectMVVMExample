@@ -54,7 +54,6 @@
 		98B48DE41B872CDC00843AD7 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52F1B8724B1001CA6A4 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		98B48DED1B872D5200843AD7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52A1B8724B1001CA6A4 /* Alamofire.framework */; };
 		98B48DEE1B872D5200843AD7 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52B1B8724B1001CA6A4 /* Himotoki.framework */; };
-		98B48DEF1B872D5200843AD7 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52E1B8724B1001CA6A4 /* ReactiveCocoa.framework */; };
 		98B48DF01B872D5200843AD7 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52F1B8724B1001CA6A4 /* Result.framework */; };
 		98B48DF31B872D6100843AD7 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52E1B8724B1001CA6A4 /* ReactiveCocoa.framework */; };
 		98B48DF41B872D6100843AD7 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52F1B8724B1001CA6A4 /* Result.framework */; };
@@ -69,7 +68,6 @@
 		98B48E001B872D6F00843AD7 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52F1B8724B1001CA6A4 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		98B48E0E1B872E5500843AD7 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A5301B8724B1001CA6A4 /* Swinject.framework */; };
 		98B48E161B872E9500843AD7 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A5301B8724B1001CA6A4 /* Swinject.framework */; };
-		98B48E191B87304E00843AD7 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52E1B8724B1001CA6A4 /* ReactiveCocoa.framework */; };
 		98B48E1A1B87304E00843AD7 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52F1B8724B1001CA6A4 /* Result.framework */; };
 		98B48E1B1B8730A900843AD7 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52A1B8724B1001CA6A4 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		98B48E1C1B8733C700843AD7 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52E1B8724B1001CA6A4 /* ReactiveCocoa.framework */; };
@@ -88,7 +86,6 @@
 		98B76D411B899E3800718260 /* ImageSearchTableViewCellModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D401B899E3800718260 /* ImageSearchTableViewCellModelSpec.swift */; };
 		98B76D431B899ED100718260 /* DummyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D421B899ED100718260 /* DummyResponse.swift */; };
 		98B76D451B89A4B000718260 /* ImageSearchTableViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D441B89A4B000718260 /* ImageSearchTableViewControllerSpec.swift */; };
-		98B76D4B1B8AD29000718260 /* RACUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D4A1B8AD29000718260 /* RACUtil.swift */; };
 		98B76D4D1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D4C1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift */; };
 		98B76D4F1B8AF1B500718260 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D4E1B8AF1B500718260 /* ImageDetailViewController.swift */; };
 		98B76D511B8B018600718260 /* ImageDetailViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D501B8B018600718260 /* ImageDetailViewModeling.swift */; };
@@ -120,6 +117,10 @@
 		98E825C91B860E7C00E7BA79 /* ExampleViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 98E8257C1B86093700E7BA79 /* ExampleViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98E825CA1B860E8700E7BA79 /* ExampleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 98E8259E1B86094A00E7BA79 /* ExampleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD46E9FD1DDF4973004260C0 /* Pixabay.Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD46E9FC1DDF4973004260C0 /* Pixabay.Config.swift */; };
+		CD46E9FF1DDF5F3B004260C0 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD46E9FE1DDF5F3B004260C0 /* ReactiveSwift.framework */; };
+		CD46EA001DDF5F60004260C0 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD46E9FE1DDF5F3B004260C0 /* ReactiveSwift.framework */; };
+		CD46EA011DDF5F74004260C0 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD46E9FE1DDF5F3B004260C0 /* ReactiveSwift.framework */; };
+		CD46EA021DDF5FE9004260C0 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9853A52E1B8724B1001CA6A4 /* ReactiveCocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -334,7 +335,6 @@
 		98B76D401B899E3800718260 /* ImageSearchTableViewCellModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCellModelSpec.swift; sourceTree = "<group>"; };
 		98B76D421B899ED100718260 /* DummyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyResponse.swift; sourceTree = "<group>"; };
 		98B76D441B89A4B000718260 /* ImageSearchTableViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewControllerSpec.swift; sourceTree = "<group>"; };
-		98B76D4A1B8AD29000718260 /* RACUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACUtil.swift; sourceTree = "<group>"; };
 		98B76D4C1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCellSpec.swift; sourceTree = "<group>"; };
 		98B76D4E1B8AF1B500718260 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		98B76D501B8B018600718260 /* ImageDetailViewModeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewModeling.swift; sourceTree = "<group>"; };
@@ -366,6 +366,7 @@
 		98E825A51B86094A00E7BA79 /* ExampleViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E825AE1B86094A00E7BA79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD46E9FC1DDF4973004260C0 /* Pixabay.Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pixabay.Config.swift; sourceTree = "<group>"; };
+		CD46E9FE1DDF5F3B004260C0 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,9 +398,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD46E9FF1DDF5F3B004260C0 /* ReactiveSwift.framework in Frameworks */,
 				98B48DED1B872D5200843AD7 /* Alamofire.framework in Frameworks */,
 				98B48DEE1B872D5200843AD7 /* Himotoki.framework in Frameworks */,
-				98B48DEF1B872D5200843AD7 /* ReactiveCocoa.framework in Frameworks */,
 				98B48DF01B872D5200843AD7 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,8 +421,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD46EA021DDF5FE9004260C0 /* ReactiveCocoa.framework in Frameworks */,
+				CD46EA001DDF5F60004260C0 /* ReactiveSwift.framework in Frameworks */,
 				98E825C01B860BB100E7BA79 /* ExampleModel.framework in Frameworks */,
-				98B48E191B87304E00843AD7 /* ReactiveCocoa.framework in Frameworks */,
 				98B48E1A1B87304E00843AD7 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +445,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD46EA011DDF5F74004260C0 /* ReactiveSwift.framework in Frameworks */,
 				98E825C21B860BB800E7BA79 /* ExampleViewModel.framework in Frameworks */,
 				98B48E1C1B8733C700843AD7 /* ReactiveCocoa.framework in Frameworks */,
 				98B48E1D1B8733C700843AD7 /* Result.framework in Frameworks */,
@@ -480,6 +483,7 @@
 		9853A5291B87249E001CA6A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD46E9FE1DDF5F3B004260C0 /* ReactiveSwift.framework */,
 				9853A52A1B8724B1001CA6A4 /* Alamofire.framework */,
 				9853A52B1B8724B1001CA6A4 /* Himotoki.framework */,
 				9853A52E1B8724B1001CA6A4 /* ReactiveCocoa.framework */,
@@ -612,7 +616,6 @@
 				98B76D2F1B88C0DE00718260 /* ImageSearchTableViewCell.swift */,
 				98B76D4E1B8AF1B500718260 /* ImageDetailViewController.swift */,
 				987CBD7D1B8DB01E000C1B5E /* Main.storyboard */,
-				98B76D4A1B8AD29000718260 /* RACUtil.swift */,
 				98E8259E1B86094A00E7BA79 /* ExampleView.h */,
 				987CBD6D1B8DAF4C000C1B5E /* LocalizedString.swift */,
 				987CBD7A1B8DAFEF000C1B5E /* Localizable.strings */,
@@ -864,6 +867,7 @@
 					};
 					98E8259B1B86094A00E7BA79 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					98E825A41B86094A00E7BA79 = {
 						CreatedOnToolsVersion = 7.0;
@@ -1107,7 +1111,6 @@
 				987CBD6F1B8DAF4C000C1B5E /* LocalizedString.swift in Sources */,
 				98B76D321B88C0DE00718260 /* ImageSearchTableViewCell.swift in Sources */,
 				98B76D331B88C0DE00718260 /* ImageSearchTableViewController.swift in Sources */,
-				98B76D4B1B8AD29000718260 /* RACUtil.swift in Sources */,
 				98B76D4F1B8AF1B500718260 /* ImageDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1566,6 +1569,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1592,6 +1596,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

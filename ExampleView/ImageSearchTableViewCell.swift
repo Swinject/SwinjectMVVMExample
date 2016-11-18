@@ -17,8 +17,8 @@ internal final class ImageSearchTableViewCell: UITableViewCell {
             
             if let viewModel = viewModel {
                 viewModel.getPreviewImage()
-                    .takeUntil(self.racutil_prepareForReuseProducer)
-                    .on(next: { self.previewImageView.image = $0 })
+                    .take(until: self.reactive.prepareForReuse)
+                    .on(value: { self.previewImageView.image = $0 })
                     .start()
             }
             else {
