@@ -6,7 +6,8 @@
 //  Copyright © 2015 Swinject Contributors. All rights reserved.
 //
 
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 public protocol ImageSearchTableViewCellModeling {
     var id: UInt64 { get }

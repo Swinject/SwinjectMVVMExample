@@ -6,7 +6,8 @@
 //  Copyright © 2015 Swinject Contributors. All rights reserved.
 //
 
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 import ExampleModel
 
 // Inherits NSObject to use rac_willDeallocSignal.
@@ -15,14 +16,14 @@ public final class ImageSearchTableViewCellModel: NSObject, ImageSearchTableView
     public let pageImageSizeText: String
     public let tagText: String
     
-    private let network: Networking
-    private let previewURL: String
-    private var previewImage: UIImage?
+    fileprivate let network: Networking
+    fileprivate let previewURL: String
+    fileprivate var previewImage: UIImage?
     
     internal init(image: ImageEntity, network: Networking) {
         id = image.id
         pageImageSizeText = "\(image.pageImageWidth) x \(image.pageImageHeight)"
-        tagText = image.tags.joinWithSeparator(", ")
+        tagText = image.tags.joined(separator: ", ")
         
         self.network = network
         previewURL = image.previewURL
@@ -32,18 +33,18 @@ public final class ImageSearchTableViewCellModel: NSObject, ImageSearchTableView
     
     public func getPreviewImage() -> SignalProducer<UIImage?, NoError> {
         if let previewImage = self.previewImage {
-            return SignalProducer(value: previewImage).observeOn(UIScheduler())
+            return SignalProducer(value: previewImage).observe(on: UIScheduler())
         }
         else {
-            let imageProducer = network.requestImage(previewURL)
-                .takeUntil(self.racutil_willDeallocProducer)
-                .on(next: { self.previewImage = $0 })
+            let imageProducer = network.requestImage(url: previewURL)
+                .take(until: self.reactive.lifetime.ended)
+                .on(value: { self.previewImage = $0 })
                 .map { $0 as UIImage? }
                 .flatMapError { _ in SignalProducer<UIImage?, NoError>(value: nil) }
             
             return SignalProducer(value: nil)
                 .concat(imageProducer)
-                .observeOn(UIScheduler())
+                .observe(on: UIScheduler())
         }
     }
 }

@@ -88,7 +88,6 @@
 		98B76D411B899E3800718260 /* ImageSearchTableViewCellModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D401B899E3800718260 /* ImageSearchTableViewCellModelSpec.swift */; };
 		98B76D431B899ED100718260 /* DummyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D421B899ED100718260 /* DummyResponse.swift */; };
 		98B76D451B89A4B000718260 /* ImageSearchTableViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D441B89A4B000718260 /* ImageSearchTableViewControllerSpec.swift */; };
-		98B76D471B8A190500718260 /* RACUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D461B8A190500718260 /* RACUtil.swift */; };
 		98B76D4B1B8AD29000718260 /* RACUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D4A1B8AD29000718260 /* RACUtil.swift */; };
 		98B76D4D1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D4C1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift */; };
 		98B76D4F1B8AF1B500718260 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B76D4E1B8AF1B500718260 /* ImageDetailViewController.swift */; };
@@ -335,7 +334,6 @@
 		98B76D401B899E3800718260 /* ImageSearchTableViewCellModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCellModelSpec.swift; sourceTree = "<group>"; };
 		98B76D421B899ED100718260 /* DummyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyResponse.swift; sourceTree = "<group>"; };
 		98B76D441B89A4B000718260 /* ImageSearchTableViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewControllerSpec.swift; sourceTree = "<group>"; };
-		98B76D461B8A190500718260 /* RACUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACUtil.swift; sourceTree = "<group>"; };
 		98B76D4A1B8AD29000718260 /* RACUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACUtil.swift; sourceTree = "<group>"; };
 		98B76D4C1B8AD4E500718260 /* ImageSearchTableViewCellSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchTableViewCellSpec.swift; sourceTree = "<group>"; };
 		98B76D4E1B8AF1B500718260 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
@@ -587,7 +585,6 @@
 				98B76D351B88C1A600718260 /* ImageSearchTableViewCellModel.swift */,
 				98B76D501B8B018600718260 /* ImageDetailViewModeling.swift */,
 				98B76D521B8B01D600718260 /* ImageDetailViewModel.swift */,
-				98B76D461B8A190500718260 /* RACUtil.swift */,
 				98E8257C1B86093700E7BA79 /* ExampleViewModel.h */,
 				987CBD691B8DAF35000C1B5E /* LocalizedString.swift */,
 				987CBD761B8DAFE5000C1B5E /* Localizable.strings */,
@@ -860,6 +857,7 @@
 					};
 					98E825791B86093700E7BA79 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					98E825821B86093700E7BA79 = {
 						CreatedOnToolsVersion = 7.0;
@@ -1084,7 +1082,6 @@
 				98B76D511B8B018600718260 /* ImageDetailViewModeling.swift in Sources */,
 				98B76D531B8B01D600718260 /* ImageDetailViewModel.swift in Sources */,
 				98B76D3C1B88C1A700718260 /* ImageSearchTableViewModeling.swift in Sources */,
-				98B76D471B8A190500718260 /* RACUtil.swift in Sources */,
 				98B76D3A1B88C1A700718260 /* ImageSearchTableViewCellModeling.swift in Sources */,
 				98B76D391B88C1A600718260 /* ImageSearchTableViewCellModel.swift in Sources */,
 				987CBD6B1B8DAF35000C1B5E /* LocalizedString.swift in Sources */,
@@ -1486,6 +1483,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1512,6 +1510,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.Swinject.SwinjectMVVMExample.ExampleViewModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
