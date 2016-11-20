@@ -1,0 +1,16 @@
+machine:
+  xcode:
+    version: "7.3"
+
+checkout:
+  post:
+    - git submodule update --init --recursive
+
+dependencies:
+  pre:
+    - brew update
+
+test:
+  override:
+    - rake test:ios
+    - rake test:osx

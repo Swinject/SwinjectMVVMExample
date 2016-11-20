@@ -8,7 +8,8 @@
 
 import Quick
 import Nimble
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 @testable import ExampleModel
 @testable import ExampleViewModel
 
@@ -17,37 +18,37 @@ class ImageSearchTableViewModelSpec: QuickSpec {
     class StubImageSearch: ImageSearching {
         func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
             return SignalProducer { observer, disposable in
-                observer.sendNext(dummyResponse)
+                observer.send(value: dummyResponse)
                 observer.sendCompleted()
             }
-            .observeOn(QueueScheduler())
+            .observe(on: QueueScheduler())
         }
     }
 
     class NotCompletingStubImageSearch: ImageSearching {
         func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
             return SignalProducer { observer, disposable in
-                observer.sendNext(dummyResponse)
+                observer.send(value: dummyResponse)
             }
-            .observeOn(QueueScheduler())
+            .observe(on: QueueScheduler())
         }
     }
     
     class ErrorStubImageSearch: ImageSearching {
         func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
             return SignalProducer { observer, disposable in
-                observer.sendFailed(NetworkError.Unknown)
+                observer.send(error: NetworkError.Unknown)
             }
-            .observeOn(QueueScheduler())
+            .observe(on: QueueScheduler())
         }
     }
 
     class StubNetwork: Networking {
-        func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
+        func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
             return SignalProducer.empty
         }
         
-        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+        func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
             return SignalProducer.empty
         }
     }
@@ -57,28 +58,28 @@ class ImageSearchTableViewModelSpec: QuickSpec {
         var nextPageTriggered = false
 
         func searchImages(nextPageTrigger trigger: SignalProducer<(), NoError>) -> SignalProducer<ResponseEntity, NetworkError> {
-            trigger.on(next: { _ in self.nextPageTriggered = true }).start()
+            trigger.on(value: { _ in self.nextPageTriggered = true }).start()
             
             return SignalProducer { observer, disposable in
-                observer.sendNext(dummyResponse)
+                observer.send(value: dummyResponse)
             }
         }
     }
     
     class MockImageDetailViewModel: ImageDetailViewModelModifiable {
-        let id = AnyProperty<UInt64?>(initialValue: 0, producer: SignalProducer.empty)
-        let pageImageSizeText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let tagText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let usernameText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let viewCountText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let downloadCountText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let likeCountText = AnyProperty<String?>(initialValue: nil, producer: SignalProducer.empty)
-        let image = AnyProperty<UIImage?>(initialValue: nil, producer: SignalProducer.empty)
+        let id = Property<UInt64?>(initial: 0, then: SignalProducer.empty)
+        let pageImageSizeText = Property<String?>(initial: nil, then: SignalProducer.empty)
+        let tagText = Property<String?>(initial: nil, then: SignalProducer.empty)
+        let usernameText = Property<String?>(initial: nil, then: SignalProducer.empty)
+        let viewCountText = Property<String?>(initial: nil, then: SignalProducer.empty)
+        let downloadCountText = Property<String?>(initial: nil, then: SignalProducer.empty)
+        let likeCountText = Property<String?>(initial: nil, then: SignalProducer.empty)
+        let image = Property<UIImage?>(initial: nil, then: SignalProducer.empty)
         
         var imageEntities: [ImageEntity]?
         var index: Int?
         
-        func update(imageEntities: [ImageEntity], atIndex index: Int) {
+        func update(_ imageEntities: [ImageEntity], atIndex index: Int) {
             self.imageEntities = imageEntities
             self.index = index
         }
@@ -101,7 +102,7 @@ class ImageSearchTableViewModelSpec: QuickSpec {
             it("eventually sets cellModels property after the search.") {
                 var cellModels: [ImageSearchTableViewCellModeling]? = nil
                 viewModel.cellModels.producer
-                    .on(next: { cellModels = $0 })
+                    .on(value: { cellModels = $0 })
                     .start()
                 viewModel.startSearch()
                 
@@ -113,7 +114,7 @@ class ImageSearchTableViewModelSpec: QuickSpec {
             it("sets cellModels property on the main thread.") {
                 var onMainThread = false
                 viewModel.cellModels.producer
-                    .on(next: { _ in onMainThread = NSThread.isMainThread() })
+                    .on(value: { _ in onMainThread = Thread.isMainThread })
                     .start()
                 viewModel.startSearch()
                 
@@ -122,7 +123,7 @@ class ImageSearchTableViewModelSpec: QuickSpec {
             it("updates searching property when the search starts and finishes") {
                 var observedValues = [Bool]()
                 viewModel.searching.producer
-                    .on(next: { observedValues.append($0) })
+                    .on(value: { observedValues.append($0) })
                     .start()
                 
                 viewModel.startSearch()
@@ -130,12 +131,12 @@ class ImageSearchTableViewModelSpec: QuickSpec {
             }
             it("keeps loadNextPage action disabled if the search signal completes.") {
                 viewModel.startSearch()
-                expect(viewModel.loadNextPage.enabled.value).toEventuallyNot(beTrue())
+                expect(viewModel.loadNextPage.isEnabled.value).toEventuallyNot(beTrue())
             }
             it("has loadNextPage action set to enabled if the search signal does not complete.") {
                 let viewModel = ImageSearchTableViewModel(imageSearch: NotCompletingStubImageSearch(), network: StubNetwork())
                 viewModel.startSearch()
-                expect(viewModel.loadNextPage.enabled.value).toEventually(beTrue())
+                expect(viewModel.loadNextPage.isEnabled.value).toEventually(beTrue())
             }
             context("on error") {
                 it("sets errorMessage property.") {
@@ -153,8 +154,8 @@ class ImageSearchTableViewModelSpec: QuickSpec {
                 viewModel.startSearch()
                 expect(imageSearch.nextPageTriggered).to(beFalse())
 
-                viewModel.loadNextPage.enabled.producer
-                    .on(next: { enabled in
+                viewModel.loadNextPage.isEnabled.producer
+                    .on(value: { enabled in
                         if enabled {
                             viewModel.loadNextPage.apply(()).start()
                         }
@@ -166,7 +167,7 @@ class ImageSearchTableViewModelSpec: QuickSpec {
         describe("Image detail view model") {
             it("passes the image entities and selected index to the image detail view model.") {
                 viewModel.cellModels.producer
-                    .on(next: { _ in viewModel.selectCellAtIndex(1) })
+                    .on(value: { _ in viewModel.selectCellAtIndex(1) })
                     .start()
                 viewModel.startSearch()
 
@@ -177,6 +178,6 @@ class ImageSearchTableViewModelSpec: QuickSpec {
     }
 }
 
-private func distinctUntilChanged<T: Equatable>(values: [T]) -> [T] {
+private func distinctUntilChanged<T: Equatable>(_ values: [T]) -> [T] {
     return values.reduce([]) { array, value in value == array.last ? array : array + [value] }
 }

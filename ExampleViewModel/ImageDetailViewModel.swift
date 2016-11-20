@@ -6,35 +6,36 @@
 //  Copyright © 2015 Swinject Contributors. All rights reserved.
 //
 
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 import ExampleModel
 
 public final class ImageDetailViewModel: ImageDetailViewModeling {
-    public var id: AnyProperty<UInt64?> { return AnyProperty(_id) }
-    public var pageImageSizeText: AnyProperty<String?> { return AnyProperty(_pageImageSizeText) }
-    public var tagText: AnyProperty<String?> { return AnyProperty(_tagText) }
-    public var usernameText: AnyProperty<String?> { return AnyProperty(_usernameText) }
-    public var viewCountText: AnyProperty<String?> { return AnyProperty(_viewCountText) }
-    public var downloadCountText: AnyProperty<String?> { return AnyProperty(_downloadCountText) }
-    public var likeCountText: AnyProperty<String?> { return AnyProperty(_likeCountText) }
-    public var image: AnyProperty<UIImage?> { return AnyProperty(_image) }
+    public var id: Property<UInt64?> { return Property(_id) }
+    public var pageImageSizeText: Property<String?> { return Property(_pageImageSizeText) }
+    public var tagText: Property<String?> { return Property(_tagText) }
+    public var usernameText: Property<String?> { return Property(_usernameText) }
+    public var viewCountText: Property<String?> { return Property(_viewCountText) }
+    public var downloadCountText: Property<String?> { return Property(_downloadCountText) }
+    public var likeCountText: Property<String?> { return Property(_likeCountText) }
+    public var image: Property<UIImage?> { return Property(_image) }
     
-    private let _id = MutableProperty<UInt64?>(nil)
-    private let _pageImageSizeText = MutableProperty<String?>(nil)
-    private let _tagText = MutableProperty<String?>(nil)
-    private let _usernameText = MutableProperty<String?>(nil)
-    private let _viewCountText = MutableProperty<String?>(nil)
-    private let _downloadCountText = MutableProperty<String?>(nil)
-    private let _likeCountText = MutableProperty<String?>(nil)
-    private let _image = MutableProperty<UIImage?>(nil)
+    fileprivate let _id = MutableProperty<UInt64?>(nil)
+    fileprivate let _pageImageSizeText = MutableProperty<String?>(nil)
+    fileprivate let _tagText = MutableProperty<String?>(nil)
+    fileprivate let _usernameText = MutableProperty<String?>(nil)
+    fileprivate let _viewCountText = MutableProperty<String?>(nil)
+    fileprivate let _downloadCountText = MutableProperty<String?>(nil)
+    fileprivate let _likeCountText = MutableProperty<String?>(nil)
+    fileprivate let _image = MutableProperty<UIImage?>(nil)
     
-    internal var locale = NSLocale.currentLocale() // For testing.
-    private var imageEntities = [ImageEntity]()
-    private var currentImageIndex = 0
-    private var (stopSignalProducer, stopSignalObserver) = SignalProducer<(), NoError>.buffer()
+    internal var locale = Locale.current // For testing.
+    fileprivate var imageEntities = [ImageEntity]()
+    fileprivate var currentImageIndex = 0
+    fileprivate var stop = MutableProperty<Void>()
     
-    private let network: Networking
-    private let externalAppChannel: ExternalAppChanneling
+    fileprivate let network: Networking
+    fileprivate let externalAppChannel: ExternalAppChanneling
 
     public init(network: Networking, externalAppChannel: ExternalAppChanneling) {
         self.network = network
@@ -47,15 +48,15 @@ public final class ImageDetailViewModel: ImageDetailViewModeling {
         }
     }
     
-    private var currentImageEntity: ImageEntity? {
+    fileprivate var currentImageEntity: ImageEntity? {
         return imageEntities.indices.contains(currentImageIndex) ? imageEntities[currentImageIndex] : nil
     }
 }
 
 extension ImageDetailViewModel: ImageDetailViewModelModifiable {
-    public func update(imageEntities: [ImageEntity], atIndex index: Int) {
-        stopSignalObserver.sendNext(())
-        (stopSignalProducer, stopSignalObserver) = SignalProducer<(), NoError>.buffer()
+    public func update(_ imageEntities: [ImageEntity], atIndex index: Int) {
+        stop.value = ()
+        stop = MutableProperty<Void>()
         
         self.imageEntities = imageEntities
         currentImageIndex = index
@@ -64,7 +65,7 @@ extension ImageDetailViewModel: ImageDetailViewModelModifiable {
         self._id.value = imageEntity?.id
         self._usernameText.value = imageEntity?.username
         self._pageImageSizeText.value = imageEntity.map { "\($0.pageImageWidth) x \($0.pageImageHeight)" }
-        self._tagText.value = imageEntity.map { $0.tags.joinWithSeparator(", ") }
+        self._tagText.value = imageEntity.map { $0.tags.joined(separator: ", ") }
         self._viewCountText.value = imageEntity.map { formatInt64($0.viewCount) }
         self._downloadCountText.value = imageEntity.map { formatInt64($0.downloadCount) }
         self._likeCountText.value = imageEntity.map { formatInt64($0.likeCount) }
@@ -72,15 +73,15 @@ extension ImageDetailViewModel: ImageDetailViewModelModifiable {
         _image.value = nil
         if let imageEntity = imageEntity {
             _image <~ network.requestImage(imageEntity.imageURL)
-                .takeUntil(stopSignalProducer)
+                .take(until: stop.producer.skip(first: 1))
                 .map { $0 as UIImage? }
                 .flatMapError { _ in SignalProducer<UIImage?, NoError>(value: nil) }
-                .observeOn(UIScheduler())
+                .observe(on: UIScheduler())
         }
     }
     
-    private func formatInt64(value: Int64) -> String {
-        return NSNumber(longLong: value).descriptionWithLocale(locale)
+    fileprivate func formatInt64(_ value: Int64) -> String {
+        return NSNumber(value: value as Int64).description(withLocale: locale)
     }
     
     // This method can be used if you add next and previsou buttons on image detail view

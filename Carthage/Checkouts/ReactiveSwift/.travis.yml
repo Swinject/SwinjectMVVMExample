@@ -1,0 +1,93 @@
+language: objective-c
+osx_image: xcode8
+before_install: true
+install: true
+git:
+  submodules: false
+before_script:
+  - git submodule update --init --recursive
+script:
+  - script/build
+xcode_workspace: ReactiveSwift.xcworkspace
+matrix:
+  include:
+    - xcode_scheme: ReactiveSwift-macOS
+      env:
+        - XCODE_SDK=macosx
+        - XCODE_ACTION="build test"
+        - XCODE_DESTINATION="arch=x86_64"
+        - XCODE_PLAYGROUND_TARGET="x86_64-apple-macosx10.10"
+    - xcode_scheme: ReactiveSwift-iOS
+      env:
+        - XCODE_SDK=iphonesimulator
+        - XCODE_ACTION="build-for-testing test-without-building"
+        - XCODE_DESTINATION="platform=iOS Simulator,name=iPhone 6s"
+      env:
+        - XCODE_SDK=iphonesimulator
+        - XCODE_ACTION="build-for-testing test-without-building"
+        - XCODE_DESTINATION="platform=iOS Simulator,name=iPhone 5"
+    - xcode_scheme: ReactiveSwift-tvOS
+      env:
+        - XCODE_SDK=appletvsimulator
+        - XCODE_ACTION="build-for-testing test-without-building"
+        - XCODE_DESTINATION="platform=tvOS Simulator,name=Apple TV 1080p"
+    - xcode_scheme: ReactiveSwift-watchOS
+      env:
+        - XCODE_SDK=watchsimulator
+        - XCODE_ACTION=build
+        - XCODE_DESTINATION="platform=watchOS Simulator,name=Apple Watch - 38mm"
+    - script:
+        - brew update
+        - brew outdated carthage || brew upgrade carthage
+        - carthage build --no-skip-current --platform mac
+      env:
+        - JOB=CARTHAGE-macOS
+    - script:
+        - brew update
+        - brew outdated carthage || brew upgrade carthage
+        - carthage build --no-skip-current --platform iOS
+      env:
+        - JOB=CARTHAGE-iOS
+    - script:
+        - brew update
+        - brew outdated carthage || brew upgrade carthage
+        - carthage build --no-skip-current --platform tvOS
+      env:
+        - JOB=CARTHAGE-tvOS
+    - script:
+        - brew update
+        - brew outdated carthage || brew upgrade carthage
+        - carthage build --no-skip-current --platform watchOS
+      env:
+        - JOB=CARTHAGE-watchOS
+    - script:
+      - gem install cocoapods --pre
+      - pod repo update
+      - pod lib lint ReactiveSwift.podspec
+      env:
+        - JOB=PODSPEC
+    - os: osx
+      language: generic
+      script:
+        - swift build
+      env:
+        - JOB=SWIFTPM_DARWIN
+    - os: linux
+      language: generic
+      sudo: required
+      dist: trusty
+      before_install:
+        - eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/9f442512a46d7a2af7b850d65a7e9bd31edfb09b/swiftenv-install.sh)"
+      script:
+        # https://github.com/Quick/Nimble/pull/342 is needed.
+        - swift package update
+        - cd Packages/Nimble-*
+        - git checkout 8b71ca345b9b41e3555f87dd904c6f23e4ccdc34
+        - cd ../../
+        - swift build
+        - swift test
+      env: JOB=SWIFTPM_LINUX
+notifications:
+  email: false
+  slack:
+    secure: C9QTry5wUG9CfeH3rm3Z19R5rDWqDO7EhHAqHDXBxT6CpGRkTPFliJexpjBYB4sroJ8CiY5ZgTI2sjRBiAdGoE5ZQkfnwSoKQhWXkwo19TnbSnufr3cKO2SZkUhBqOlZcA+mgfjZ7rm2wm7RhpCR/4z8oBXDN4/xv0U5R2fLCLE=

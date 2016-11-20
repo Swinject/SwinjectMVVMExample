@@ -7,5 +7,5 @@
 //
 
 public protocol ExternalAppChanneling {
-    func openURL(url: String)
+    func openURL(_ url: String)
 }

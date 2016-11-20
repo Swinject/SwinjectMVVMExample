@@ -10,9 +10,9 @@ public final class ExternalAppChannel: ExternalAppChanneling {
     public init() {
     }
     
-    public func openURL(url: String) {
-        if let url = NSURL(string: url) {
-            UIApplication.sharedApplication().openURL(url)
+    public func openURL(_ url: String) {
+        if let url = URL(string: url) {
+            UIApplication.shared.openURL(url)
         }
     }
 }

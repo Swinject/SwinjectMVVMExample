@@ -9,7 +9,7 @@
 import ExampleViewModel
 
 public final class ImageSearchTableViewController: UITableViewController {
-    private var autoSearchStarted = false
+    fileprivate var autoSearchStarted = false
     @IBOutlet var footerView: UIView!
     @IBOutlet weak var searchingIndicator: UIActivityIndicatorView!
     
@@ -17,10 +17,10 @@ public final class ImageSearchTableViewController: UITableViewController {
         didSet {
             if let viewModel = viewModel {
                 viewModel.cellModels.producer
-                    .on(next: { _ in self.tableView.reloadData() })
+                    .on(value: { _ in self.tableView.reloadData() })
                     .start()
                 viewModel.searching.producer
-                    .on(next: { searching in
+                    .on(value: { searching in
                         if searching {
                             // Display the activity indicator at the center of the screen if the table is empty.
                             self.footerView.frame.size.height = viewModel.cellModels.value.isEmpty
@@ -36,7 +36,7 @@ public final class ImageSearchTableViewController: UITableViewController {
                     })
                     .start()
                 viewModel.errorMessage.producer
-                    .on(next: { errorMessage in
+                    .on(value: { errorMessage in
                         if let errorMessage = errorMessage {
                             self.displayErrorMessage(errorMessage)
                         }
@@ -46,7 +46,7 @@ public final class ImageSearchTableViewController: UITableViewController {
         }
     }
     
-    public override func viewWillAppear(animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if !autoSearchStarted {
@@ -55,21 +55,21 @@ public final class ImageSearchTableViewController: UITableViewController {
         }
     }
     
-    private func displayErrorMessage(errorMessage: String) {
+    fileprivate func displayErrorMessage(_ errorMessage: String) {
         let title = LocalizedString("ImageSearchTableViewController_ErrorAlertTitle", comment: "Error alert title.")
         let dismissButtonText = LocalizedString("ImageSearchTableViewController_DismissButtonTitle", comment: "Dismiss button title on an alert.")
         let message = errorMessage
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: dismissButtonText, style: .Default) { _ in
-            alert.dismissViewControllerAnimated(true, completion: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: dismissButtonText, style: .default) { _ in
+            alert.dismiss(animated: true, completion: nil)
             })
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
 // MARK: UITableViewDataSource
 extension ImageSearchTableViewController {
-    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let viewModel = viewModel {
             return viewModel.cellModels.value.count
         }
@@ -79,12 +79,12 @@ extension ImageSearchTableViewController {
         // return viewModel?.cellModels.value.count ?? 0
     }
     
-    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ImageSearchTableViewCell", forIndexPath: indexPath) as! ImageSearchTableViewCell
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageSearchTableViewCell", for: indexPath) as! ImageSearchTableViewCell
         cell.viewModel = viewModel.map { $0.cellModels.value[indexPath.row] }
         
         if let viewModel = viewModel
-            where indexPath.row >= viewModel.cellModels.value.count - 1 && viewModel.loadNextPage.enabled.value {
+            , indexPath.row >= viewModel.cellModels.value.count - 1 && viewModel.loadNextPage.isEnabled.value {
                 viewModel.loadNextPage.apply(()).start()
         }
 
@@ -94,8 +94,8 @@ extension ImageSearchTableViewController {
 
 // MARK: - UITableViewDelegate
 extension ImageSearchTableViewController {
-    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.selectCellAtIndex(indexPath.row)
-        performSegueWithIdentifier("ImageDetailViewControllerSegue", sender: self)
+        performSegue(withIdentifier: "ImageDetailViewControllerSegue", sender: self)
     }
 }

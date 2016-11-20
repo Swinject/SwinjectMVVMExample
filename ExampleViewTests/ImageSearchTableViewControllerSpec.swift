@@ -8,32 +8,33 @@
 
 import Quick
 import Nimble
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 import ExampleViewModel
 @testable import ExampleView
 
 class ImageSearchTableViewControllerSpec: QuickSpec {
     class MockViewModel: ImageSearchTableViewModeling {
-        let cellModels = AnyProperty(MutableProperty<[ImageSearchTableViewCellModeling]>([]))
-        let searching = AnyProperty(ConstantProperty<Bool>(false))
-        let errorMessage = AnyProperty(ConstantProperty<String?>(nil))
+        let cellModels = Property(MutableProperty<[ImageSearchTableViewCellModeling]>([]))
+        let searching = Property(value: false)
+        let errorMessage = Property<String?>(value: nil)
         var loadNextPage: Action<(), (), NoError> = Action { SignalProducer.empty }
         
         var startSearchCallCount = 0
         
         func startSearch() {
-            startSearchCallCount++
+            startSearchCallCount += 1
         }
         
-        func selectCellAtIndex(index: Int) {
+        func selectCellAtIndex(_ index: Int) {
         }
     }
     
     override func spec() {
         it("starts searching images when the view is about to appear at the first time.") {
             let viewModel = MockViewModel()
-            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle(forClass: ImageSearchTableViewController.self))
-            let viewController = storyboard.instantiateViewControllerWithIdentifier("ImageSearchTableViewController") as! ImageSearchTableViewController
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: ImageSearchTableViewController.self))
+            let viewController = storyboard.instantiateViewController(withIdentifier: "ImageSearchTableViewController") as! ImageSearchTableViewController
             viewController.viewModel = viewModel
             
             expect(viewModel.startSearchCallCount) == 0

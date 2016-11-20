@@ -9,6 +9,7 @@
 import Quick
 import Nimble
 import Swinject
+import SwinjectStoryboard
 import ExampleModel
 import ExampleViewModel
 import ExampleView
@@ -34,11 +35,11 @@ class AppDelegateSpec: QuickSpec {
                 expect(container.resolve(ImageDetailViewModeling.self)).notTo(beNil())
             }
             it("injects view models to views.") {
-                let bundle = NSBundle(forClass: ImageSearchTableViewController.self)
+                let bundle = Bundle(for: ImageSearchTableViewController.self)
                 let storyboard = SwinjectStoryboard.create(name: "Main", bundle: bundle, container: container)
-                let imageSearchTableViewController = storyboard.instantiateViewControllerWithIdentifier("ImageSearchTableViewController")
+                let imageSearchTableViewController = storyboard.instantiateViewController(withIdentifier: "ImageSearchTableViewController")
                     as! ImageSearchTableViewController
-                let imageDetailviewController = storyboard.instantiateViewControllerWithIdentifier("ImageDetailViewController")
+                let imageDetailviewController = storyboard.instantiateViewController(withIdentifier: "ImageDetailViewController")
                     as! ImageDetailViewController
                 
                 expect(imageSearchTableViewController.viewModel).notTo(beNil())

@@ -6,7 +6,8 @@
 //  Copyright © 2015 Swinject Contributors. All rights reserved.
 //
 
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 import Himotoki
 
 public final class ImageSearch: ImageSearching {
@@ -23,26 +24,26 @@ public final class ImageSearch: ImageSearching {
             var parameters = Pixabay.requestParameters
             var loadedImageCount: Int64 = 0
             
-            load.on(next: {
-                self.network.requestJSON(Pixabay.apiURL, parameters: parameters)
+            load.on(value: {
+                self.network.requestJSON(Pixabay.apiURL, parameters: parameters as [String : AnyObject])
                     .start({ event in
                         switch event {
-                        case .Next(let json):
-                            if let response = (try? decode(json)) as ResponseEntity? {
-                                observer.sendNext(response)
+                        case .value(let json):
+                            if let response = try? ResponseEntity.decodeValue(json) {
+                                observer.send(value: response)
                                 loadedImageCount += response.images.count
                                 if response.totalCount <= loadedImageCount || response.images.count < Pixabay.maxImagesPerPage {
                                     observer.sendCompleted()
                                 }
                             }
                             else {
-                                observer.sendFailed(.IncorrectDataReturned)
+                                observer.send(error: .IncorrectDataReturned)
                             }
-                        case .Failed(let error):
-                            observer.sendFailed(error)
-                        case .Completed:
+                        case .failed(let error):
+                            observer.send(error: error)
+                        case .completed:
                             break
-                        case .Interrupted:
+                        case .interrupted:
                             observer.sendInterrupted()
                         }
                     })

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -88,16 +88,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "98E825421B86044A00E7BA79"
-               BuildableName = "SwinjectMVVMExampleTests.xctest"
-               BlueprintName = "SwinjectMVVMExampleTests"
-               ReferencedContainer = "container:SwinjectMVVMExample.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "98E8255F1B86091A00E7BA79"
                BuildableName = "ExampleModelTests.xctest"
                BlueprintName = "ExampleModelTests"
@@ -121,6 +111,16 @@
                BlueprintIdentifier = "98E825A41B86094A00E7BA79"
                BuildableName = "ExampleViewTests.xctest"
                BlueprintName = "ExampleViewTests"
+               ReferencedContainer = "container:SwinjectMVVMExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "98E825421B86044A00E7BA79"
+               BuildableName = "SwinjectMVVMExampleTests.xctest"
+               BlueprintName = "SwinjectMVVMExampleTests"
                ReferencedContainer = "container:SwinjectMVVMExample.xcodeproj">
             </BuildableReference>
          </TestableReference>

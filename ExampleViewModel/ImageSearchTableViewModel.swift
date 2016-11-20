@@ -6,17 +6,18 @@
 //  Copyright © 2015 Swinject Contributors. All rights reserved.
 //
 
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 import ExampleModel
 
 public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
-    public var cellModels: AnyProperty<[ImageSearchTableViewCellModeling]> { return AnyProperty(_cellModels) }
-    public var searching: AnyProperty<Bool> { return AnyProperty(_searching) }
-    public var errorMessage: AnyProperty<String?> { return AnyProperty(_errorMessage) }
+    public var cellModels: Property<[ImageSearchTableViewCellModeling]> { return Property(_cellModels) }
+    public var searching: Property<Bool> { return Property(_searching) }
+    public var errorMessage: Property<String?> { return Property(_errorMessage) }
     
-    private let _cellModels = MutableProperty<[ImageSearchTableViewCellModeling]>([])
-    private let _searching = MutableProperty<Bool>(false)
-    private let _errorMessage = MutableProperty<String?>(nil)
+    fileprivate let _cellModels = MutableProperty<[ImageSearchTableViewCellModeling]>([])
+    fileprivate let _searching = MutableProperty<Bool>(false)
+    fileprivate let _errorMessage = MutableProperty<String?>(nil)
     
     /// Accepts property injection.
     public var imageDetailViewModel: ImageDetailViewModelModifiable?
@@ -24,26 +25,26 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
     public var loadNextPage: Action<(), (), NoError> {
         return Action(enabledIf: nextPageLoadable) { _ in
             return SignalProducer { observer, disposable in
-                if let (_, observer) = self.nextPageTrigger.value {
+                if let observer = self.nextPageTrigger.value {
                     self._searching.value = true
-                    observer.sendNext(())
+                    observer.value = ()
                 }
             }
         }
     }
-    private var nextPageLoadable: AnyProperty<Bool> {
-        return AnyProperty(
-            initialValue: false,
-            producer: searching.producer.combineLatestWith(nextPageTrigger.producer).map { searching, trigger in
+    fileprivate var nextPageLoadable: Property<Bool> {
+        return Property(
+            initial: false,
+            then: searching.producer.combineLatest(with: nextPageTrigger.producer).map { searching, trigger in
                 !searching && trigger != nil
             })
     }
-    private let nextPageTrigger = MutableProperty<(SignalProducer<(), NoError>, Observer<(), NoError>)?>(nil) // SignalProducer buffer
+    fileprivate let nextPageTrigger = MutableProperty<MutableProperty<Void>?>(nil) // SignalProducer buffer
 
-    private let imageSearch: ImageSearching
-    private let network: Networking
+    fileprivate let imageSearch: ImageSearching
+    fileprivate let network: Networking
     
-    private var foundImages = [ImageEntity]()
+    fileprivate var foundImages = [ImageEntity]()
     
     public init(imageSearch: ImageSearching, network: Networking) {
         self.imageSearch = imageSearch
@@ -51,20 +52,20 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
     }
     
     public func startSearch() {
-        func toCellModel(image: ImageEntity) -> ImageSearchTableViewCellModeling {
+        func toCellModel(_ image: ImageEntity) -> ImageSearchTableViewCellModeling {
             return ImageSearchTableViewCellModel(image: image, network: self.network) as ImageSearchTableViewCellModeling
         }
         
         _searching.value = true
-        nextPageTrigger.value = SignalProducer<(), NoError>.buffer()
-        let (trigger, _) = nextPageTrigger.value!
+        nextPageTrigger.value = MutableProperty()
+        let trigger = nextPageTrigger.value!.producer.skip(first: 1)
 
         imageSearch.searchImages(nextPageTrigger: trigger)
             .map { response in
                 (response.images, response.images.map { toCellModel($0) })
             }
-            .observeOn(UIScheduler())
-            .on(next: { images, cellModels in
+            .observe(on: UIScheduler())
+            .on(value: { images, cellModels in
                 self.foundImages += images
                 self._cellModels.value += cellModels
                 self._searching.value = false
@@ -74,7 +75,7 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
             })
             .on(event: { event in
                 switch event {
-                case .Completed, .Failed, .Interrupted:
+                case .completed, .failed, .interrupted:
                     self.nextPageTrigger.value = nil
                     self._searching.value = false
                 default:
@@ -84,7 +85,7 @@ public final class ImageSearchTableViewModel: ImageSearchTableViewModeling {
             .start()
     }
 
-    public func selectCellAtIndex(index: Int) {
+    public func selectCellAtIndex(_ index: Int) {
         imageDetailViewModel?.update(foundImages, atIndex: index)
     }
 }

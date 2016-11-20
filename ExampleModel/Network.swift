@@ -6,43 +6,43 @@
 //  Copyright © 2015 Swinject Contributors. All rights reserved.
 //
 
-import ReactiveCocoa
+import ReactiveSwift
 import Alamofire
 
 public final class Network: Networking {
-    private let queue = dispatch_queue_create("SwinjectMMVMExample.ExampleModel.Network.Queue", DISPATCH_QUEUE_SERIAL)
+    private let queue = DispatchQueue(label: "SwinjectMMVMExample.ExampleModel.Network.Queue", attributes: [])
 
     public init() { }
     
-    public func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
+    public func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
         return SignalProducer { observer, disposable in
-            Alamofire.request(.GET, url, parameters: parameters)
-                .response(queue: self.queue, responseSerializer: Alamofire.Request.JSONResponseSerializer()) { response in
+            Alamofire.request(url, method: .get, parameters: parameters)
+                .response(queue: self.queue, responseSerializer: Alamofire.DataRequest.jsonResponseSerializer()) { response in
                     switch response.result {
-                    case .Success(let value):
-                        observer.sendNext(value)
+                    case .success(let value):
+                        observer.send(value: value)
                         observer.sendCompleted()
-                    case .Failure(let error):
-                        observer.sendFailed(NetworkError(error: error))
+                    case .failure(let error):
+                        observer.send(error: NetworkError(error: error as NSError))
                     }
                 }
         }
     }
     
-    public func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
+    public func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
         return SignalProducer { observer, disposable in
-            Alamofire.request(.GET, url)
-                .response(queue: self.queue, responseSerializer: Alamofire.Request.dataResponseSerializer()) { response in
+            Alamofire.request(url, method: .get)
+                .response(queue: self.queue, responseSerializer: Alamofire.DataRequest.dataResponseSerializer()) { response in
                     switch response.result {
-                    case .Success(let data):
+                    case .success(let data):
                         guard let image = UIImage(data: data) else {
-                            observer.sendFailed(NetworkError.IncorrectDataReturned)
+                            observer.send(error: NetworkError.IncorrectDataReturned)
                             return
                         }
-                        observer.sendNext(image)
+                        observer.send(value: image)
                         observer.sendCompleted()
-                    case .Failure(let error):
-                        observer.sendFailed(NetworkError(error: error))
+                    case .failure(let error):
+                        observer.send(error: NetworkError(error: error as NSError))
                     }
             }
         }

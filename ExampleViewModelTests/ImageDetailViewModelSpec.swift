@@ -8,29 +8,30 @@
 
 import Quick
 import Nimble
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 import ExampleModel
 @testable import ExampleViewModel
 
 class ImageDetailViewModelSpec: QuickSpec {
     // MARK: Stub
     class StubNetwork: Networking {
-        func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
+        func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
             return SignalProducer.empty
         }
         
-        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
-            return SignalProducer(value: image1x1).observeOn(QueueScheduler())
+        func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
+            return SignalProducer(value: image1x1).observe(on: QueueScheduler())
         }
     }
     
     class ErrorStubNetwork: Networking {
-        func requestJSON(url: String, parameters: [String : AnyObject]?) -> SignalProducer<AnyObject, NetworkError> {
+        func requestJSON(_ url: String, parameters: [String : AnyObject]?) -> SignalProducer<Any, NetworkError> {
             return SignalProducer.empty
         }
         
-        func requestImage(url: String) -> SignalProducer<UIImage, NetworkError> {
-            return SignalProducer(error: .InternationalRoamingOff).observeOn(QueueScheduler())
+        func requestImage(_ url: String) -> SignalProducer<UIImage, NetworkError> {
+            return SignalProducer(error: .InternationalRoamingOff).observe(on: QueueScheduler())
         }
     }
     
@@ -38,7 +39,7 @@ class ImageDetailViewModelSpec: QuickSpec {
     class MockExternalAppChannel: ExternalAppChanneling {
         var passedURL: String?
         
-        func openURL(url: String) {
+        func openURL(_ url: String) {
             passedURL = url
         }
     }
@@ -64,7 +65,7 @@ class ImageDetailViewModelSpec: QuickSpec {
                 expect(viewModel.tagText.value) == "x, y"
             }
             it("formats count values with a specified locale.") {
-                viewModel.locale = NSLocale(localeIdentifier: "de_DE")
+                viewModel.locale = NSLocale(localeIdentifier: "de_DE") as Locale
                 viewModel.update(dummyResponse.images, atIndex: 1)
                 expect(viewModel.viewCountText.value) == "123.456.789"
                 expect(viewModel.downloadCountText.value) == "12.345.678"

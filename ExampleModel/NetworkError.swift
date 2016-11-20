@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum NetworkError: ErrorType, CustomStringConvertible {
+public enum NetworkError: Error, CustomStringConvertible {
     /// Unknown or not supported error.
     case Unknown
 
@@ -99,17 +99,17 @@ public enum NetworkError: ErrorType, CustomStringConvertible {
     public var description: String {
         let text: String
         switch self {
-        case Unknown:
+        case .Unknown:
             text = LocalizedString("NetworkError_Unknown", comment: "Error description")
-        case NotConnectedToInternet:
+        case .NotConnectedToInternet:
             text = LocalizedString("NetworkError_NotConnectedToInternet", comment: "Error description")
-        case InternationalRoamingOff:
+        case .InternationalRoamingOff:
             text = LocalizedString("NetworkError_InternationalRoamingOff", comment: "Error description")
-        case NotReachedServer:
+        case .NotReachedServer:
             text = LocalizedString("NetworkError_NotReachedServer", comment: "Error description")
-        case ConnectionLost:
+        case .ConnectionLost:
             text = LocalizedString("NetworkError_ConnectionLost", comment: "Error description")
-        case IncorrectDataReturned:
+        case .IncorrectDataReturned:
             text = LocalizedString("NetworkError_IncorrectDataReturned", comment: "Error description")
         }
         return text

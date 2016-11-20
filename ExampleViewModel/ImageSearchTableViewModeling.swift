@@ -6,15 +6,16 @@
 //  Copyright © 2015 Swinject Contributors. All rights reserved.
 //
 
-import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 public protocol ImageSearchTableViewModeling {
-    var cellModels: AnyProperty<[ImageSearchTableViewCellModeling]> { get }
-    var searching: AnyProperty<Bool> { get }
-    var errorMessage: AnyProperty<String?> { get }
+    var cellModels: Property<[ImageSearchTableViewCellModeling]> { get }
+    var searching: Property<Bool> { get }
+    var errorMessage: Property<String?> { get }
     
     func startSearch()
     var loadNextPage: Action<(), (), NoError> { get }
     
-    func selectCellAtIndex(index: Int)
+    func selectCellAtIndex(_ index: Int)
 }
