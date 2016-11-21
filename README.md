@@ -6,9 +6,11 @@ This is an example project to demonstrate [dependency injection](https://en.wiki
 
 ## Requirements
 
-- Xcode 7.3
+- Xcode 8.0 or later
 - [Carthage](https://github.com/Carthage/Carthage) 0.17.2 or later
 - [Pixabay](https://pixabay.com/api/docs/) API key
+
+(Xcode 7 version with Swift 2.2 is [here](https://github.com/Swinject/SwinjectMVVMExample/tree/swinject-v1))
 
 ## Setup
 
