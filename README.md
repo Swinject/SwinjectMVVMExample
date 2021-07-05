@@ -52,3 +52,4 @@ Icon images used in the app are licensed under [Creative Commons Attribution-NoD
 ## License
 
 MIT license. See the [LICENSE file](LICENSE.txt) for details.
+
