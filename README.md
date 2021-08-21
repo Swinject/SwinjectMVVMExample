@@ -1,5 +1,9 @@
 # SwinjectMVVMExample
 
+**[OBSOLETED] This example app is obsoleted and no longer follow the latest Xcode/Swift/Swinject versions.**
+
+--- 
+
 This is an example project to demonstrate [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) and [Swinject](https://github.com/Swinject/Swinject) in [MVVM (Model-View-ViewModel)](https://en.wikipedia.org/wiki/Model_View_ViewModel) architecture with [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa). The app asynchronously searches, downloads and displays images obtained from [Pixabay](https://pixabay.com) via [its API](https://pixabay.com/api/docs/).
 
 ![Screen Record](Assets/ScreenRecord.gif)
